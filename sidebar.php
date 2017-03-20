@@ -56,7 +56,7 @@
                             </a>
                             <ul class="sub-menu p-l-40">
                                 <li>
-                                    <a href="form_validations.html">
+                                    <a href="setup-instituition.php">
                                         <i class="fa fa-fw ti-alert"></i> Setup Instituitions
                                     </a>
                                 </li>

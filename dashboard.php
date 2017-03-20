@@ -35,13 +35,12 @@
         ?>
         <div class="wrapper row-offcanvas row-offcanvas-left">
             <?php
-            
-                    require_once './sidebar.php';
+            require_once './sidebar.php';
             ?>
             <aside class="right-side">
 
                 <section class="content">
-                   dashboard here
+                    dashboard here
                     <!-- /#right -->
                     <div class="background-overlay"></div>
                 </section>

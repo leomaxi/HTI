@@ -12,11 +12,7 @@
                     class="fa fa-fw ti-menu"></i>
             </a>
         </div>
-        <div class="nav-search hidden-xs">
-            <form class="search-field">
-                <input type="search" class="form-control" placeholder="Search">
-            </form>
-        </div>
+      
         <div class="navbar-right">
             <ul class="nav navbar-nav">
 
