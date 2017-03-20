@@ -546,11 +546,11 @@ input[type="range"] {
 .navbar .nav .user-footer a {
   color: #6699CC; }
 
-.navbar .navbar-right > .nav {
-  margin-right: 15px; }
-
 .navbar-right .nav > li > a {
   padding: 10px 15px; }
+
+.navbar .navbar-right > .nav {
+  margin-right: 15px; }
 
 .navbar-right .nav > li > .padding-user {
   padding-top: 8px; }
@@ -1086,6 +1086,12 @@ body.fixed-top > .header {
 /*image-magnifier*/
 .img_height {
   height: 200px; }
+
+.magnify .magnify {
+  z-index: 2; }
+
+.magnify .magnify-large {
+  z-index: 4; }
 
 /* layout css ends*/
 /**** 8.MEDIA QUERIES ****/

@@ -3,7 +3,7 @@
 @font-face {
   font-family: "dd-icon";
   src:url("dd-icon/dd-icon.eot");
-  src:url("dd-icon/dd-icon-.eot#iefix") format("embedded-opentype"),
+  src:url("dd-icon/dd-icon.eot?#iefix") format("embedded-opentype"),
     url("dd-icon/dd-icon.woff") format("woff"),
     url("dd-icon/dd-icon.ttf") format("truetype"),
     url("dd-icon/dd-icon.svg#dd-icon") format("svg");
@@ -569,5 +569,3 @@
 .dd-s-b-ul li.dd-on {
     color: #0088CC;
 }
-
-/* Localized */
