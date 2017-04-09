@@ -3,37 +3,6 @@
     <!-- sidebar: style can be found in sidebar-->
     <section class="sidebar">
         <div id="menu" role="navigation">
-            <div class="nav_profile">
-                <div class="media profile-left">
-                    <a class="pull-left profile-thumb" href="#">
-                        <img src="img/authors/avatar1.jpg" class="img-circle" alt="User Image"></a>
-                    <div class="content-profile">
-                        <h4 class="media-heading">Addison</h4>
-                        <ul class="icon-list">
-                            <li>
-                                <a href="users.html">
-                                    <i class="fa fa-fw ti-user"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="lockscreen.html">
-                                    <i class="fa fa-fw ti-lock"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="edit_user.html">
-                                    <i class="fa fa-fw ti-settings"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="login.html">
-                                    <i class="fa fa-fw ti-shift-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
             <ul class="navigation">
 
                 <li class="active" id="active">
@@ -61,7 +30,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="form_layouts.html">
+                                    <a href="instituitions.php">
                                         <i class="fa fa-fw ti-layout-width-default"></i>    Instituitions
                                     </a>
                                 </li>
@@ -79,12 +48,12 @@
                             </a>
                             <ul class="sub-menu p-l-40">
                                 <li>
-                                    <a href="form_validations.html">
+                                    <a href="new-staff.php">
                                         <i class="fa fa-fw ti-alert"></i> New Staff
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="form_layouts.html">
+                                    <a href="">
                                         <i class="fa fa-fw ti-layout-width-default"></i>    All Staff
                                     </a>
                                 </li>
@@ -103,12 +72,12 @@
                             </a>
                             <ul class="sub-menu p-l-40">
                                 <li>
-                                    <a href="form_validations.html">
+                                    <a href="">
                                         <i class="fa fa-fw ti-alert"></i> New Student
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="form_layouts.html">
+                                    <a href="">
                                         <i class="fa fa-fw ti-layout-width-default"></i>    All Students
                                     </a>
                                 </li>

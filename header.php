@@ -1,21 +1,19 @@
 <header class="header">
     <nav class="navbar navbar-static-top" role="navigation">
-        <a href="index2.html" class="logo">
-            <!-- Add the class icon to your logo image or logo icon to add the marginin -->
-<!--            <img src="img/logo.png" alt="logo"/>-->
-            HTI
+        <a href="index.html" class="logo">
+            <!-- Add the class icon to your logo image or logo icon to add the margining -->
+            <img src="img/logo.png" alt="logo"/>
         </a>
         <!-- Header Navbar: style can be found in header-->
+        <!-- Sidebar toggle button-->
         <!-- Sidebar toggle button-->
         <div>
             <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button"> <i
                     class="fa fa-fw ti-menu"></i>
             </a>
         </div>
-      
         <div class="navbar-right">
             <ul class="nav navbar-nav">
-
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-fw ti-email black"></i>
                         <span class="label label-success">2</span>
@@ -86,7 +84,7 @@
                                 </div>
                             </a>
                         </li>
-                        <li class="dropdown-footer"><a href="#"> View All messages</a></li>
+                        <li class="dropdown-footer"><a href="#">View All messages</a></li>
                     </ul>
 
                 </li>
@@ -106,8 +104,8 @@
                             <div>
                                 Addison
                                 <span>
-                                    <i class="caret"></i>
-                                </span>
+                                        <i class="caret"></i>
+                                    </span>
                             </div>
                         </div>
                     </a>
@@ -118,10 +116,17 @@
                             <p> Addison</p>
                         </li>
                         <!-- Menu Body -->
-                        <li class="p-t-3"><a href="user_profile.html"> <i class="fa fa-fw ti-user"></i> My Profile </a>
+                        <li class="p-t-3">
+                            <a href="user_profile.html">
+                                <i class="fa fa-fw ti-user"></i> My Profile
+                            </a>
                         </li>
                         <li role="presentation"></li>
-                        <li><a href="edit_user.html"> <i class="fa fa-fw ti-settings"></i> Account Settings </a></li>
+                        <li>
+                            <a href="edit_user.html">
+                                <i class="fa fa-fw ti-settings"></i> Account Settings
+                            </a>
+                        </li>
                         <li role="presentation" class="divider"></li>
                         <!-- Menu Footer-->
                         <li class="user-footer">

@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Institution SetUp</title>
+        <title>Institution SetUp </title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <link rel="shortcut icon" href="img/favicon.ico"/>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -15,141 +15,234 @@
         <!-- global css -->
         <link type="text/css" href="css/app.css" rel="stylesheet"/>
         <!-- end of global css -->
-        <!-- page level css -->
+        <!--page level css -->
+        <link href="vendors/jasny-bootstrap/css/jasny-bootstrap.css" type="text/css" rel="stylesheet">
+        <link href="vendors/select2/css/select2.min.css" type="text/css" rel="stylesheet">
+        <link href="vendors/select2/css/select2-bootstrap.css" type="text/css" rel="stylesheet">
+        <link href="vendors/bootstrapvalidator/css/bootstrapValidator.min.css" type="text/css" rel="stylesheet">
+        <link href="vendors/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
         <link href="vendors/iCheck/css/all.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" type="text/css" href="vendors/gridforms/css/gridforms.css"/>
-        <link rel="stylesheet" type="text/css" href="vendors/datetimepicker/css/bootstrap-datetimepicker.min.css"/>
-        <link rel="stylesheet" type="text/css" href="vendors/select2/css/select2.min.css">
-        <link href="vendors/select2/css/select2-bootstrap.css" rel="stylesheet" type="text/css">
-        <link href="vendors/jasny-bootstrap/css/jasny-bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" type="text/css" href="css/custom.css"/>
+        <link rel="stylesheet" type="text/css" href="css/custom.css">
         <link rel="stylesheet" href="css/custom_css/skins/skin-default.css" type="text/css" id="skin"/>
-        <link rel="stylesheet" type="text/css" href="css/custom_css/complex_forms2.css"/>
-        <!-- end of page level css -->
+        <link href="css/custom_css/wizard.css" type="text/css" rel="stylesheet">
+        <!--end of page level css -->
+        <link href="vendors/hover/css/hover-min.css" rel="stylesheet">
+        <link rel="stylesheet" href="vendors/laddabootstrap/css/ladda-themeless.min.css">
+        <link href="css/buttons_sass.css" rel="stylesheet">
+        <link href="css/advbuttons.css" rel="stylesheet">
+        <link href="vendors/select2/css/select2.min.css" rel="stylesheet" type="text/css">
+        <link href="vendors/select2/css/select2-bootstrap.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="vendors/animate/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="css/custom_css/advanced_modals.css">
     </head>
 
     <body class="skin-default">
         <div class="preloader">
             <div class="loader_img"><img src="img/loader.gif" alt="loading..." height="64" width="64"></div>
         </div>
-        <!-- header logo: style can be found in header-->
+        <!-- header logo: style can 
+        be found in header-->
         <?php
-        require_once './header.php';
+        require_once 'header.php';
         ?>
         <div class="wrapper row-offcanvas row-offcanvas-left">
+            <!-- Left side column. contains the logo and sidebar -->
             <?php
-            require_once './sidebar.php';
+            require_once 'sidebar.php';
             ?>
+
             <aside class="right-side">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <!--section starts-->
                     <h1>
                         Institution SetUp
                     </h1>
                     <ol class="breadcrumb">
                         <li>
                             <a href="index.html">
-                                <i class="fa fa-fw ti-home"></i> Dashboard
+                                <i class="fa fa-fw ti-home"></i> Configuration
                             </a>
                         </li>
                         <li>
-                            <a href="#">Institution</a>
+                            <a href="#"> Institution</a>
                         </li>
                         <li class="active">
-                            Institution Setup
+                            SetUp Institution
                         </li>
                     </ol>
                 </section>
-                <!--section ends-->
+                <!-- Main content -->
                 <section class="content">
-                    <div class="row" id="complex-form2">
-                        <div class="col-lg-12">
-                            <form class="grid-form form-horizontal">
-                                <div class="text-center">
-                                    <h3>Institution SetUp</h3>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <i class="livicon" data-name="user-add" data-size="18" data-c="#fff" data-hc="#fff"
+                                           data-loop="true"></i>  New Institution
+                                    </h3>
+                                    <span class="pull-right">
+                                        <i class="fa fa-fw ti-angle-up clickable"></i>
+                                    </span>
                                 </div>
-                                <fieldset>
-                                    <legend>(A)Institution Basic Information</legend>
-                                    <div data-row-span="4">
-                                        <div data-field-span="2">
-                                            <label> Name:</label>
-                                            <input class="form-control" id="institution_name" name="institution_name" type="text">
-                                            <label for="pan_appl2">Date Of Establishment</label>
-                                            <div class='input-group date'>
-                                                <input type='text' id="dob_appl1" class="form-control"/>
-                                                <span class="input-group-addon">
-                                                    <span class="glyphicon glyphicon-calendar"></span>
-                                                </span>
+                                <div class="panel-body">
+                                    <form class="form-horizontal" role="form">
+                                        <div class="form-group">
+                                            <label for="input-text" class="col-sm-2 control-label"> Code</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="input-text"
+                                                       >
                                             </div>
-                                            <label for="pan_appl3">Location</label>
-                                            <input class="form-control" id="pan_appl3" type="text">
-                                            <label for="maiden_name3">Principal No</label>
-                                            <input class="form-control" id="principalno" type="text" disabled>
-                                            <button type="button" class="btn btn-info btn-block" data-toggle="modal"
-                                                    data-target="#basic_modal" data-animate-modal="lightSpeedIn">
-                                                Add Principal
-                                            </button>
                                         </div>
-                                        <div data-field-span="2">
-                                            <label for="maiden_name1">Region</label>
-                                            <select id="select_country">
-                                            </select>
-                                            <label for="maiden_name2">District</label>
-                                            <input class="form-control" id="district" type="text">
-                                            <label for="maiden_name3">Longitude</label>
-                                            <input class="form-control" id="longitude" type="text">
-                                            <label for="maiden_name3">Latitude</label>
-                                            <input class="form-control" id="longitude" type="text">
+                                        <div class="form-group">
+                                            <label for="inputPassword" class="col-sm-2 control-label">Institution Name</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword" class="col-sm-2 control-label">Date Of Establishment</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword" class="col-sm-2 control-label">Region</label>
+                                            <div class="col-sm-10">
+                                                <select id="select21" class="form-control select2" style="width:100%">
+                                                    <option value="">Select value...</option>
+
+
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="inputPassword" class="col-sm-2 control-label">District</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword" class="col-sm-2 control-label">Location</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword" class="col-sm-2 control-label">Latitude</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword" class="col-sm-2 control-label">Longitude</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div
+                                        <div class="form-group">
+                                            <label for="inputPassword" class="col-sm-2 control-label">Principal No</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" class="form-control" readonly />
+                                            </div>
+                                            <div class="col-sm-2">
+
+                                                <!--                                                <button class="button button-rounded button-caution-flat hvr-float" data-toggle="modal" data-target="#form_modal">
+                                                                                                    Add 
+                                                                                                </button>-->
+                                                <button type="button" class="button button-rounded button-caution-flat " data-toggle="modal" data-target="#form_modal">
+                                                    Add
+                                                </button>
+                                            </div>
+                                            <div class="pull-right">
+                                                <button type="button" class="btn btn-info" >
+                                                    SUbmit
+                                                </button>
+                                            </div>
+                                        </div>
+
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="form_modal" class="modal fade animated" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Principal Information</h4>
+                                </div>
+                                <form role="form">
+                                    <div class="modal-body">
+                                        <div class="row m-t-10">
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <label class="sr-only" for="first-name">First-Name</label>
+                                                    <input type="text" name="first-name" id="first-name"
+                                                           placeholder="First Name" class="form-control m-t-10">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <label class="sr-only" for="last-name">Last-Name</label>
+                                                    <input type="text" name="last-name" id="last-name"
+                                                           placeholder="Last Name" class="form-control m-t-10">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row m-t-10">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="sr-only" for="message">Message</label>
+                                                    <textarea class="form-control resize_vertical m-t-10"
+                                                              name="message"
+                                                              placeholder="Message" rows="6"
+                                                              id="message"></textarea>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </fieldset>
-                                <br><br>
-                                <div class="pull-right">
-                                    <button type="button" class="btn btn-succes" >Submit
-                                    </button>
-                                </div>
-                            </form>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-succes">Submit</button>
+                                        <button type="reset" class="btn btn-default">Reset</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                            Close
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="background-overlay"></div>
                 </section>
-                <!-- End of Animation buttons -->
-                <div id="basic_modal" class="modal fade animated" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close"
-                                        data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Principal Header</h4>
-                            </div>
-                            <div class="modal-body">
-                                <p>This is Principal Information</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.content -->
             </aside>
-            <!-- /.right-side -->
         </div>
-        <!-- ./wrapper -->
+        <!--wrapper ends-->
         <!-- global js -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> <script src="https://cdn.jsdelivr.net/g/bootstrap@3.3.7,bootstrap.switch@3.3.2,jquery.nicescroll@3.6.0"></script> <script src="js/app.js" type="text/javascript"></script><!-- end of global js-->
-        <!-- page level js-->
-        <script src="vendors/iCheck/js/icheck.js" type="text/javascript"></script>
-        <script src="vendors/datedropper/datedropper.js" type="text/javascript"></script>
-        <script type="text/javascript" src="vendors/moment/js/moment.min.js"></script>
-        <script type="text/javascript" src="vendors/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-        <script type="text/javascript" src="vendors/select2/js/select2.js"></script>
+        <script src="js/app.js" type="text/javascript"></script>
+        <!-- end of global js -->
+        <!-- begining of page level js -->
+        <script src="vendors/moment/js/moment.min.js"></script>
         <script src="vendors/jasny-bootstrap/js/jasny-bootstrap.js" type="text/javascript"></script>
-        <script src="js/custom_js/complex_form2.js" type="text/javascript"></script>
-        <!-- end of page level js-->
+        <script src="vendors/select2/js/select2.js" type="text/javascript"></script>
+        <script src="vendors/bootstrapwizard/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+        <script src="vendors/bootstrapvalidator/js/bootstrapValidator.min.js" type="text/javascript"></script>
+        <script src="vendors/datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+        <script src="vendors/iCheck/js/icheck.js"></script><script src="vendors/select2/js/select2.js" type="text/javascript"></script>
+        <script src="vendors/select2/js/select2.js" type="text/javascript"></script>
+        <script src="js/custom_js/adduser.js" type="text/javascript"></script>
+        <!-- end of page level js -->
+        <script type="text/javascript" src="vendors/Buttons/js/buttons.js"></script>
+        <script type="text/javascript" src="vendors/laddabootstrap/js/spin.min.js"></script>
+        <script type="text/javascript" src="vendors/laddabootstrap/js/ladda.min.js"></script>
+        <script type="text/javascript" src="js/custom_js/button_main.js"></script>
+        <script type="text/javascript" src="js/custom_js/advanced_modals.js"></script>
     </body>
 
 </html>
-
-<!-- Localized -->
