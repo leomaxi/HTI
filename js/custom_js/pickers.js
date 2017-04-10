@@ -16,6 +16,7 @@ $(document).ready(function () {
         $('#t2').clockface('toggle');
     });
 
+    <!--panel js-->
 
     //Colorpicker
     $(".my-colorpicker1").colorpicker();

@@ -9,7 +9,7 @@ $(document).ready(function () {
     });
     $("#commentForm").bootstrapValidator({
         fields: {
-            username: {
+            usernamsjje: {
                 validators: {
                     notEmpty: {
                         message: 'The User name is required'
@@ -18,7 +18,7 @@ $(document).ready(function () {
                 required: true,
                 minlength: 3
             },
-            password: {
+            passwosrd: {
                 validators: {
                     notEmpty: {
                         message: 'The password is required'
@@ -29,7 +29,7 @@ $(document).ready(function () {
                     }
                 }
             },
-            confirm: {
+            confirsm: {
                 validators: {
                     notEmpty: {
                         message: 'Confirm Password is required'
@@ -43,7 +43,7 @@ $(document).ready(function () {
                     }
                 }
             },
-            email: {
+            emsail: {
                 validators: {
                     notEmpty: {
                         message: 'The email address is required'
@@ -54,21 +54,21 @@ $(document).ready(function () {
                     }
                 }
             },
-            fname: {
+            fnsame: {
                 validators: {
                     notEmpty: {
                         message: 'The first name is required '
                     }
                 }
             },
-            lname: {
+            lnasme: {
                 validators: {
                     notEmpty: {
                         message: 'The last name is required '
                     }
                 }
             },
-            password3: {
+            passwosrd3: {
                 validators: {
                     notEmpty: {
                         message: 'This field is required and mandatory'
@@ -77,7 +77,7 @@ $(document).ready(function () {
                 required: true,
                 minlength: 3
             },
-            age: {
+            asge: {
                 validators: {
                     notEmpty: {},
                     digits: {},
@@ -91,7 +91,7 @@ $(document).ready(function () {
                     }
                 }
             },
-            phone1: {
+            phsone1: {
                 validators: {
                     notEmpty: {
                         message: 'The home number is required'
@@ -102,7 +102,7 @@ $(document).ready(function () {
                     }
                 }
             },
-            phone2: {
+            phonse2: {
                 validators: {
                     notEmpty: {
                         message: 'The personal number is required'
@@ -113,7 +113,7 @@ $(document).ready(function () {
                     }
                 }
             },
-            phone3: {
+            phonse3: {
                 validators: {
                     notEmpty: {
                         message: 'Alternate number is required'

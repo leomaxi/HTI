@@ -119,6 +119,7 @@ $(document).ready(function() {
         colorChooser
             .css({
                 "background-color": currColor,
+                "color": "white",
                 "border-color": currColor
             })
             .html($(this).text() + ' <span class="caret"></span>');

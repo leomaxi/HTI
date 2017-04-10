@@ -2,6 +2,9 @@
 $(document).ready(function () {
     // header
 
+
+
+
     $('.option-search input').on('focus', function () {
         $('.header-object .search-wrapper').addClass('search-wrapper-focus');
     }).on('blur', function () {
