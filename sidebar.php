@@ -20,7 +20,7 @@
                     <ul class="sub-menu">
                         <li>
                             <a href="javascript:void(0)">
-                                <i class="fa fa-fw ti-receipt"></i> Instituitions
+                                <i class="fa fa-fw ti-receipt"></i> Institutions
                                 <span class="fa arrow"></span>
                             </a>
                             <ul class="sub-menu p-l-40">
@@ -38,56 +38,57 @@
                             </ul>
 
                         </li>
-
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="javascript:void(0)">
-                                <i class="fa fa-fw ti-receipt"></i> Staff
-                                <span class="fa arrow"></span>
+                         <li>
+                            <a href="region.php">
+                                <i class="fa fa-fw ti-alert"></i> Region
                             </a>
-                            <ul class="sub-menu p-l-40">
-                                <li>
-                                    <a href="new-staff.php">
-                                        <i class="fa fa-fw ti-alert"></i> New Staff
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <i class="fa fa-fw ti-layout-width-default"></i>    All Staff
-                                    </a>
-                                </li>
-
-                            </ul>
-
                         </li>
-
-                    </ul>
-
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="javascript:void(0)">
-                                <i class="fa fa-fw ti-receipt"></i> Students
-                                <span class="fa arrow"></span>
+                          <li>
+                            <a href="district.php">
+                                <i class="fa fa-fw ti-alert"></i> District
                             </a>
-                            <ul class="sub-menu p-l-40">
-                                <li>
-                                    <a href="">
-                                        <i class="fa fa-fw ti-alert"></i> New Student
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <i class="fa fa-fw ti-layout-width-default"></i>    All Students
-                                    </a>
-                                </li>
-
-                            </ul>
-
+                        </li>
+                         <li>
+                             <a href="department.php">
+                                <i class="fa fa-fw ti-alert"></i> Department
+                            </a>
+                        </li>
+                         <li>
+                             <a href="institution_types.php">
+                                <i class="fa fa-fw ti-alert"></i> Institutions Types
+                            </a>
+                        </li>
+                        <li>
+                            <a href="gradestypes.php">
+                                <i class="fa fa-fw ti-alert"></i> Grade Types
+                            </a>
                         </li>
 
                     </ul>
                 </li>
+
+                <li class="menu-dropdown">
+                    <a href="javascript:void(0)">
+                        <i class="menu-icon ti-check-box"></i>
+                        <span>Staff</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="new-staff.php">
+                                <i class="fa fa-fw ti-alert"></i> New Staff
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa fa-fw ti-layout-width-default"></i> All Staff
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
 
             </ul>
             <!-- / .navigation --> </div>

@@ -1,6 +1,8 @@
 .nsg-tag {
     border-color     : #6699cc;
     background-color : #6699cc;
+    border-radius    : 4px;
+    padding          : 3px 7px;
 }
 .input {
     background-color : #eeeeee;

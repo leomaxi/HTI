@@ -15,7 +15,7 @@
     font-size: 16px;
 }
 .grid-form [data-row-span] [data-field-span] label:first-child {
-    font-size      : small;
+    font-size      : 14px;
     text-transform : none;
     letter-spacing : 0.5px;
 }
