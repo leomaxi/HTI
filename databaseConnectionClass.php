@@ -9,7 +9,7 @@ class databaseConnection {
     var $host = "localhost";
     var $username = "root"; //  
     //var $password = 'p@$$w0rd';
-    var $password = 'nana1991';
+    var $password = 'Moh@2017';
     var $database = "hti";
     var $myconn;
 
