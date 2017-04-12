@@ -65,7 +65,7 @@
                                         <i class="livicon" data-name="bell" data-size="16" data-loop="true" data-c="#fff"
                                            data-hc="white"></i> New Staff
                                     </h3>
-                                    <span class="pull-right">
+                                    <span class="right_aligned">
                                         <i class="fa fa-fw ti-angle-up clickable"></i>
                                     </span>
                                 </div>

@@ -81,7 +81,7 @@
                                         <i class="livicon" data-name="user-add" data-size="18" data-c="#fff" data-hc="#fff"
                                            data-loop="true"></i>  New Institution
                                     </h3>
-                                    <span class="pull-right">
+                                    <span class="right_aligned">
                                         <i class="fa fa-fw ti-angle-up clickable"></i>
                                     </span>
                                 </div>
