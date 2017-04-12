@@ -38,23 +38,28 @@
                             </ul>
 
                         </li>
-                         <li>
+                        <li>
                             <a href="region.php">
                                 <i class="fa fa-fw ti-alert"></i> Region
                             </a>
                         </li>
-                          <li>
+                        <li>
                             <a href="district.php">
                                 <i class="fa fa-fw ti-alert"></i> District
                             </a>
                         </li>
-                         <li>
-                             <a href="department.php">
+                        <li>
+                            <a href="region_districts.php">
+                                <i class="fa fa-fw ti-alert"></i> Pair Region with District
+                            </a>
+                        </li>
+                        <li>
+                            <a href="department.php">
                                 <i class="fa fa-fw ti-alert"></i> Department
                             </a>
                         </li>
-                         <li>
-                             <a href="institution_types.php">
+                        <li>
+                            <a href="institution_types.php">
                                 <i class="fa fa-fw ti-alert"></i> Institutions Types
                             </a>
                         </li>
