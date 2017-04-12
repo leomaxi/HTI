@@ -14,7 +14,11 @@ $(document).ready(function() {
         theme: "bootstrap",
         placeholder: "single select"
     });
-    $("#select22").select2({
+     $(".select2").select2({
+        theme: "bootstrap",
+        placeholder: "single select"
+    });
+    $(".multselect").select2({
         theme: "bootstrap",
         placeholder: "multi select"
     });

@@ -23,6 +23,9 @@
         <link rel="stylesheet" type="text/css" href="css/custom_css/datatables_custom.css">
         <link rel="stylesheet" type="text/css" href="css/custom_css/advanced_modals.css">
         <link rel="stylesheet" type="text/css" href="css/custom_css/toastr_notificatons.css">
+        <link href="vendors/bootstrap-multiselect/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css">
+        <link href="vendors/select2/css/select2.min.css" rel="stylesheet" type="text/css">
+        <link href="vendors/select2/css/select2-bootstrap.css" rel="stylesheet" type="text/css">
 
         <!--end of page level css-->
     </head>
@@ -114,14 +117,14 @@
 
                                         <div class="form-group">
                                             <label for="region" class="control-label">Region:</label>
-                                            <select id="region" name="region" class="form-control select2" required>
+                                            <select id="region" name="region" class="form-control select2" style="width: 100%" required>
                                                 <option value="" >Choose Region</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="region" class="control-label">Districts:</label>
 
-                                            <select id="districts" name="districts[]"  class="form-control select2" multiple="multiple" required>
+                                            <select id="districts" name="districts[]"  class="form-control multselect select2" multiple style="width: 100%" required>
 
                                             </select>
                                         </div>
@@ -156,6 +159,10 @@
         <script type="text/javascript" src="js/custom_js/toastr_notifications.js"></script>
         <script type="text/javascript" src="js/region-districts.js"></script>
         <!-- end of page level js -->
+        <script src="vendors/bootstrap-multiselect/js/bootstrap-multiselect.js" type="text/javascript"></script>
+        <script src="vendors/select2/js/select2.js" type="text/javascript"></script>
+<script src="js/custom_js/custom_elements.js" type="text/javascript"></script>
+
     </body>
 
 </html>
