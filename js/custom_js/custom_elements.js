@@ -54,47 +54,47 @@ $(document).ready(function() {
         placeholder: "select",
         theme: "bootstrap"
     });
-
-
-    $('#select-gear').selectize({
-        sortField: 'text'
-    });
-    $("#selectize3").selectize({
-        maxItems: 3
-    });
-    $('#selectize-tags1').selectize({
-        plugins: ['restore_on_backspace'],
-        delimiter: ',',
-        persist: false,
-        create: function (input) {
-            return {
-                value: input,
-                text: input
-            }
-        }
-    });
-    $('#selectize-tags2').selectize({
-        plugins: ['remove_button'],
-        delimiter: ',',
-        persist: false,
-        create: function (input) {
-            return {
-                value: input,
-                text: input
-            }
-        }
-    });
-    $('#selectize-tags3').selectize({
-        plugins: ['drag_drop'],
-        delimiter: ',',
-        persist: false,
-        create: function (input) {
-            return {
-                value: input,
-                text: input
-            }
-        }
-    });
+//
+//
+//    $('#select-gear').selectize({
+//        sortField: 'text'
+//    });
+//    $("#selectize3").selectize({
+//        maxItems: 3
+//    });
+//    $('#selectize-tags1').selectize({
+//        plugins: ['restore_on_backspace'],
+//        delimiter: ',',
+//        persist: false,
+//        create: function (input) {
+//            return {
+//                value: input,
+//                text: input
+//            }
+//        }
+//    });
+//    $('#selectize-tags2').selectize({
+//        plugins: ['remove_button'],
+//        delimiter: ',',
+//        persist: false,
+//        create: function (input) {
+//            return {
+//                value: input,
+//                text: input
+//            }
+//        }
+//    });
+//    $('#selectize-tags3').selectize({
+//        plugins: ['drag_drop'],
+//        delimiter: ',',
+//        persist: false,
+//        create: function (input) {
+//            return {
+//                value: input,
+//                text: input
+//            }
+//        }
+//    });
 
 //Get selected option value
     var $selectValue = $('#select_value').find('strong');

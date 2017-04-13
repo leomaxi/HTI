@@ -110,7 +110,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">New Region</h4>
+                                    <h4 class="modal-title">New </h4>
                                 </div>
                                 <form id="saveRegionDistrictsForm">
                                     <div class="modal-body">
