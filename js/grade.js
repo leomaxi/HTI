@@ -11,10 +11,11 @@
 
 $('#saveGradeForm').on('submit', function (e) {
     e.preventDefault();
+    $('input:submit').attr("disabled", true);
     // var validator = $("#saveRegionForm").validate();
     var formData = $(this).serialize();
     console.log(formData);
-    $('input:submit').attr("disabled", true);
+    
     $.ajax({
         url: 'controllers/ConfigurationController.php?_=' + new Date().getTime(),
         type: "GET",

@@ -10,11 +10,12 @@
 
 
 $('#saveInstitutionTypeForm').on('submit', function (e) {
+        $('input:submit').attr("disabled", true);
     e.preventDefault();
     // var validator = $("#saveRegionForm").validate();
     var formData = $(this).serialize();
     console.log(formData);
-    $('input:submit').attr("disabled", true);
+
     $.ajax({
         url: 'controllers/ConfigurationController.php?_=' + new Date().getTime(),
         type: "GET",
