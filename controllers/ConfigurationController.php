@@ -26,7 +26,7 @@ if (isset($_GET['type'])) {
                 $new_district = new ConfigurationClass();
                 $new_district->setDistrict($name);
             }
-        } else if ($type == 'retreiveDistrict') {
+        } else if ($type == 'retreiveDistricts') {
 
             $getdistricts = new ConfigurationClass();
             $alldistricts = $getdistricts->getDistricts();

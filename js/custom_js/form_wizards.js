@@ -137,6 +137,9 @@ $(document).ready(function () {
             }
         }
     });
+    
+    
+    
     $('#acceptTerms').on('ifChanged', function (event) {
         $('#commentForm').bootstrapValidator('revalidateField', $('#acceptTerms'));
     });

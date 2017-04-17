@@ -15,12 +15,11 @@ $(document).ready(function() {
         placeholder: "single select"
     });
      $(".select2").select2({
-        theme: "bootstrap",
-        placeholder: "single select"
+        theme: "bootstrap"
+        
     });
     $(".multselect").select2({
-        theme: "bootstrap",
-        placeholder: "multi select"
+        theme: "bootstrap"
     });
 
     function formatState(state) {
@@ -99,13 +98,13 @@ $(document).ready(function() {
 //Get selected option value
     var $selectValue = $('#select_value').find('strong');
     $selectValue.text($('#get_value').val());
-    $('#get_value').selectric().on('change', function () {
-        $selectValue.text($(this).val());
-    });
+//    $('#get_value').selectric().on('change', function () {
+//        $selectValue.text($(this).val());
+//    });
 //Get selected option value end
 
 //Set value
-    $('#set_value').selectric();
+//    $('#set_value').selectric();
 
     $('#set_first_option').on('click', function () {
         $('#set_value').prop('selectedIndex', 0).selectric('refresh');

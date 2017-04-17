@@ -2,6 +2,15 @@
 
 $(document).ready(function() {
 
+
+  
+
+
+
+
+
+
+
     $('#datetimepicker').datetimepicker({
         lang: 'en',
         contentWindow: 'window'

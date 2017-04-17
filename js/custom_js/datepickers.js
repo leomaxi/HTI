@@ -91,6 +91,14 @@ $(document).ready(function() {
             $(this).val("");
         }
     });
+     $('#dateofestablishment').dateRangePicker({
+        singleDate: true,
+        showShortcuts: false,
+        singleMonth: true,
+        getValue: function () {
+            $(this).val("");
+        }
+    });
     $('#date-range14').dateRangePicker({
         autoClose: true,
         batchMode: 'week',

@@ -10,6 +10,7 @@
 
 
 $('#saveGradeForm').on('submit', function (e) {
+    
     e.preventDefault();
     $('input:submit').attr("disabled", true);
     // var validator = $("#saveRegionForm").validate();
