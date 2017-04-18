@@ -273,7 +273,7 @@ $(document).ready(function () {
 
             swal({
                 title: "Confirm",
-                text: "Are you sure you want to submit staf information?",
+                text: "Are you sure you want to submit staff information?",
                 type: "info",
                 showCancelButton: true,
                 closeOnConfirm: false,
