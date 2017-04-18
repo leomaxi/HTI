@@ -21,6 +21,8 @@
 
         <link rel="stylesheet" type="text/css" href="css/custom_css/datatables_custom.css">
         <!--end of page level css-->
+            <link rel="stylesheet" type="text/css" href="vendors/sweetalert2/css/sweetalert2.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/custom_css/sweet_alert2.css">
     </head>
 
     <body class="skin-default">
@@ -66,20 +68,18 @@
                                 </div>
                                 <div class="panel-body">
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover" id="sample_1">
+                                        <table class="table table-striped table-bordered table-hover" id="instituitionsTbl">
                                             <thead>
                                                 <tr>
+                                                    <th>
+                                                        Code
+                                                    </th>
                                                     <th>
                                                         Name
                                                     </th>
                                                     <th>Date Of Establishment</th>
                                                     <th>Principal</th>
-                                                    <th>
-                                                        Region
-                                                    </th>
-                                                    <th>
-                                                        District
-                                                    </th>
+                                                   
                                                     <th>Location</th>
                                                 </tr>
                                             </thead>
@@ -107,6 +107,9 @@
         <script type="text/javascript" src="vendors/datatables/js/jquery.dataTables.js"></script>
         <script type="text/javascript" src="vendors/datatables/js/dataTables.bootstrap.js"></script>
         <script type="text/javascript" src="js/custom_js/datatables_custom.js"></script>
+        <script type="text/javascript" src="vendors/sweetalert2/js/sweetalert2.min.js"></script>
+   <script type="text/javascript" src="js/getinstitution.js"></script>
+       
         <!-- end of page level js -->
     </body>
 

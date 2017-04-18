@@ -26,6 +26,8 @@
         <link rel="stylesheet" href="vendors/datetime/css/jquery.datetimepicker.css">
         <link href="vendors/airdatepicker/css/datepicker.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="css/datepicker.css">
+        <link rel="stylesheet" type="text/css" href="css/sweet-alert.min-v2.2.0.css">
+
     </head>
 
     <body class="skin-default">
@@ -85,6 +87,7 @@
                                 </div>
                                 <div class="panel-body">
                                     <form id="staffForm" method="post" action="#">
+                                        <input type="hidden" name="type" value="saveStaff"/>
                                         <div id="rootwizard">
                                             <ul>
                                                 <li>
@@ -179,6 +182,7 @@
                                                                 <label for="inputPassword" class=control-label">Region *</label>
 
                                                                 <select  id="region" name="region" class="form-control select2" style="width:100%">
+                                                                    <option value="">Select value...</option>
 
                                                                 </select>
                                                             </div>
@@ -214,7 +218,11 @@
 
                                                                 </select>
                                                             </div>
-
+                                                            <div class="form-group">
+                                                                <label class="control-label">Staff No *</label>
+                                                                <input id="staffno" name="staffno" type="text"
+                                                                       class="form-control naby1">
+                                                            </div>
                                                         </div>
                                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                                             <div class="form-group">
@@ -289,6 +297,7 @@
                                                                 <label for="inputPassword" class=control-label">Department *</label>
 
                                                                 <select id="department" name="department" class="form-control select2" style="width:100%">
+                                                                    <option value="">Select value...</option>
 
                                                                 </select>
                                                             </div>
@@ -504,26 +513,27 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div id="myModal" class="modal fade" role="dialog">
-                                            <div class="modal-dialog">
-                                                <!-- Modal content-->
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close"
-                                                                data-dismiss="modal">&times;</button>
-                                                        <h4 class="modal-title">Staff Register</h4>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p>You have Submitted Successfully.</p>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">OK
-                                                        </button>
-                                                    </div>
+                                    </form>
+                                    <div id="myModal" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close"
+                                                            data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Staff Register</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>You have Submitted Successfully.</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">OK
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -552,7 +562,10 @@
         <script src="vendors/airdatepicker/js/datepicker.min.js" type="text/javascript"></script>
         <script src="vendors/airdatepicker/js/datepicker.en.js" type="text/javascript"></script>
 <!--        <script src="js/custom_js/advanceddate_pickers.js"></script>
-        <script src="js/custom_js/custom_elements.js"></script>-->
+        <script src="js/custom_js/custom_elements.js"></script>-->   
+        <script src="js/sweet-alert.min.js"></script>
+
+        
         <script src="js/staff.js"></script>
     </body>
 

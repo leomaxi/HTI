@@ -112,7 +112,10 @@ if (isset($_GET['type'])) {
         }else if ($type == 'retreiveEmploymentTypes') {
             $get = new ConfigurationClass();
             $get->getEmploymentTypes();
+        }else if ($type == 'saveStaff') {
+            print_r($_GET);
         }
+        //saveStaff
     } else {
         echo 'provide type';
     }

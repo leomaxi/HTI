@@ -7,7 +7,6 @@ if (session_status() == PHP_SESSION_NONE) {
 $path = $_SERVER['DOCUMENT_ROOT'] . "/HTI";
 require_once $path . '/databaseConnectionClass.php';
 
-//require_once '../databaseConnectionClass.php';
 
 class InstitutionClass {
 
@@ -76,4 +75,23 @@ class InstitutionClass {
         mysqli_query($conn, 'INSERT INTO institution_institutetypes (insitution_code, insitute_type_code,addedby) VALUES ' . implode(',', $data));
     }
 
+      public function getInstitutions() {
+        $connection = new databaseConnection(); //i created a new object
+        $conn = $connection->connectToDatabase(); // connected to the database
+        $query = mysqli_query($conn, "SELECT * FROM instituitions WHERE active=0 ");
+        //print("Hello here");
+        if (mysqli_num_rows($query) > 0) {
+            while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+                $results[] = $row;
+            }
+            $feedback = json_encode($results);
+            //  $query->close();
+        } else {
+
+            $feedback = json_encode($this->response);
+        }
+
+        echo $feedback;
+        $connection->closeConnection($conn);
+    }
 }

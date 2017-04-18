@@ -79,13 +79,13 @@
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="sub-menu">
-                        <li>
+<!--                        <li>
                             <a href="new-staff.php">
                                 <i class="fa fa-fw ti-alert"></i> New Staff
                             </a>
-                        </li>
+                        </li>-->
                         <li>
-                            <a href="">
+                            <a href="allstaff.php">
                                 <i class="fa fa-fw ti-layout-width-default"></i> All Staff
                             </a>
                         </li>

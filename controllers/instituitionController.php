@@ -17,3 +17,16 @@ if (isset($_POST['type'])) {
     }
 }
 
+if (isset($_GET['type'])) {
+//echo "Check here";
+    $type = $_GET['type'];
+    if (!empty($type)) {
+        if ($type == 'getinstitutions') {
+
+            $new = new InstitutionClass();
+            $new->getInstitutions();
+        }
+    } else {
+        echo 'provide type';
+    }
+}

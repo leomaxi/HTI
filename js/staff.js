@@ -5,6 +5,79 @@
  */
 
 $(document).ready(function () {
+
+    var reginfo = {
+        type: "retreiveRegion"
+    };
+
+    $.ajax({
+        url: 'controllers/ConfigurationController.php',
+        type: "GET",
+        data: reginfo,
+        dataType: 'json',
+        success: function (data) {
+
+
+            $.each(data, function (i, item) {
+
+                $('#region').append($('<option>', {
+                    value: item.code,
+                    text: item.name
+                }));
+            });
+
+        }
+    });
+
+
+    var info = {
+        type: "retreiveDepartments"
+    };
+
+    $.ajax({
+        url: 'controllers/ConfigurationController.php',
+        type: "GET",
+        data: info,
+        dataType: 'json',
+        success: function (data) {
+
+
+            $.each(data, function (i, item) {
+
+                $('#department').append($('<option>', {
+                    value: item.code,
+                    text: item.name
+                }));
+            });
+
+        }
+    });
+
+
+    var reginfo = {
+        type: "retreivegradeTypes"
+    };
+
+    $.ajax({
+        url: 'controllers/ConfigurationController.php',
+        type: "GET",
+        data: reginfo,
+        dataType: 'json',
+        success: function (data) {
+
+
+            $.each(data, function (i, item) {
+
+                $('#grade').append($('<option>', {
+                    value: item.code,
+                    text: item.name
+                }));
+            });
+
+        }
+    });
+
+
     $('#dateofbirth').datepicker();
 
     $('#appointment_date').datepicker();
@@ -152,6 +225,7 @@ $(document).ready(function () {
 
 
 
+
     $('#acceptTerms').on('ifChanged', function (event) {
         $('#staffForm').bootstrapValidator('revalidateField', $('#acceptTerms'));
     });
@@ -179,19 +253,82 @@ $(document).ready(function () {
                 root_wizard.find('.pager .next').show();
                 root_wizard.find('.pager .finish').hide();
             }
-            root_wizard.find('.finish').click(function () {
-                var $validator = $('#staffForm').data('bootstrapValidator').validate();
-                if ($validator.isValid()) {
-                    
-                    console.log('send data to server');
-                    $('#myModal').modal('show');
-                    return $validator.isValid();
-                    root_wizard.find("a[href='#tab1']").tab('show');
-                }
-            });
+//            root_wizard.find('.finish').click(function () {
+//                var $validator = $('#staffForm').data('bootstrapValidator').validate();
+//                return $validator.isValid();
+//
+//            });
+
+
 
         }
+
+
     });
+
+    $('.finish').click(function () {
+
+        var $validator = $('#staffForm').data('bootstrapValidator').validate();
+        if ($validator.isValid()) {
+
+            swal({
+                title: "Confirm",
+                text: "Are you sure you want to submit staf information?",
+                type: "info",
+                showCancelButton: true,
+                closeOnConfirm: false,
+                showLoaderOnConfirm: true,
+            }, function () {
+                var formData = $("#staffForm").serialize();
+
+                console.log('data: ' + formData);
+                console.log('send data to server');
+                $.ajax({
+                    url: 'controllers/staffController.php',
+                    type: "POST",
+                    data: formData,
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        if (data.success == 0) {
+                            swal("Error", data.message, "danger");
+
+
+                        } else if (data.type == "principal") {
+                            swal({
+                                title: "Success",
+                                text: "Principal Information Saved Successfully",
+                                type: "success",
+                                showCancelButton: false,
+                                confirmButtonText: "OK",
+                                closeOnConfirm: false
+                            },
+                            function () {
+                                window.location = "instituitions.php";
+                            });
+
+                        } else {
+                            $('#myModal').modal('show');
+//                   
+                        }
+                    },
+                    error: function (jXHR, textStatus, errorThrown) {
+                        alert(errorThrown);
+                    }
+                });
+
+
+            });
+
+
+
+//                    $('#myModal').modal('show');
+//                   
+//                    root_wizard.find("a[href='#tab1']").tab('show');
+        }
+
+    });
+
     $('#myModal').on('hide.bs.modal', function (e) {
         location.reload();
     });
