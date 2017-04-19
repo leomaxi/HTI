@@ -78,13 +78,21 @@ $(document).ready(function () {
     });
 
 
-    $('#dateofbirth').datepicker();
+    $('#dateofbirth').datepicker({
+        dateFormat: 'dd-mm-yy' 
 
-    $('#appointment_date').datepicker();
+    });
 
-    $('#startdate').datepicker();
-    $('#enddate').datepicker();
-
+    $('#appointment_date').datepicker({
+        dateFormat: 'dd-mm-yy' 
+    });
+    $('#startdate').datepicker({
+        dateFormat: 'dd-mm-yy' 
+    });
+    
+    $('#enddate').datepicker({
+        dateFormat: 'dd-mm-yy' 
+    });
 
     $(".select2").select2({
         theme: "bootstrap"

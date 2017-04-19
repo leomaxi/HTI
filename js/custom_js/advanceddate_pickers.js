@@ -1,14 +1,7 @@
+
 "use strict";
 
 $(document).ready(function() {
-
-
-  
-
-
-
-
-
 
 
     $('#datetimepicker').datetimepicker({
@@ -85,7 +78,9 @@ $(document).ready(function() {
         return dat;
     };
     var dat = new Date();
-    $('#my-element').datepicker();
+    $('#my-element').datepicker({
+        dateFormat: 'dd-mm-yy' 
+    });
     $('#my-element1').datepicker({multipleDates: true});
     $('#monthpicker').datepicker();
     $('#minMaxExample').datepicker({

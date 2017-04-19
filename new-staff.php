@@ -302,20 +302,7 @@
                                                                 </select>
                                                             </div>
 
-                                                            <?php
-                                                            if (!isset($_GET['institute_code'])) {
-                                                                ?>
-                                                                <div class="form-group">
-                                                                    <label  class=control-label">Role *</label>
 
-                                                                    <select id="role" name="role" class="form-control select2" style="width:100%">
-                                                                        <option value="">Select value...</option>
-
-                                                                    </select>
-                                                                </div>
-                                                                <?php
-                                                            }
-                                                            ?>
 
 
 
@@ -430,6 +417,14 @@
 
                                                                 <select id="kin_relationship" name="kin_relationship" class="form-control select2" style="width:100%">
                                                                     <option value="">Select value...</option>
+                                                                    <option value="Brother">Brother</option>
+                                                                    <option value="Sister">Sister</option>
+                                                                    <option value="Daughter">Daughter</option>
+                                                                    <option value="Son">Son</option>
+                                                                    <option value="Mother">Mother</option>
+                                                                    <option value="Father">Father</option>
+                                                                    <option value="Husband">Husband</option>
+                                                                    <option value="Wife">Wife</option>
 
 
                                                                 </select>
@@ -489,7 +484,7 @@
                                                                 <input  name="branch" id="branch" type="text" class="form-control naby1">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label  class="control-label">Tin  *</label>
+                                                                <label  class="control-label">Tin*</label>
                                                                 <input  name="tin" id="tin" type="text" class="form-control naby1">
                                                             </div>
 
@@ -565,7 +560,7 @@
         <script src="js/custom_js/custom_elements.js"></script>-->   
         <script src="js/sweet-alert.min.js"></script>
 
-        
+
         <script src="js/staff.js"></script>
     </body>
 

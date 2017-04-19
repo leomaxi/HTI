@@ -18,3 +18,16 @@ if (isset($_POST['type'])) {
     }
 }
 
+if (isset($_GET['type'])) {
+//echo "Check here";
+    $type = $_GET['type'];
+    if (!empty($type)) {
+        if ($type == 'getstaff') {
+
+            $new = new StaffClass();
+            $new->getStaff();
+        }
+    } else {
+        echo 'provide type';
+    }
+}

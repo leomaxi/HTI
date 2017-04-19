@@ -169,5 +169,25 @@ class StaffClass {
         mysqli_query($conn, "UPDATE instituitions SET principal_no =  '" . mysqli_real_escape_string($conn, $staffno) . "' WHERE code='" . mysqli_real_escape_string($conn, $instituite_code) . "'");
         $connection->closeConnection($conn);
     }
+    
+     public function getStaff() {
+        $connection = new databaseConnection(); //i created a new object
+        $conn = $connection->connectToDatabase(); // connected to the database
+        $query = mysqli_query($conn, "SELECT * FROM staff ");
+        //print("Hello here");
+        if (mysqli_num_rows($query) > 0) {
+            while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+                $results[] = $row;
+            }
+            $feedback = json_encode($results);
+            //  $query->close();
+        } else {
+
+            $feedback = json_encode($this->response);
+        }
+
+        echo $feedback;
+        $connection->closeConnection($conn);
+    }
 
 }
