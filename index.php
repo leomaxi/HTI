@@ -53,12 +53,12 @@ if (isset($_REQUEST['logout']) == 'logout') {
                                     <div class="form-group">
                                         <label for="email" class="sr-only"> E-mail</label>
                                         <input type="email" class="form-control  form-control-lg" id="email" name="email"
-                                               placeholder="E-mail" required>
+                                               placeholder="E-mail" >
                                     </div>
                                     <div class="form-group">
                                         <label for="password" class="sr-only">Password</label>
                                         <input type="password" class="form-control form-control-lg" id="password"
-                                               name="password" placeholder="Password" required>
+                                               name="password" placeholder="Password" >
                                     </div>
 
                                     <div class="form-group">

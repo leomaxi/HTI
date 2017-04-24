@@ -11,54 +11,45 @@ $(document).ready(function () {
         radioClass: 'iradio_minimal-blue',
         increaseArea: '20%' // optional
     });
-//    $("#loginForm").bootstrapValidator({
-//        fields: {
-//            username: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'The email address is required'
-//                    },
-//                    regexp: {
-//                        regexp: /^\S+@\S{1,}\.\S{1,}$/,
-//                        message: 'Please enter valid email format'
-//                    }
-//                },
-//                required: true
-//            },
-//            password: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'Password is required'
-//                    }
-//
-//                },
-//                required: true
-//
-//            }
-//
-//        }
-//    });
+    $("#loginForm").bootstrapValidator({
+        
+        fields: {
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: 'The email address is required'
+                    },
+                    regexp: {
+                        regexp: /^\S+@\S{1,}\.\S{1,}$/,
+                        message: 'Please enter valid email format'
+                    }
+                },
+                required: true
+            },
+            password: {
+                validators: {
+                    notEmpty: {
+                        message: 'Password is required'
+                    }
 
-//    $('.sign_in').click(function () {
-//        var $validator = $('#loginForm').data('bootstrapValidator').validate();
-//        if ($validator.isValid()) {
-//        }
-//    });
+                },
+                required: true
 
+            }
 
-
-    $('#loginForm').on('submit', function (e) {
+        }
+        
+    }).on('success.form.bv', function (e) {
+        // Prevent form submission
         e.preventDefault();
-
-        var formData = $(this).serialize();
-        console.log(formData);
-
+        // Get the form instance
+        var $form = $(e.target);
         $('input:submit').attr("disabled", true);
 
         $.ajax({
             url: 'controllers/AccountController.php?_=' + new Date().getTime(),
             type: "POST",
-            data: formData,
+            data: $form.serialize(),
             dataType: "JSON",
             success: function (data) {
                 console.log(data);
@@ -77,6 +68,15 @@ $(document).ready(function () {
                         window.location = "dashboard.php";
 
                     }
+                } else {
+                    swal({
+                        title: "Error",
+                        text: data.message,
+                        type: "error",
+                        showCancelButton: false,
+                        confirmButtonText: "OK",
+                        closeOnConfirm: true
+                    });
                 }
 
             },
@@ -86,6 +86,11 @@ $(document).ready(function () {
         });
 
     });
+
+
+
+
+
 
 
 
