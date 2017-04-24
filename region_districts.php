@@ -1,4 +1,15 @@
-<!DOCTYPE html>
+<?php
+session_start();
+if ($_SESSION['login_valid'] != "YES") {
+    ?>
+    <script type="text/javascript">
+        window.location = 'index.php';
+    </script>
+    <?php
+}
+?>
+    
+    <!DOCTYPE html>
 <html>
 
     <head>
@@ -161,7 +172,7 @@
         <!-- end of page level js -->
         <script src="vendors/bootstrap-multiselect/js/bootstrap-multiselect.js" type="text/javascript"></script>
         <script src="vendors/select2/js/select2.js" type="text/javascript"></script>
-<script src="js/custom_js/custom_elements.js" type="text/javascript"></script>
+        <script src="js/custom_js/custom_elements.js" type="text/javascript"></script>
 
     </body>
 

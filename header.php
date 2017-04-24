@@ -15,23 +15,25 @@
         </div>
         <div class="navbar-right">
             <ul class="nav navbar-nav">
-              
-               
+
+
                 <!-- User Account: style can be found in dropdown-->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle padding-user" data-toggle="dropdown">
-                   
+
                         <div class="riot">
                             <div>
-                          Welcome, User
+                                Welcome, <?php
+                                echo $_SESSION['firstname'];
+                                ?>
                                 <span>
-                                        <i class="caret"></i>
-                                    </span>
+                                    <i class="caret"></i>
+                                </span>
                             </div>
                         </div>
                     </a>
                     <ul class="dropdown-menu">
-                   
+
                         <!-- Menu Body -->
                         <li class="p-t-3">
                             <a href="">
@@ -54,7 +56,7 @@
                                 </a>
                             </div>
                             <div class="pull-right">
-                                <a href="">
+                                <a href="index.php?logout=logout">
                                     <i class="fa fa-fw ti-shift-right"></i>
                                     Logout
                                 </a>

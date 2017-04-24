@@ -21,13 +21,14 @@ require_once $path . '/databaseConnectionClass.php';
 class StaffClass {
 
     //put your code here
+    var $response = array();
 
     public function setStaff($info) {
         $connection = new databaseConnection(); //i created a new object
         $conn = $connection->connectToDatabase(); // connected to the database
         // $createdby = $_SESSION['htiuserid'];
 
-        $existence = $this->checkStaffExistence($info['staffno']);
+        $existence = $this->checkStaffExistence($info['staffno'], $info['email']);
         if ($existence > 0) {
             $this->response['success'] = '0';
             $this->response['message'] = 'Staff exists already ';
@@ -45,9 +46,10 @@ class StaffClass {
                 }
                 $staff_type = 'principal';
             } else {
-                $staff_type = 'normal ';
-                $institute_code = 'sess';
+                $staff_type = $info['department'];
+                $institute_code = $_SESSION['institute_code'];
             }
+            $this->setUsers($institute_code, $info, $staff_type);
 
             $query = mysqli_query($conn, "INSERT INTO staff(code,instituition_code,staff_no,firstname,middlename,surname,gender,dob,place_of_birth,region,nationality,"
                     . "address,suburb,postcode,contact_no,email_address,marital_status,identification_number,identification_type,next_of_kin,relationship,kin_address,"
@@ -122,6 +124,20 @@ class StaffClass {
         $connection->closeConnection($conn);
     }
 
+    private function setUsers($institute_code, $info, $role) {
+        $connection = new databaseConnection(); //i created a new object
+        $conn = $connection->connectToDatabase(); // connected to the database
+        $password = md5('123456');
+
+        mysqli_query($conn, "INSERT INTO users(instituition_code,firstname,email,password,role)"
+                . " VALUES "
+                . "('" . mysqli_real_escape_string($conn, $institute_code) . "',"
+                . "'" . mysqli_real_escape_string($conn, $info['firstname']) . "','" . mysqli_real_escape_string($conn, $info['email']) . "','" . mysqli_real_escape_string($conn, $password) . "','" . mysqli_real_escape_string($conn, $role) . "')");
+
+
+        $connection->closeConnection($conn);
+    }
+
     private function setStaffEmploymentDetails($info) {
         $connection = new databaseConnection(); //i created a new object
         $conn = $connection->connectToDatabase(); // connected to the database
@@ -135,10 +151,10 @@ class StaffClass {
         $connection->closeConnection($conn);
     }
 
-    private function checkStaffExistence($staff_no) {
+    private function checkStaffExistence($staff_no, $email) {
         $connection = new databaseConnection(); //i created a new object
         $conn = $connection->connectToDatabase(); // connected to the database
-        $query = mysqli_query($conn, "SELECT * FROM staff WHERE staff_no='" . mysqli_real_escape_string($conn, $staff_no) . "'");
+        $query = mysqli_query($conn, "SELECT * FROM staff WHERE staff_no='" . mysqli_real_escape_string($conn, $staff_no) . "' AND email='" . mysqli_real_escape_string($conn, $email) . "'");
         $connection->closeConnection($conn);
 
         return mysqli_num_rows($query);
@@ -169,8 +185,8 @@ class StaffClass {
         mysqli_query($conn, "UPDATE instituitions SET principal_no =  '" . mysqli_real_escape_string($conn, $staffno) . "' WHERE code='" . mysqli_real_escape_string($conn, $instituite_code) . "'");
         $connection->closeConnection($conn);
     }
-    
-     public function getStaff() {
+
+    public function getStaff() {
         $connection = new databaseConnection(); //i created a new object
         $conn = $connection->connectToDatabase(); // connected to the database
         $query = mysqli_query($conn, "SELECT * FROM staff ");

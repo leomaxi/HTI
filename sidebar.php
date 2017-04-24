@@ -11,66 +11,72 @@
                         <span class="mm-text ">Dashboard </span>
                     </a>
                 </li>
-                <li class="menu-dropdown">
-                    <a href="javascript:void(0)">
-                        <i class="menu-icon ti-check-box"></i>
-                        <span>Configurations</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="javascript:void(0)">
-                                <i class="fa fa-fw ti-receipt"></i> Institutions
-                                <span class="fa arrow"></span>
-                            </a>
-                            <ul class="sub-menu p-l-40">
-                                <li>
-                                    <a href="setup-instituition.php">
-                                        <i class="fa fa-fw ti-alert"></i> Setup Instituitions
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="instituitions.php">
-                                        <i class="fa fa-fw ti-layout-width-default"></i>    Instituitions
-                                    </a>
-                                </li>
+                <?php
+                if (($_SESSION['usergroup'] == 'admin')) {
+                    ?>
+                    <li class="menu-dropdown">
+                        <a href="javascript:void(0)">
+                            <i class="menu-icon ti-check-box"></i>
+                            <span>Configurations</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <i class="fa fa-fw ti-receipt"></i> Institutions
+                                    <span class="fa arrow"></span>
+                                </a>
+                                <ul class="sub-menu p-l-40">
+                                    <li>
+                                        <a href="setup-instituition.php">
+                                            <i class="fa fa-fw ti-alert"></i> Setup Instituitions
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="instituitions.php">
+                                            <i class="fa fa-fw ti-layout-width-default"></i>    Instituitions
+                                        </a>
+                                    </li>
 
-                            </ul>
+                                </ul>
 
-                        </li>
-                        <li>
-                            <a href="region.php">
-                                <i class="fa fa-fw ti-alert"></i> Region
-                            </a>
-                        </li>
-                        <li>
-                            <a href="district.php">
-                                <i class="fa fa-fw ti-alert"></i> District
-                            </a>
-                        </li>
-                        <li>
-                            <a href="region_districts.php">
-                                <i class="fa fa-fw ti-alert"></i> Pair Region with District
-                            </a>
-                        </li>
-                        <li>
-                            <a href="department.php">
-                                <i class="fa fa-fw ti-alert"></i> Department
-                            </a>
-                        </li>
-                        <li>
-                            <a href="institution_types.php">
-                                <i class="fa fa-fw ti-alert"></i> Institutions Types
-                            </a>
-                        </li>
-                        <li>
-                            <a href="gradestypes.php">
-                                <i class="fa fa-fw ti-alert"></i> Grade Types
-                            </a>
-                        </li>
+                            </li>
+                            <li>
+                                <a href="region.php">
+                                    <i class="fa fa-fw ti-alert"></i> Region
+                                </a>
+                            </li>
+                            <li>
+                                <a href="district.php">
+                                    <i class="fa fa-fw ti-alert"></i> District
+                                </a>
+                            </li>
+                            <li>
+                                <a href="region_districts.php">
+                                    <i class="fa fa-fw ti-alert"></i> Pair Region with District
+                                </a>
+                            </li>
+                            <li>
+                                <a href="department.php">
+                                    <i class="fa fa-fw ti-alert"></i> Department
+                                </a>
+                            </li>
+                            <li>
+                                <a href="institution_types.php">
+                                    <i class="fa fa-fw ti-alert"></i> Institutions Types
+                                </a>
+                            </li>
+                            <li>
+                                <a href="gradestypes.php">
+                                    <i class="fa fa-fw ti-alert"></i> Grade Types
+                                </a>
+                            </li>
 
-                    </ul>
-                </li>
+                        </ul>
+                    </li>
+                    <?php
+                }
+                ?>
 
                 <li class="menu-dropdown">
                     <a href="javascript:void(0)">
@@ -79,16 +85,24 @@
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="sub-menu">
-<!--                        <li>
+                        <?php
+                        if (($_SESSION['usergroup'] == 'principal')) {
+                            echo ' <li>
                             <a href="new-staff.php">
                                 <i class="fa fa-fw ti-alert"></i> New Staff
                             </a>
-                        </li>-->
-                        <li>
+                        </li>';
+                        } else {
+                            echo '    <li>
                             <a href="allstaff.php">
                                 <i class="fa fa-fw ti-layout-width-default"></i> All Staff
                             </a>
-                        </li>
+                        </li>';
+                        }
+                        ?>
+
+
+
 
                     </ul>
 
