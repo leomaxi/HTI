@@ -91,6 +91,10 @@
                             <a href="new-staff.php">
                                 <i class="fa fa-fw ti-alert"></i> New Staff
                             </a>
+                        </li> <li>
+                            <a href="allstaff.php">
+                                <i class="fa fa-fw ti-layout-width-default"></i> All Staff
+                            </a>
                         </li>';
                         } else {
                             echo '    <li>

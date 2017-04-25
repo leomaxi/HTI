@@ -302,7 +302,7 @@ $(document).ready(function () {
                             swal("Error", data.message, "danger");
 
 
-                        } else if (data.type == "principal") {
+                        } else if (data.type === "principal") {
                             swal({
                                 title: "Success",
                                 text: "Principal Information Saved Successfully",
@@ -316,7 +316,18 @@ $(document).ready(function () {
                             });
 
                         } else {
-                            $('#myModal').modal('show');
+                            console.log('here');
+                            swal({
+                                title: "Success",
+                                text: "Staff Information Saved Successfully",
+                                type: "success",
+                                showCancelButton: false,
+                                confirmButtonText: "OK",
+                                closeOnConfirm: false
+                            },
+                            function () {
+                                window.location = "allstaff.php";
+                            });
 //                   
                         }
                     },

@@ -301,15 +301,20 @@ if ($_SESSION['login_valid'] != "YES") {
                                                                 <textarea rows="5" name="areaofexpertise" id="areaofexpertise" style="width: 100%" ></textarea>
 
                                                             </div>
+                                                            <?php
+                                                            if (!isset($_GET['institute_code'])) {
+                                                                ?><div class="form-group">
+                                                                    <label for="inputPassword" class=control-label">Department *</label>
 
-                                                            <div class="form-group">
-                                                                <label for="inputPassword" class=control-label">Department *</label>
+                                                                    <select id="department" name="department" class="form-control select2" style="width:100%">
+                                                                        <option value="">Select value...</option>
 
-                                                                <select id="department" name="department" class="form-control select2" style="width:100%">
-                                                                    <option value="">Select value...</option>
+                                                                    </select>
+                                                                </div>
+                                                                <?php
+                                                            }
+                                                            ?>
 
-                                                                </select>
-                                                            </div>
 
 
 

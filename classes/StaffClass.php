@@ -189,7 +189,14 @@ class StaffClass {
     public function getStaff() {
         $connection = new databaseConnection(); //i created a new object
         $conn = $connection->connectToDatabase(); // connected to the database
-        $query = mysqli_query($conn, "SELECT * FROM staff ");
+        $usertype = $_SESSION['usergroup'];
+        
+        if($usertype == 'principal'){
+           $query = mysqli_query($conn, "SELECT * FROM staff where instituition_code='".$_SESSION['institute_code']."' "); 
+        }else{
+            $query = mysqli_query($conn, "SELECT * FROM staff ");
+        }
+        
         //print("Hello here");
         if (mysqli_num_rows($query) > 0) {
             while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {

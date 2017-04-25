@@ -82,6 +82,9 @@ if ($_SESSION['login_valid'] != "YES") {
                                             <thead>
                                                 <tr>
                                                     <th>
+                                                        Institute Code
+                                                    </th>
+                                                    <th>
                                                         Staff No
                                                     </th>
                                                     <th>
