@@ -192,9 +192,9 @@ class StaffClass {
         $usertype = $_SESSION['usergroup'];
         
         if($usertype == 'principal'){
-           $query = mysqli_query($conn, "SELECT * FROM staff where instituition_code='".$_SESSION['institute_code']."' "); 
+           $query = mysqli_query($conn, "select staff.*,instituitions.name AS institute_name from staff LEFT JOIN instituitions ON `staff`.`instituition_code` = instituitions.code where staff.instituition_code='".$_SESSION['institute_code']."' "); 
         }else{
-            $query = mysqli_query($conn, "SELECT * FROM staff ");
+            $query = mysqli_query($conn, "select staff.*,instituitions.name AS institute_name from staff LEFT JOIN instituitions ON `staff`.`instituition_code` = instituitions.code; ");
         }
         
         //print("Hello here");

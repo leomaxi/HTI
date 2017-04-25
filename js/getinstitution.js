@@ -34,7 +34,7 @@ function getinstitutions()
                     r[++j] = '<td>' + value.code + '</td>';
                     r[++j] = '<td> ' + value.name + '</td>';
                     r[++j] = '<td>' + value.date_of_establishment + '</td>';
-                    r[++j] = '<td>' + value.principal_no + '</td>';
+                    r[++j] = '<td>' + value.staff_name + '</td>';
                     r[++j] = '<td>' + value.location + '</td>';
 
                     r[++j] = '<td><button type="button" onclick="editBeneficiary(\'' + value.code + '\')" class="btn btn-outline-info btn-sm  col-sm-6 btn-edit editBtn" disabled><i class="fa fa-edit""></i><span class="hidden-md hidden-sm hidden-xs"> </span></</button>\n\

@@ -77,7 +77,7 @@ class InstitutionClass {
     public function getInstitutions() {
         $connection = new databaseConnection(); //i created a new object
         $conn = $connection->connectToDatabase(); // connected to the database
-        $query = mysqli_query($conn, "SELECT * FROM instituitions WHERE active=0 ");
+        $query = mysqli_query($conn, "select instituitions.*,CONCAT(staff.firstname, ' ', staff.surname) AS staff_name   from instituitions LEFT JOIN staff ON instituitions.principal_no= `staff`.`staff_no`  WHERE instituitions.active=0 ");
         //print("Hello here");
         if (mysqli_num_rows($query) > 0) {
             while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {

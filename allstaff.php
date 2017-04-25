@@ -82,7 +82,7 @@ if ($_SESSION['login_valid'] != "YES") {
                                             <thead>
                                                 <tr>
                                                     <th>
-                                                        Institute Code
+                                                        Institute 
                                                     </th>
                                                     <th>
                                                         Staff No
@@ -94,6 +94,7 @@ if ($_SESSION['login_valid'] != "YES") {
                                                     <th>Email Address</th>
                                                     <th>Contact No</th>
                                                     <th>Current Appointment Date</th>
+                                                    <th>Date Created</th>
 
                                                 </tr>
                                             </thead>

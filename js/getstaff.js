@@ -6,7 +6,10 @@
 
 
 var datatable = $('#staffTbl').DataTable();
-
+datatable
+    .column( '7:visible' )
+    .order( 'desc' )
+    .draw();
 getStaff();
 function getStaff()
 {
@@ -31,7 +34,7 @@ function getStaff()
                 $.each(obj, function (key, value) {
                     var j = -1;
                     var r = new Array();
-                    r[++j] = '<td>' + value.instituition_code + '</td>';
+                    r[++j] = '<td>' + value.institute_name + '</td>';
 
                     r[++j] = '<td>' + value.staff_no + '</td>';
                     r[++j] = '<td> ' + value.firstname + ' ' + value.middlename + ' ' + value.surname + '</td>';
@@ -39,6 +42,7 @@ function getStaff()
                     r[++j] = '<td>' + value.email_address + '</td>';
                     r[++j] = '<td>' + value.contact_no + '</td>';
                     r[++j] = '<td>' + value.current_appointment_date + '</td>';
+                    r[++j] = '<td>' + value.datecreated + '</td>';
 
 
                     rowNum = rowNum + 1;
