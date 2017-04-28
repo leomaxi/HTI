@@ -79,19 +79,19 @@ $(document).ready(function () {
 
 
     $('#dateofbirth').datepicker({
-        dateFormat: 'dd-mm-yy' 
+        dateFormat: 'dd-mm-yyyy' 
 
     });
 
     $('#appointment_date').datepicker({
-        dateFormat: 'dd-mm-yy' 
+        dateFormat: 'dd-mm-yyyy' 
     });
     $('#startdate').datepicker({
-        dateFormat: 'dd-mm-yy' 
+        dateFormat: 'dd-mm-yyyy' 
     });
     
     $('#enddate').datepicker({
-        dateFormat: 'dd-mm-yy' 
+        dateFormat: 'dd-mm-yyyy' 
     });
 
     $(".select2").select2({

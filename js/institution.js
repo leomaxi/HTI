@@ -5,7 +5,9 @@
  */
 
 
-
+ $('#establishment_date').datepicker({
+        dateFormat: 'dd-mm-yyyy' 
+    });
 
 
 var reginfo = {

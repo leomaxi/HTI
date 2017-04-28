@@ -119,7 +119,7 @@ if ($_SESSION['login_valid'] != "YES") {
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-fw ti-calendar"></i>
                                                     </div>
-                                                    <input type="text" class="form-control pull-right" name="date_established" data-language='en' id="my-element" />
+                                                    <input type="text" class="form-control pull-right" name="date_established" data-language='en' id="establishment_date" />
                                                 </div> 
                                             </div>
                                             <!-- /.input group -->
