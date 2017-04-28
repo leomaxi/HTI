@@ -150,13 +150,6 @@ $(document).ready(function () {
                         message: 'The value is not a valid date'
                     }
                 }
-            },appointment_date: {
-                validators: {
-                    date: {
-                        format: 'dd-mm-yyyy ',
-                        message: 'The value is not a valid date'
-                    }
-                }
             },
             nationality: {
                 validators: {
@@ -184,17 +177,7 @@ $(document).ready(function () {
                 }
             }, 
            
-            contactno: {
-                validators: {
-                    notEmpty: {
-                        message: 'The contactno is required'
-                    },
-                    regexp: {
-                        regexp: /^(\+?1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/,
-                        message: 'Enter valid phone number'
-                    }
-                }
-            },
+            
             department: {
                     validators: {
                         notEmpty: {
