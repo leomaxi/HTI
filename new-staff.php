@@ -153,12 +153,12 @@ if ($_SESSION['login_valid'] != "YES") {
                                                             <div class="form-group">
                                                                 <label  class="control-label">Middle Name </label>
                                                                 <input id="middlename" name="middlename" 
-                                                                       type="text" class="form-control naby1 ">
+                                                                       type="text" class="form-control required ">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label class="control-label">Last Name *</label>
                                                                 <input id="lastname" name="lastname" type="text"
-                                                                       class="form-control naby1">
+                                                                       class="form-control required">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label class=control-label">Gender *</label>
@@ -181,14 +181,14 @@ if ($_SESSION['login_valid'] != "YES") {
                                                                 </div> 
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label">Place of Birth  *</label>
+                                                                <label class="control-label">Place of Birth  </label>
                                                                 <input id="placeofbirth" name="placeofbirth" type="text"
 
-                                                                       class="form-control naby1">
+                                                                       class="form-control ">
                                                             </div>        
 
                                                             <div class="form-group">
-                                                                <label for="inputPassword" class=control-label">Region *</label>
+                                                                <label for="inputPassword" class=control-label">Region </label>
 
                                                                 <select  id="region" name="region" class="form-control select2" style="width:100%">
                                                                     <option value="">Select value...</option>
@@ -198,23 +198,23 @@ if ($_SESSION['login_valid'] != "YES") {
 
                                                             <div class="form-group">
                                                                 <label  class="control-label">Nationality  *</label>
-                                                                <input id="nationality" name="nationality" type="text" class="form-control naby1">
+                                                                <input id="nationality" name="nationality" type="text" class="form-control required">
                                                             </div>   
 
                                                             <div class="form-group">
                                                                 <label  class=control-label">Address *</label>
-
-                                                                <textarea rows="5" style="width: 100%" ></textarea>
+ 
+                                                                <textarea name="address"rows="5" style="width: 100%" ></textarea>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="confirm" class="control-label">Suburb  *</label>
-                                                                <input id="suburb" name="suburb" type="text" class="form-control naby1">
+                                                                <input id="suburb" name="suburb" type="text" class="form-control required">
 
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <label  class=control-label">Marital Status *</label>
+                                                                <label  class=control-label">Marital Status </label>
 
                                                                 <select id="marital_status" name="marital_status" class="form-control select2" style="width:100%">
                                                                     <option value="">Select value...</option>
@@ -230,28 +230,28 @@ if ($_SESSION['login_valid'] != "YES") {
                                                             <div class="form-group">
                                                                 <label class="control-label">Staff No *</label>
                                                                 <input id="staffno" name="staffno" type="text"
-                                                                       class="form-control naby1">
+                                                                       class="form-control required">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                                             <div class="form-group">
                                                                 <label class="control-label">Postal Address *</label>
                                                                 <input id="postal_address" name="postal_address" type="text"
-                                                                       class="form-control naby1">
+                                                                       class="form-control required">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label">Contact No </label>
+                                                                <label class="control-label">Contact No *</label>
                                                                 <input id="contactno" name="contactno" 
-                                                                       type="text" class="form-control naby1 ">
+                                                                       type="text" class="form-control required ">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="password" class="control-label">Email Address *</label>
                                                                 <input id="email" name="email" type="email"
-                                                                       class="form-control naby1 email">
+                                                                       class="form-control required email">
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <label for="confirm" class="control-label">Identification Type  *</label>
+                                                                <label for="confirm" class="control-label">Identification Type  </label>
                                                                 <select id="identification_type" name="identification_type" class="form-control select2" style="width:100%">
                                                                     <option value="">Select value...</option>
 
@@ -263,9 +263,9 @@ if ($_SESSION['login_valid'] != "YES") {
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="confirm" class="control-label">Identification Number  *</label>
+                                                                <label for="confirm" class="control-label">Identification Number  </label>
                                                                 <input id="identification_number" name="identification_number" 
-                                                                       type="text" class="form-control naby1 ">
+                                                                       type="text" class="form-control required ">
                                                             </div>        
 
 
@@ -273,7 +273,7 @@ if ($_SESSION['login_valid'] != "YES") {
                                                             <div class="form-group">
                                                                 <label for="confirm" class="control-label">Highest Qualification  *</label>
                                                                 <input id="highest_qualification" name="highest_qualification" 
-                                                                       type="text" class="form-control naby1 ">
+                                                                       type="text" class="form-control required ">
                                                             </div>   
 
 
@@ -290,14 +290,14 @@ if ($_SESSION['login_valid'] != "YES") {
 
 
                                                             <div class="form-group">
-                                                                <label for="confirm" class="control-label">Number Of Years  *</label>
+                                                                <label for="confirm" class="control-label">Number Of Years  </label>
                                                                 <input id="numberofyears" name="numberofyears" 
-                                                                       type="number" class="form-control naby1 ">
+                                                                       type="number" class="form-control  ">
                                                             </div>
 
 
                                                             <div class="form-group">
-                                                                <label for="confirm" class="control-label">Area of Expertise  *</label>
+                                                                <label for="confirm" class="control-label">Area of Expertise  </label>
                                                                 <textarea rows="5" name="areaofexpertise" id="areaofexpertise" style="width: 100%" ></textarea>
 
                                                             </div>
@@ -328,30 +328,30 @@ if ($_SESSION['login_valid'] != "YES") {
                                                     <div class="row">
                                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">Last Institution Complete *</label>
-                                                                <input  name="last_institution_completed" name="last_institution_completed" type="text" class="form-control naby1">
+                                                                <label class="control-label">Last Institution Complete </label>
+                                                                <input  name="last_institution_completed" name="last_institution_completed" type="text" class="form-control ">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label  class="control-label">Program Of Study *</label>
-                                                                <input  name="programofstudy" id="programofstudy" type="text" class="form-control naby1">
+                                                                <label  class="control-label">Program Of Study </label>
+                                                                <input  name="programofstudy" id="programofstudy" type="text" class="form-control ">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label  class="control-label">Year  of Completion *</label>
-                                                                <input  name="completion_year" id="completion_year" type="text" class="form-control naby1">
+                                                                <label  class="control-label">Year  of Completion </label>
+                                                                <input  name="completion_year" id="completion_year" type="text" class="form-control ">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                                             <div class="form-group">
-                                                                <label  class="control-label">Certificate Type *</label>
-                                                                <input  name="certificate_type" id="certificate_type" type="text" class="form-control naby1">
+                                                                <label  class="control-label">Certificate Type </label>
+                                                                <input  name="certificate_type" id="certificate_type" type="text" class="form-control ">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label  class="control-label">Professional Body *</label>
-                                                                <input  name="professional_body" id="professional_body" type="text" class="form-control naby1">
+                                                                <label  class="control-label">Professional Body </label>
+                                                                <input  name="professional_body" id="professional_body" type="text" class="form-control ">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label">Professional Id *</label>
-                                                                <input  name="professional_id" id="professional_id" type="text" class="form-control naby1">
+                                                                <label class="control-label">Professional Id </label>
+                                                                <input  name="professional_id" id="professional_id" type="text" class="form-control ">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -373,7 +373,7 @@ if ($_SESSION['login_valid'] != "YES") {
                                                                 </div> 
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="userName" class="control-label">End Date*</label>
+                                                                <label for="userName" class="control-label">End Date</label>
                                                                 <div class="input-group">
                                                                     <div class="input-group-addon">
                                                                         <i class="fa fa-fw ti-calendar"></i>
@@ -383,11 +383,11 @@ if ($_SESSION['login_valid'] != "YES") {
                                                             </div>
                                                             <div class="form-group">
                                                                 <label class="control-label">Qualification *</label>
-                                                                <input  name="qualification" id="qualification" type="text" class="form-control naby1">
+                                                                <input  name="qualification" id="qualification" type="text" class="form-control required">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label  class="control-label">Staff Class *</label>
-                                                                <input  name="staff_class" type="text" id="staff_class" class="form-control naby1">
+                                                                <input  name="staff_class" type="text" id="staff_class" class="form-control required">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-12 col-md-6 col-lg-6">
@@ -401,11 +401,11 @@ if ($_SESSION['login_valid'] != "YES") {
                                                             </div>
                                                             <div class="form-group">
                                                                 <label  class="control-label">Staff Id *</label>
-                                                                <input  name="staffid" id="staffid" type="text" class="form-control naby1">
+                                                                <input  name="staffid" id="staffid" type="text" class="form-control required">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label">Employment Type *</label>
-                                                                <input  name="employment_type" id="employment_type" type="text" class="form-control naby1">
+                                                                <label class="control-label">Employment Type </label>
+                                                                <input  name="employment_type" id="employment_type" type="text" class="form-control ">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -418,11 +418,11 @@ if ($_SESSION['login_valid'] != "YES") {
                                                     <div class="row">
                                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                                             <div class="form-group">
-                                                                <label  class="control-label">Next of Kin *</label>
-                                                                <input  name="nextofkin" id="nextofkin" type="text" class="form-control naby1"/>
+                                                                <label  class="control-label">Next of Kin </label>
+                                                                <input  name="nextofkin" id="nextofkin" type="text" class="form-control required"/>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label  class=control-label">Relationship *</label>
+                                                                <label  class=control-label">Relationship </label>
 
                                                                 <select id="kin_relationship" name="kin_relationship" class="form-control select2" style="width:100%">
                                                                     <option value="">Select value...</option>
@@ -439,28 +439,28 @@ if ($_SESSION['login_valid'] != "YES") {
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="userName" class="control-label">Address *</label>
+                                                                <label for="userName" class="control-label">Address </label>
                                                                 <textarea rows="5" name="kin_address" id="kin_address" style="width: 100%" ></textarea>
 
                                                             </div>
                                                             <div class="form-group">
-                                                                <label  class="control-label">Suburb *</label>
-                                                                <input  name="kin_suburb" id="kin_suburb" type="text" class="form-control naby1">
+                                                                <label  class="control-label">Suburb </label>
+                                                                <input  name="kin_suburb" id="kin_suburb" type="text" class="form-control required">
                                                             </div>
 
                                                         </div>
                                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                                             <div class="form-group">
-                                                                <label  class="control-label">Email Address *</label>
-                                                                <input  name="kin_email" id="kin_email" type="email" class="form-control naby1">
+                                                                <label  class="control-label">Email Address </label>
+                                                                <input  name="kin_email" id="kin_email" type="email" class="form-control required">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label">Contact No *</label>
-                                                                <input  name="kin_contactno" id="kin_contactno" type="text" class="form-control naby1">
+                                                                <label class="control-label">Contact No </label>
+                                                                <input  name="kin_contactno" id="kin_contactno" type="text" class="form-control required">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label  class="control-label">Postal Address *</label>
-                                                                <input  name="kin_postal" id="kin_postal" type="text" class="form-control naby1">
+                                                                <label  class="control-label">Postal Address </label>
+                                                                <input  name="kin_postal" id="kin_postal" type="text" class="form-control required">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -474,27 +474,27 @@ if ($_SESSION['login_valid'] != "YES") {
                                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                                             <div class="form-group">
                                                                 <label  class="control-label">Bank Name *</label>
-                                                                <input  name="bank_name" id="bank_name" type="text" class="form-control naby1">
+                                                                <input  name="bank_name" id="bank_name" type="text" class="form-control required">
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label  class="control-label">Account Name *</label>
-                                                                <input  name="account_name" id="account_name" type="text" class="form-control naby1">
+                                                                <input  name="account_name" id="account_name" type="text" class="form-control required">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label  class="control-label">Account Number *</label>
-                                                                <input  name="account_number" id="account_number" type="text" class="form-control naby1">
+                                                                <input  name="account_number" id="account_number" type="text" class="form-control required">
                                                             </div>
 
                                                         </div>
                                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                                             <div class="form-group">
                                                                 <label  class="control-label">Branch *</label>
-                                                                <input  name="branch" id="branch" type="text" class="form-control naby1">
+                                                                <input  name="branch" id="branch" type="text" class="form-control required">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label  class="control-label">Tin*</label>
-                                                                <input  name="tin" id="tin" type="text" class="form-control naby1">
+                                                                <input  name="tin" id="tin" type="text" class="form-control required">
                                                             </div>
 
                                                         </div>

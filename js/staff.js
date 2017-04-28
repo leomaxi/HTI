@@ -79,19 +79,19 @@ $(document).ready(function () {
 
 
     $('#dateofbirth').datepicker({
-        dateFormat: 'dd-mm-yyyy' 
+        dateFormat: 'dd-mm-yyyy'
 
     });
 
     $('#appointment_date').datepicker({
-        dateFormat: 'dd-mm-yyyy' 
+        dateFormat: 'dd-mm-yyyy'
     });
     $('#startdate').datepicker({
-        dateFormat: 'dd-mm-yyyy' 
+        dateFormat: 'dd-mm-yyyy'
     });
-    
+
     $('#enddate').datepicker({
-        dateFormat: 'dd-mm-yyyy' 
+        dateFormat: 'dd-mm-yyyy'
     });
 
     $(".select2").select2({
@@ -111,32 +111,7 @@ $(document).ready(function () {
                 required: true,
                 minlength: 3
             },
-            passwosrd: {
-                validators: {
-                    notEmpty: {
-                        message: 'The password is required'
-                    },
-                    different: {
-                        field: 'first_name,last_name',
-                        message: 'Password should not match user Name'
-                    }
-                }
-            },
-            confirsm: {
-                validators: {
-                    notEmpty: {
-                        message: 'Confirm Password is required'
-                    },
-                    identical: {
-                        field: 'password'
-                    },
-                    different: {
-                        field: 'first_name,last_name',
-                        message: 'Confirm Password should match with password'
-                    }
-                }
-            },
-            emsail: {
+            email: {
                 validators: {
                     notEmpty: {
                         message: 'The email address is required'
@@ -147,80 +122,101 @@ $(document).ready(function () {
                     }
                 }
             },
-            fnsame: {
+            lastname: {
                 validators: {
                     notEmpty: {
-                        message: 'The first name is required '
+                        message: 'lastname is required '
                     }
                 }
             },
-            lnasme: {
+            dateofbirth: {
                 validators: {
-                    notEmpty: {
-                        message: 'The last name is required '
+                    date: {
+                        format: 'dd-mm-yyyy ',
+                        message: 'The value is not a valid date'
+                    }
+                }
+            }, appointment_date: {
+                validators: {
+                    date: {
+                        format: 'dd-mm-yyyy ',
+                        message: 'The value is not a valid date'
+                    }
+                }
+            }, startdate: {
+                validators: {
+                    date: {
+                        format: 'dd-mm-yyyy ',
+                        message: 'The value is not a valid date'
+                    }
+                }
+            },appointment_date: {
+                validators: {
+                    date: {
+                        format: 'dd-mm-yyyy ',
+                        message: 'The value is not a valid date'
                     }
                 }
             },
-            passwosrd3: {
+            nationality: {
                 validators: {
                     notEmpty: {
-                        message: 'This field is required and mandatory'
+                        message: 'nationality is required '
+                    }
+                }
+            }, staffno: {
+                validators: {
+                    notEmpty: {
+                        message: 'staffno is required '
+                    }
+                }
+            }, highest_qualification: {
+                validators: {
+                    notEmpty: {
+                        message: 'highest_qualification is required '
+                    }
+                }
+            }, qualification: {
+                validators: {
+                    notEmpty: {
+                        message: 'qualification is required '
+                    }
+                }
+            }, 
+           
+            contactno: {
+                validators: {
+                    notEmpty: {
+                        message: 'The contactno is required'
+                    },
+                    regexp: {
+                        regexp: /^(\+?1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/,
+                        message: 'Enter valid phone number'
+                    }
+                }
+            },
+            department: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please select your department.'
+                        }
                     }
                 },
-                required: true,
-                minlength: 3
-            },
-            asge: {
-                validators: {
-                    notEmpty: {},
-                    digits: {},
-                    greaterThan: {
-                        value: 18,
-                        message: 'The Age must be greater than or equal to 18'
-                    },
-                    lessThan: {
-                        value: 100,
-                        message: 'The Age must be less than or equal to 100'
+                 gender: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please select your gender.'
+                        }
                     }
-                }
-            },
-            phsone1: {
-                validators: {
-                    notEmpty: {
-                        message: 'The home number is required'
-                    },
-                    regexp: {
-                        regexp: /^(\+?1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/,
-                        message: 'Enter valid phone number'
+                },
+                 grade: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please select your grade.'
+                        }
                     }
-                }
-            },
-            phonse2: {
-                validators: {
-                    notEmpty: {
-                        message: 'The personal number is required'
-                    },
-                    regexp: {
-                        regexp: /^(\+?1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/,
-                        message: 'Enter valid phone number'
-                    }
-                }
-            },
-            phonse3: {
-                validators: {
-                    notEmpty: {
-                        message: 'Alternate number is required'
-                    },
-                    different: {
-                        field: 'phone1',
-                        message: 'The alternate number must be different from Home number'
-                    },
-                    regexp: {
-                        regexp: /^(\+?1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/,
-                        message: 'Enter valid phone number'
-                    }
-                }
-            },
+                },
+
             acceptTerms: {
                 validators: {
                     notEmpty: {
