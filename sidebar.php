@@ -85,9 +85,8 @@
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="sub-menu">
-                        <?php
-                        if (($_SESSION['usergroup'] == 'principal')) {
-                            echo ' <li>
+
+                        <li>
                             <a href="new-staff.php">
                                 <i class="fa fa-fw ti-alert"></i> New Staff
                             </a>
@@ -95,16 +94,7 @@
                             <a href="allstaff.php">
                                 <i class="fa fa-fw ti-layout-width-default"></i> All Staff
                             </a>
-                        </li>';
-                        } else {
-                            echo '    <li>
-                            <a href="allstaff.php">
-                                <i class="fa fa-fw ti-layout-width-default"></i> All Staff
-                            </a>
-                        </li>';
-                        }
-                        ?>
-
+                        </li>
 
 
 

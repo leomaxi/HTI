@@ -31,6 +31,30 @@ $(document).ready(function () {
 
 
     var info = {
+        type: "getinstitutions"
+    };
+
+    $.ajax({
+        url: 'controllers/instituitionController.php',
+        type: "GET",
+        data: info,
+        dataType: 'json',
+        success: function (data) {
+
+
+            $.each(data, function (i, item) {
+
+                $('#instituitions').append($('<option>', {
+                    value: item.code,
+                    text: item.name
+                }));
+            });
+
+        }
+    });
+
+
+    var info = {
         type: "retreiveDepartments"
     };
 
@@ -129,28 +153,6 @@ $(document).ready(function () {
                     }
                 }
             },
-            dateofbirth: {
-                validators: {
-                    date: {
-                        format: 'dd-mm-yyyy ',
-                        message: 'The value is not a valid date'
-                    }
-                }
-            }, appointment_date: {
-                validators: {
-                    date: {
-                        format: 'dd-mm-yyyy ',
-                        message: 'The value is not a valid date'
-                    }
-                }
-            }, startdate: {
-                validators: {
-                    date: {
-                        format: 'dd-mm-yyyy ',
-                        message: 'The value is not a valid date'
-                    }
-                }
-            },
             nationality: {
                 validators: {
                     notEmpty: {
@@ -174,32 +176,29 @@ $(document).ready(function () {
                     notEmpty: {
                         message: 'qualification is required '
                     }
-                }
-            }, 
-           
-            
+               }
+            },
             department: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Please select your department.'
-                        }
+                validators: {
+                    notEmpty: {
+                        message: 'Please select your department.'
                     }
-                },
-                 gender: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Please select your gender.'
-                        }
+                }
+            },
+            gender: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please select your gender.'
                     }
-                },
-                 grade: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Please select your grade.'
-                        }
+                }
+            },
+            grade: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please select your grade.'
                     }
-                },
-
+                }
+            },
             acceptTerms: {
                 validators: {
                     notEmpty: {
@@ -264,13 +263,16 @@ $(document).ready(function () {
                 type: "info",
                 showCancelButton: true,
                 closeOnConfirm: false,
-                showLoaderOnConfirm: true,
+                showLoaderOnConfirm: true
             }, function () {
                 var formData = $("#staffForm").serialize();
 
                 console.log('data: ' + formData);
                 console.log('send data to server');
-                $.ajax({
+               setTimeout(function() {
+      
+            
+            $.ajax({
                     url: 'controllers/staffController.php',
                     type: "POST",
                     data: formData,
@@ -315,10 +317,12 @@ $(document).ready(function () {
                     }
                 });
 
-
+               },2000);
             });
 
 
+ 
+  
 
 //                    $('#myModal').modal('show');
 //                   

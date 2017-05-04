@@ -144,6 +144,14 @@ if ($_SESSION['login_valid'] != "YES") {
                                                             if (isset($_GET['institute_code'])) {
                                                                 echo '<input  name="institute_code" type="hidden" value="' . $_GET['institute_code'] . '">';
                                                             }
+                                                            if (($_SESSION['usergroup'] == 'admin') && !isset($_GET['institute_code'])) {
+                                                                echo '                                
+                                                                  <label class="control-label">Instituitions *</label>
+
+                                                                    <select id="instituitions" name="institute_code" class="form-control select2" style="width:100%">
+                                                                                     <option>Choose</option>
+                                                                </select>';
+                                                            }
                                                             ?>
 
                                                             <div class="form-group">
@@ -203,7 +211,7 @@ if ($_SESSION['login_valid'] != "YES") {
 
                                                             <div class="form-group">
                                                                 <label  class=control-label">Address *</label>
- 
+
                                                                 <textarea name="address"rows="5" style="width: 100%" ></textarea>
                                                             </div>
 

@@ -35,7 +35,7 @@ class StaffClass {
             echo json_encode($this->response);
         } else {
             $code = $this->generateuniqueCode();
-            if (isset($info['institute_code'])) {
+        if (isset($info['institute_code'])) {
                 $institute_code = $info['institute_code'];
                 $result = $this->checkInstitutionExistence($institute_code);
                 if ($result == 0) {
