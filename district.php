@@ -162,6 +162,8 @@ if ($_SESSION['login_valid'] != "YES") {
         <script type="text/javascript" src="js/custom_js/toastr_notifications.js"></script>
 
         <script type="text/javascript" src="js/districts.js"></script>
+            <script src="js/menu.js" type="text/javascript"></script>
+
         <!-- end of page level js -->
     </body>
 

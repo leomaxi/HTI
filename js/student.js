@@ -69,7 +69,7 @@ $(document).ready(function () {
             $.each(data, function (i, item) {
 
                 $('#department').append($('<option>', {
-                    value: item.code+'-'+item.name,
+                    value: item.code,
                     text: item.name
                 }));
             });
@@ -124,81 +124,81 @@ $(document).ready(function () {
 
 
 
-    $("#staffForm").bootstrapValidator({
+    $("#studentForm").bootstrapValidator({
         fields: {
-            firstname: {
-                validators: {
-                    notEmpty: {
-                        message: 'firstname is required'
-                    }
-                },
-                required: true,
-                minlength: 3
-            },
-            email: {
-                validators: {
-                    notEmpty: {
-                        message: 'The email address is required'
-                    },
-                    regexp: {
-                        regexp: /^\S+@\S{1,}\.\S{1,}$/,
-                        message: 'Please enter valid email format'
-                    }
-                }
-            },
-            lastname: {
-                validators: {
-                    notEmpty: {
-                        message: 'lastname is required '
-                    }
-                }
-            },
-            nationality: {
-                validators: {
-                    notEmpty: {
-                        message: 'nationality is required '
-                    }
-                }
-            }, staffno: {
-                validators: {
-                    notEmpty: {
-                        message: 'staffno is required '
-                    }
-                }
-            }, highest_qualification: {
-                validators: {
-                    notEmpty: {
-                        message: 'highest_qualification is required '
-                    }
-                }
-            }, qualification: {
-                validators: {
-                    notEmpty: {
-                        message: 'qualification is required '
-                    }
-               }
-            },
-            department: {
-                validators: {
-                    notEmpty: {
-                        message: 'Please select your department.'
-                    }
-                }
-            },
-            gender: {
-                validators: {
-                    notEmpty: {
-                        message: 'Please select your gender.'
-                    }
-                }
-            },
-            grade: {
-                validators: {
-                    notEmpty: {
-                        message: 'Please select your grade.'
-                    }
-                }
-            },
+//            firstname: {
+//                validators: {
+//                    notEmpty: {
+//                        message: 'firstname is required'
+//                    }
+//                },
+//                required: true,
+//                minlength: 3
+//            },
+//            email: {
+//                validators: {
+//                    notEmpty: {
+//                        message: 'The email address is required'
+//                    },
+//                    regexp: {
+//                        regexp: /^\S+@\S{1,}\.\S{1,}$/,
+//                        message: 'Please enter valid email format'
+//                    }
+//                }
+//            },
+//            lastname: {
+//                validators: {
+//                    notEmpty: {
+//                        message: 'lastname is required '
+//                    }
+//                }
+//            },
+//            nationality: {
+//                validators: {
+//                    notEmpty: {
+//                        message: 'nationality is required '
+//                    }
+//                }
+//            }, staffno: {
+//                validators: {
+//                    notEmpty: {
+//                        message: 'staffno is required '
+//                    }
+//                }
+//            }, highest_qualification: {
+//                validators: {
+//                    notEmpty: {
+//                        message: 'highest_qualification is required '
+//                    }
+//                }
+//            }, qualification: {
+//                validators: {
+//                    notEmpty: {
+//                        message: 'qualification is required '
+//                    }
+//               }
+//            },
+//            department: {
+//                validators: {
+//                    notEmpty: {
+//                        message: 'Please select your department.'
+//                    }
+//                }
+//            },
+//            gender: {
+//                validators: {
+//                    notEmpty: {
+//                        message: 'Please select your gender.'
+//                    }
+//                }
+//            },
+//            grade: {
+//                validators: {
+//                    notEmpty: {
+//                        message: 'Please select your grade.'
+//                    }
+//                }
+//            },
             acceptTerms: {
                 validators: {
                     notEmpty: {
@@ -213,12 +213,12 @@ $(document).ready(function () {
 
 
     $('#acceptTerms').on('ifChanged', function (event) {
-        $('#staffForm').bootstrapValidator('revalidateField', $('#acceptTerms'));
+        $('#studentForm').bootstrapValidator('revalidateField', $('#acceptTerms'));
     });
     $('#rootwizard').bootstrapWizard({
         'tabClass': 'nav nav-pills',
         'onNext': function (tab, navigation, index) {
-            var $validator = $('#staffForm').data('bootstrapValidator').validate();
+            var $validator = $('#studentForm').data('bootstrapValidator').validate();
             return $validator.isValid();
         },
         onTabClick: function (tab, navigation, index) {
@@ -240,7 +240,7 @@ $(document).ready(function () {
                 root_wizard.find('.pager .finish').hide();
             }
 //            root_wizard.find('.finish').click(function () {
-//                var $validator = $('#staffForm').data('bootstrapValidator').validate();
+//                var $validator = $('#studentForm').data('bootstrapValidator').validate();
 //                return $validator.isValid();
 //
 //            });
@@ -254,60 +254,49 @@ $(document).ready(function () {
 
     $('.finish').click(function () {
 
-        var $validator = $('#staffForm').data('bootstrapValidator').validate();
+        var $validator = $('#studentForm').data('bootstrapValidator').validate();
         if ($validator.isValid()) {
 
             swal({
                 title: "Confirm",
-                text: "Are you sure you want to submit staff information?",
+                text: "Are you sure you want to submit student information?",
                 type: "info",
                 showCancelButton: true,
                 closeOnConfirm: false,
                 showLoaderOnConfirm: true
             }, function () {
-                var formData = $("#staffForm").serialize();
+                var formData = $("#studentForm").serialize();
 
                 console.log('data: ' + formData);
                 console.log('send data to server');
-               setTimeout(function() {
-      
-            
-            $.ajax({
-                    url: 'controllers/staffController.php',
+
+                $('#loaderModal').modal('show');
+
+                $.ajax({
+                    url: 'controllers/studentController.php',
                     type: "POST",
                     data: formData,
-                    dataType: "json",
+                    // dataType: "json",
                     success: function (data) {
                         console.log(data);
+                        $('#loaderModal').modal('hide');
+
                         if (data.success == 0) {
                             swal("Error", data.message, "danger");
 
-
-                        } else if (data.type === "principal") {
-                            swal({
-                                title: "Success",
-                                text: "Principal Information Saved Successfully",
-                                type: "success",
-                                showCancelButton: false,
-                                confirmButtonText: "OK",
-                                closeOnConfirm: false
-                            },
-                            function () {
-                                window.location = "instituitions.php";
-                            });
 
                         } else {
                             console.log('here');
                             swal({
                                 title: "Success",
-                                text: "Staff Information Saved Successfully",
+                                text: "Student Information Saved Successfully",
                                 type: "success",
                                 showCancelButton: false,
                                 confirmButtonText: "OK",
                                 closeOnConfirm: false
                             },
                             function () {
-                                window.location = "allstaff.php";
+                                window.location = "students.php";
                             });
 //                   
                         }
@@ -317,12 +306,12 @@ $(document).ready(function () {
                     }
                 });
 
-               },2000);
+
             });
 
 
- 
-  
+
+
 
 //                    $('#myModal').modal('show');
 //                   

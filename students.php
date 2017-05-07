@@ -7,12 +7,13 @@ if ($_SESSION['login_valid'] != "YES") {
     </script>
     <?php
 }
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html>
 
     <head>
         <meta charset="UTF-8">
-        <title>Institutions</title>
+        <title>Students</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <link rel="shortcut icon" href="img/favicon.ico"/>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -50,17 +51,17 @@ if ($_SESSION['login_valid'] != "YES") {
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Institutions
+                        Students
                     </h1>
                     <ol class="breadcrumb">
                         <li>
                             <a href="index.html">
-                                <i class="fa fa-fw ti-home"></i> Configurations
+                                <i class="fa fa-fw ti-home"></i> Students
                             </a>
                         </li>
 
                         <li class="active">
-                            Institutions
+                            All Students
                         </li>
                     </ol>
                 </section>
@@ -71,25 +72,29 @@ if ($_SESSION['login_valid'] != "YES") {
                             <div class="panel ">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
-                                        <i class="ti-layout-grid3"></i> Institutions
+                                        <i class="ti-layout-grid3"></i> Students
                                     </h3>
 
                                 </div>
                                 <div class="panel-body">
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover" id="instituitionsTbl">
+                                        <table class="table table-striped table-bordered table-hover" id="staffTbl">
                                             <thead>
                                                 <tr>
                                                     <th>
-                                                        Code
+                                                        Institute 
+                                                    </th>
+                                                    <th>
+                                                        Student No
                                                     </th>
                                                     <th>
                                                         Name
                                                     </th>
-                                                    <th>Date Of Establishment</th>
-                                                    <th>Principal</th>
+                                                    <th>Gender</th>
+                                                    <th>Email Address</th>
+                                                    <th>Contact No</th>
+                                                    <th>Date Created</th>
 
-                                                    <th>Location</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -117,7 +122,7 @@ if ($_SESSION['login_valid'] != "YES") {
         <script type="text/javascript" src="vendors/datatables/js/dataTables.bootstrap.js"></script>
         <script type="text/javascript" src="js/custom_js/datatables_custom.js"></script>
         <script type="text/javascript" src="vendors/sweetalert2/js/sweetalert2.min.js"></script>
-        <script type="text/javascript" src="js/getinstitution.js"></script>
+        <script type="text/javascript" src="js/getstudents.js"></script>
 
         <!-- end of page level js -->
     </body>

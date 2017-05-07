@@ -5,7 +5,7 @@
         <div id="menu" role="navigation">
             <ul class="navigation">
 
-                <li class="active" id="active">
+                <li  id="active">
                     <a href="dashboard.php">
                         <i class="menu-icon ti-layout-list-large-image"></i>
                         <span class="mm-text ">Dashboard </span>
@@ -14,7 +14,7 @@
                 <?php
                 if (($_SESSION['usergroup'] == 'admin')) {
                     ?>
-                    <li class="menu-dropdown">
+                <li class="menu-dropdown">
                         <a href="javascript:void(0)">
                             <i class="menu-icon ti-check-box"></i>
                             <span>Configurations</span>
@@ -77,6 +77,10 @@
                     <?php
                 }
                 ?>
+                    
+                    <?php
+                if (($_SESSION['usergroup'] == 'principal')) {
+                    ?>
 
                 <li class="menu-dropdown">
                     <a href="javascript:void(0)">
@@ -101,8 +105,34 @@
                     </ul>
 
                 </li>
+                
+                 <li class="menu-dropdown">
+                    <a href="javascript:void(0)">
+                        <i class="menu-icon ti-check-box"></i>
+                        <span>Students</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+
+                        <li>
+                            <a href="new-student.php">
+                                <i class="fa fa-fw ti-alert"></i> New Student
+                            </a>
+                        </li> <li>
+                            <a href="students.php">
+                                <i class="fa fa-fw ti-layout-width-default"></i> All Students
+                            </a>
+                        </li>
 
 
+
+                    </ul>
+
+                </li>
+
+<?php
+                }
+?>
             </ul>
             <!-- / .navigation --> </div>
         <!-- menu --> </section>

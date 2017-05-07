@@ -219,8 +219,10 @@ if ($_SESSION['login_valid'] != "YES") {
         <script type="text/javascript" src="vendors/pnotify/js/pnotify.history.js"></script>
         <script type="text/javascript" src="vendors/pnotify/js/pnotify.callbacks.js"></script>
         <script src="js/custom_js/notifications.js"></script>
-         <script src="js/institution.js" type="text/javascript"></script>
-       
+           <script src="js/menu.js" type="text/javascript"></script>
+
+        <script src="js/institution.js" type="text/javascript"></script>
+    
     </body>
 
 </html>

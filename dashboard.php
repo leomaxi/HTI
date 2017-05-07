@@ -74,7 +74,8 @@ if ($_SESSION['login_valid'] != "YES") {
 
         <script src="js/dashboard2.js" type="text/javascript"></script>
         <!-- end of page level js -->
-
+  <script src="js/menu.js" type="text/javascript"></script>
+       
     </body>
 
 </html>
