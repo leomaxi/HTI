@@ -115,9 +115,9 @@ if (isset($_REQUEST['logout']) == 'logout') {
 
         </div>
         <!-- global js -->
-<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-         end of global js -->
+<!--         end of global js -->
         
         <!-- page level js -->
            <script src="js/app.js" type="text/javascript"></script>
