@@ -1,2 +1,9 @@
 *
 !.gitignore
+!/fontawesome-webfont.woff
+!/fontawesome-webfont.ttf
+!/fontawesome-webfont.woff2
+!/fontawesome-webfont.svg
+!/glyphicons-halflings-regular.woff2
+!/fontawesome-webfont.eot
+!/FontAwesome.otf
