@@ -32,6 +32,8 @@ if ($_SESSION['login_valid'] != "YES") {
         <!--end of page level css-->
         <link rel="stylesheet" type="text/css" href="vendors/sweetalert2/css/sweetalert2.min.css"/>
         <link rel="stylesheet" type="text/css" href="css/custom_css/sweet_alert2.css">
+       <link href="vendors/toastr/css/toastr.min.css" rel="stylesheet"/>
+
     </head>
 
     <body class="skin-default">
@@ -90,6 +92,7 @@ if ($_SESSION['login_valid'] != "YES") {
                                                     <th>Principal</th>
 
                                                     <th>Location</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -106,6 +109,31 @@ if ($_SESSION['login_valid'] != "YES") {
                 </section>
                 <!-- /.content -->
             </aside>
+            
+                 <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form method="post" id="deleteInstitutionForm">
+                                <div class="modal-body">
+                                    <div>
+                                        <p>
+                                            Are you sure you want to delete this institutions?.<span class="holder" id="beneficiaryholder"></span> 
+                                        </p>
+                                    </div>
+                                    <input type="hidden" id="code" name="code"/>
+                                    <input type="hidden"  name="type" value="deleteInstitution"/>
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                    <button type="submit" id="deleteBeneficiary" class="btn btn-primary">YES</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
             <!-- /.right-side -->
         </div>
         <!-- ./wrapper -->
@@ -117,6 +145,8 @@ if ($_SESSION['login_valid'] != "YES") {
         <script type="text/javascript" src="vendors/datatables/js/dataTables.bootstrap.js"></script>
         <script type="text/javascript" src="js/custom_js/datatables_custom.js"></script>
         <script type="text/javascript" src="vendors/sweetalert2/js/sweetalert2.min.js"></script>
+       <script src="vendors/toastr/js/toastr.min.js"></script>
+
         <script type="text/javascript" src="js/getinstitution.js"></script>
 
         <!-- end of page level js -->
