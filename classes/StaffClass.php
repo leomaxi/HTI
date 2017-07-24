@@ -194,9 +194,9 @@ $depatmnt= explode('-', $info['department']);
         $usertype = $_SESSION['usergroup'];
         
         if($usertype == 'principal'){
-           $query = mysqli_query($conn, "select staff.*,instituitions.name AS institute_name from staff LEFT JOIN instituitions ON `staff`.`instituition_code` = instituitions.code where staff.instituition_code='".$_SESSION['institute_code']."' "); 
+           $query = mysqli_query($conn, "select staff.*,instituitions.name AS institute_name from staff LEFT JOIN instituitions ON `staff`.`instituition_code` = instituitions.code where staff.instituition_code='".$_SESSION['institute_code']."' AND staff.active=0"); 
         }else{
-            $query = mysqli_query($conn, "select staff.*,instituitions.name AS institute_name from staff LEFT JOIN instituitions ON `staff`.`instituition_code` = instituitions.code; ");
+            $query = mysqli_query($conn, "select staff.*,instituitions.name AS institute_name from staff LEFT JOIN instituitions ON `staff`.`instituition_code` = instituitions.code AND staff.active=0 ");
         }
         
         //print("Hello here");

@@ -196,7 +196,7 @@ $('#deleteRegionDistrictForm').on('submit', function (e) {
     $('#loaderModal').modal('show');
 
     $.ajax({
-        url: '../controllers/deleteController.php?_=' + new Date().getTime(),
+        url: 'controllers/deleteController.php?_=' + new Date().getTime(),
         type: "POST",
         data: formData,
         dataType: "json",

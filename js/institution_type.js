@@ -107,7 +107,7 @@ function getInstitutionTypes()
                     // represent columns as array
                     r[++j] = '<td class="subject">' + value.name + '</td>';
                     r[++j] = '<td><button onclick="editDistrict(\'' + value.code + '\',\'' + value.name + '\')"  class="btn btn-outline-info btn-sm editBtn" type="button">Edit</button>\n\
-                              <button onclick="deleteDistrict(\'' + value.code + '\',\'' + value.name + '\')"  class="btn btn-outline-danger btn-sm deleteBtn" type="button">Delete</button></td>';
+                              <button onclick="deleteInstitutionType(\'' + value.code + '\',\'' + value.name + '\')"  class="btn btn-outline-danger btn-sm deleteBtn" type="button">Delete</button></td>';
 
                     rowNode = datatable.row.add(r);
                 });
@@ -124,14 +124,14 @@ function getInstitutionTypes()
 
 
 
-function deleteDistrict(code, title) {
+function deleteInstitutionType(code, title) {
     console.log(code + title);
-    $('#districtcode').val(code);
-    $('#districtholder').html(title);
+    $('#code').val(code);
+    $('#nameholder').html(title);
     $('#confirmModal').modal('show');
 }
 
-$('#deleteDistrictForm').on('submit', function (e) {
+$('#deleteInstitutionTypeForm').on('submit', function (e) {
     e.preventDefault();
     $('input:submit').attr("disabled", true);
     var formData = $(this).serialize();
@@ -140,7 +140,7 @@ $('#deleteDistrictForm').on('submit', function (e) {
     $('#loaderModal').modal('show');
 
     $.ajax({
-        url: '../controllers/deleteController.php?_=' + new Date().getTime(),
+        url: 'controllers/deleteController.php?_=' + new Date().getTime(),
         type: "POST",
         data: formData,
         dataType: "json",
@@ -150,7 +150,7 @@ $('#deleteDistrictForm').on('submit', function (e) {
             $('input:submit').attr("disabled", false);
             $('#loaderModal').modal('hide');
             var successStatus = data.success;
-            document.getElementById("deleteDistrictForm").reset();
+            document.getElementById("deleteInstitutionTypeForm").reset();
 
             if (successStatus == 1) {
                 Command: toastr["success"](data.message, "Success");
@@ -172,7 +172,7 @@ $('#deleteDistrictForm').on('submit', function (e) {
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
                 }
-                getDistricts();
+                getInstitutionTypes();
             }
         },
         error: function (jXHR, textStatus, errorThrown) {

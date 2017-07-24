@@ -19,7 +19,7 @@ class ConfigurationClass {
         $conn = $connection->connectToDatabase(); // connected to the database
 
         $code = 'REG' . $this->generateuniqueCode(8);
-        $query = mysqli_query($conn, "INSERT INTO region(code,name) VALUES ('" . trim($code) . "','" . mysqli_real_escape_string($conn, $name) . "')");
+        $query = mysqli_query($conn, "INSERT INTO regions(code,name) VALUES ('" . trim($code) . "','" . mysqli_real_escape_string($conn, $name) . "')");
         if ($query) {
             $this->response['success'] = '1';
             $this->response['message'] = 'Region saved successfully';
@@ -36,7 +36,7 @@ class ConfigurationClass {
     public function getRegion() {
         $connection = new databaseConnection(); //i created a new object
         $conn = $connection->connectToDatabase(); // connected to the database
-        $query = mysqli_query($conn, "SELECT * FROM region WHERE active=0");
+        $query = mysqli_query($conn, "SELECT * FROM regions WHERE active=0");
 
         if (mysqli_num_rows($query) > 0) {
             while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
@@ -860,6 +860,43 @@ class ConfigurationClass {
         $connection->closeConnection($conn);
     }
 
+    public function updateFunction($info) {
+        $connection = new databaseConnection(); //i created a new object
+        $conn = $connection->connectToDatabase(); // connected to the database
+        //  $query = mysqli_query($conn, "UPDATE region_districts SET active = 1 WHERE code='" . $code . "'");
+        $query = mysqli_query($conn, "UPDATE " . $info['tablename'] . " SET name = '" . mysqli_real_escape_string($conn, $info['name']) . "' WHERE code='" . $info['code'] . "'");
+
+        if ($query) {
+            $this->response['success'] = '1';
+            $this->response['message'] = 'Information Updated successfully';
+            echo json_encode($this->response);
+            //   $query->close();
+        } else {
+            $this->response['success'] = '0';
+            $this->response['message'] = 'couldnt update' . mysqli_error($conn);
+            echo json_encode($this->response);
+        }
+        $connection->closeConnection($conn);
+    }
+
+    public function deleteFunction($info) {
+        $connection = new databaseConnection(); //i created a new object
+        $conn = $connection->connectToDatabase(); // connected to the database
+        //  $query = mysqli_query($conn, "UPDATE region_districts SET active = 1 WHERE code='" . $code . "'");
+        $query = mysqli_query($conn, "UPDATE " . $info['tablename'] . " SET active ='1' WHERE code='" . $info['code'] . "'");
+
+        if ($query) {
+            $this->response['success'] = '1';
+            $this->response['message'] = ' Deleted successfully';
+            echo json_encode($this->response);
+            //   $query->close();
+        } else {
+            $this->response['success'] = '0';
+            $this->response['message'] = 'couldnt delete' . mysqli_error($conn);
+            echo json_encode($this->response);
+        }
+        $connection->closeConnection($conn);
+    }
 }
 
 ?>

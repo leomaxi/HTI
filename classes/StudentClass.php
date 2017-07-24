@@ -178,7 +178,7 @@ class StudentClass {
         $conn = $connection->connectToDatabase(); // connected to the database
        
        
-            $query = mysqli_query($conn, "select students.*,instituitions.name AS institute_name from students LEFT JOIN instituitions ON `students`.`instituition_code` = instituitions.code; ");
+            $query = mysqli_query($conn, "select students.*,instituitions.name AS institute_name from students LEFT JOIN instituitions ON `students`.`instituition_code` = instituitions.code WHERE students.active=0 ");
         
 
         //print("Hello here");

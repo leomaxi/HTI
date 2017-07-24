@@ -142,6 +142,73 @@ if ($_SESSION['login_valid'] != "YES") {
                             </div>
                         </div>
                     </div>
+                    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="exampleModalLabel">Update </h4>
+                                </div>
+                                <form id="updateDistrictForm" >
+                                    <div class="modal-body">
+
+                                        <div class="form-group">
+                                            <label for="region" class="control-label">Name:</label>
+                                            <input type="text" class="form-control" name="name" id="districtName" required>
+                                        </div>
+                                        <input type="hidden" class="form-control" name="type" value="updateInformation">
+
+                                        <input type="hidden" class="form-control" name="code" id="code">
+                                        <input type="hidden" class="form-control" name="tablename" value="districts">
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <form method="post" id="deleteDistrictForm">
+                                    <div class="modal-body">
+                                        <div>
+                                            <p>
+                                                Are you sure you want to delete this district?.<span class="holder" id="districtholder"></span> 
+                                            </p>
+                                        </div>
+                                        <input type="hidden" id="districtcode" name="code"/>
+                                        <input type="hidden"  name="type" value="updateInformation"/>
+
+                                        <input type="hidden" class="form-control" name="tablename" value="districts">
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                        <button type="submit"  class="btn btn-primary">YES</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="loaderModal" data-keyboard="false" data-backdrop="static" role="dialog" >
+                        <div class="modal-dialog" role="document">
+
+
+                            <div  id="loader" style="margin-top:30% ">
+                                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+                                <span class="loader-text">Wait...</span>
+                            </div>
+
+
+                        </div>
+                    </div>
 
                     <div class="background-overlay"></div>
                 </section>
@@ -162,7 +229,7 @@ if ($_SESSION['login_valid'] != "YES") {
         <script type="text/javascript" src="js/custom_js/toastr_notifications.js"></script>
 
         <script type="text/javascript" src="js/districts.js"></script>
-            <script src="js/menu.js" type="text/javascript"></script>
+        <script src="js/menu.js" type="text/javascript"></script>
 
         <!-- end of page level js -->
     </body>

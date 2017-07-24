@@ -41,11 +41,7 @@
                                 </ul>
 
                             </li>
-                            <li>
-                                <a href="region.php">
-                                    <i class="fa fa-fw ti-alert"></i> Region
-                                </a>
-                            </li>
+                           
                             <li>
                                 <a href="district.php">
                                     <i class="fa fa-fw ti-alert"></i> District

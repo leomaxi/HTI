@@ -49,6 +49,27 @@ $('#saveDistrictForm').on('submit', function (e) {
                         "hideMethod": "fadeOut"
                     }
                     getDistricts();
+                }else{
+                   $('input:submit').attr("disabled", false);
+                    Command: toastr["error"](data.message, "Error");
+
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }   
                 }
             },
             error: function (jXHR, textStatus, errorThrown) {
@@ -80,7 +101,7 @@ function getDistricts()
 {
 
     var info = {
-        type: "retreiveDistrict"
+        type: "retreiveDistricts"
     };
 
 
@@ -139,12 +160,12 @@ $('#deleteDistrictForm').on('submit', function (e) {
     $('#loaderModal').modal('show');
 
     $.ajax({
-        url: '../controllers/deleteController.php?_=' + new Date().getTime(),
+        url: 'controllers/deleteController.php?_=' + new Date().getTime(),
         type: "POST",
         data: formData,
         dataType: "json",
         success: function (data) {
-           // console.log(data);
+          console.log(data);
             // $("#loader").hide();
             $('input:submit').attr("disabled", false);
             $('#loaderModal').modal('hide');
@@ -183,7 +204,7 @@ $('#deleteDistrictForm').on('submit', function (e) {
 
 
 function editDistrict(code,name) {
-    //alert('goood');
+    console.log('goood');
     $('#code').val(code);
     $('#districtName').val(name);
     $('#editModal').modal('show');
@@ -198,11 +219,12 @@ $('#updateDistrictForm').on('submit', function (e) {
     $('#loaderModal').modal('show');
 
     $.ajax({
-        url: '../controllers/PostController.php?_=' + new Date().getTime(),
-        type: "POST",
+        url: 'controllers/PostController.php',
+        type: "GET",
         data: formData,
-        dataType: "json",
+       // dataType: "json",
         success: function (data) {
+            console.log(data);
             // $("#loader").hide();
             $('input:submit').attr("disabled", false);
             $('#loaderModal').modal('hide');
@@ -232,7 +254,7 @@ $('#updateDistrictForm').on('submit', function (e) {
             }
         },
         error: function (jXHR, textStatus, errorThrown) {
-            alert(errorThrown);
+            console.log(errorThrown);
         }
     });
 

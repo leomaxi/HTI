@@ -151,6 +151,34 @@ if ($_SESSION['login_valid'] != "YES") {
                         </div>
                     </div>
 
+                    
+                    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <form method="post" id="deleteRegionDistrictForm">
+                                    <div class="modal-body">
+                                        <div>
+                                            <p>
+                                                Are you sure you want to delete.
+                                               
+                                            </p>
+                                        </div>
+                                        <input type="hidden" id="code" name="code"/>
+                                        <input type="hidden"  name="type" value="updateInformation"/>
+
+                                        <input type="hidden" class="form-control" name="tablename" value="region_districts">
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                        <button type="submit"  class="btn btn-primary">YES</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                
                     <div class="background-overlay"></div>
                 </section>
                 <!-- /.content -->

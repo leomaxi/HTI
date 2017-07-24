@@ -28,11 +28,13 @@ if ($_SESSION['login_valid'] != "YES") {
         <!--page level css -->
         <link rel="stylesheet" type="text/css" href="vendors/datatables/css/dataTables.bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <link href="vendors/toastr/css/toastr.min.css" rel="stylesheet"/>
 
         <link rel="stylesheet" type="text/css" href="css/custom_css/datatables_custom.css">
         <!--end of page level css-->
         <link rel="stylesheet" type="text/css" href="vendors/sweetalert2/css/sweetalert2.min.css"/>
         <link rel="stylesheet" type="text/css" href="css/custom_css/sweet_alert2.css">
+           
     </head>
 
     <body class="skin-default">
@@ -94,6 +96,7 @@ if ($_SESSION['login_valid'] != "YES") {
                                                     <th>Email Address</th>
                                                     <th>Contact No</th>
                                                     <th>Date Created</th>
+ <th>Action</th>
 
                                                 </tr>
                                             </thead>
@@ -103,6 +106,33 @@ if ($_SESSION['login_valid'] != "YES") {
                                         </table>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                         <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <form method="post" id="deleteStaffForm">
+                                    <div class="modal-body">
+                                        <div>
+                                            <p>
+                                                Are you sure you want to delete.?<span class="holder" id="nameholder"></span>
+
+                                            </p>
+                                        </div>
+                                        <input type="hidden" id="code" name="code"/>
+                                        <input type="hidden"  name="type" value="updateInformation"/>
+
+                                        <input type="hidden" class="form-control" name="tablename" value="students">
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                        <button type="submit"  class="btn btn-primary">YES</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -122,6 +152,10 @@ if ($_SESSION['login_valid'] != "YES") {
         <script type="text/javascript" src="vendors/datatables/js/dataTables.bootstrap.js"></script>
         <script type="text/javascript" src="js/custom_js/datatables_custom.js"></script>
         <script type="text/javascript" src="vendors/sweetalert2/js/sweetalert2.min.js"></script>
+           <script src="vendors/toastr/js/toastr.min.js"></script>
+        <script src="vendors/iCheck/js/icheck.js"></script>
+        <script type="text/javascript" src="js/custom_js/toastr_notifications.js"></script>
+
         <script type="text/javascript" src="js/getstudents.js"></script>
 
         <!-- end of page level js -->

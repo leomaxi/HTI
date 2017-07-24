@@ -12,7 +12,12 @@ if (isset($_REQUEST['type'])) {
             $code = $_REQUEST['code'];
             $deleteInstitution = new InstitutionClass();
             $deleteInstitution->deleteInstitution($code);
-        }
+        } else if ($type == 'updateInformation') {
+            
+            
+            $delete = new ConfigurationClass();
+            $delete->deleteFunction($_REQUEST);
+        } 
     } else {
         echo 'provide type';
     }
