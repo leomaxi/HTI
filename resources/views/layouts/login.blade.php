@@ -14,7 +14,7 @@
         <link href="{{asset('vendors/bootstrapvalidator/css/bootstrapValidator.css')}}" rel="stylesheet"/>
         <link href="{{asset('css/login.css')}}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{asset('vendors/sweetalert2/css/sweetalert2.min.css')}}"/>
-        <link rel="stylesheet" type="text/css" href="{{asset('css/custom_css/sweet_alert2.css')}}')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/custom_css/sweet_alert2.css')}}">
 
         <!--end page level css-->
     </head>
