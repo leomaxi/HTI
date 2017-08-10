@@ -28,7 +28,10 @@
         </div>
     </section>
     <section class="content">
-
+<?php
+$permissions = Session::get('permissions');
+print_r($permissions);
+?>
       
         <div class="background-overlay"></div>
     </section>

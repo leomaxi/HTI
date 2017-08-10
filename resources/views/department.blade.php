@@ -24,13 +24,21 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        <div class="">
-            <div class="right_aligned" style="margin-bottom: 15px;">
-                <button type="button" class="btn btn-info " data-toggle="modal" data-target="#departmentModal">
-                    Add Department
-                </button>
+        <?php
+        $permissions = Session::get('permissions');
+        
+        if (in_array("CREATE_DEPARTMENT", $permissions)) {
+            ?> 
+            <div>
+                <div class="right_aligned" style="margin-bottom: 15px;">
+                    <button type="button" class="btn btn-info " data-toggle="modal" data-target="#departmentModal">
+                        Add Department
+                    </button>
+                </div>
             </div>
-        </div>
+            <?php
+        }
+        ?>
         <div class="row">
             <div class="col-lg-12">
 
@@ -122,7 +130,7 @@
                 </div>
             </div>
         </div>
-               <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -151,8 +159,8 @@
             </div>
         </div>
 
-        
-        
+
+
 
 
         <div class="background-overlay"></div>

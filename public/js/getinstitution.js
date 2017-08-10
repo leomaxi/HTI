@@ -6,6 +6,10 @@
 $('#establishment_date').datepicker({
     dateFormat: 'dd-mm-yyyy'
 });
+//
+$('#update_establishment_date').datepicker({
+    dateFormat: 'dd-mm-yyyy'
+});
 
 $('.select2').select2();
 

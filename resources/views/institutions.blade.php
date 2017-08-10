@@ -74,7 +74,7 @@
                 <button type="button" class="close" data-dismiss="modal">×</button>
                 <h4 class="modal-title">Update Institution Information</h4>
             </div>
-            <form id="institutionForm" class="form-horizontal" role="form">
+            <form id="updateinstitutionForm" class="form-horizontal" role="form">
                 <input type="hidden" class="form-control form-control-lg input-lg" id="token" name="_token" value="<?php echo csrf_token() ?>" />
 
 
@@ -121,10 +121,7 @@
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">Region</label>
                         <div class="col-sm-9">
-                            <select id="region" name="region" class="form-control select2" style="width:100%">
-                                <option value="">Select value...</option>
-
-
+                            <select id="region" name="region" class="form-control " style="width:100%">
 
                             </select>
                         </div>
@@ -134,10 +131,7 @@
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">District</label>
                         <div class="col-sm-9">
-                            <select id="district" name="district" class="form-control select2" style="width:100%">
-                                <option value="">Select value...</option>
-
-
+                            <select id="district" name="district" class="form-control " style="width:100%">
 
                             </select>
                         </div>
@@ -169,7 +163,7 @@
                 </div>
                 <div class="modal-footer">
                     <div class="pull-right">
-                        <input type="submit" name="submit" class="btn btn-info"  value="Submit"/>
+                        <input type="submit" name="submit" class="btn btn-info"  value="Update"/>
 
 
                     </div>

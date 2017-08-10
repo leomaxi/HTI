@@ -24,7 +24,7 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        <div class="">
+        <div >
             <div class="right_aligned" style="margin-bottom: 15px;">
                 <button type="button" class="btn btn-info " data-toggle="modal" data-target="#regionDistrictsModal">
                     Add New

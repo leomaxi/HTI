@@ -24,14 +24,21 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        <div class="">
-            <div class="right_aligned" style="margin-bottom: 15px;">
-                <button type="button" class="btn btn-info " data-toggle="modal" data-target="#districtModal">
-                    Add District
-                </button>
-            </div>
-        </div>
+        <?php
+        $permissions = Session::get('permissions');
 
+        if (in_array("CREATE_DISTRICT", $permissions)) {
+            ?> 
+            <div class="">
+                <div class="right_aligned" style="margin-bottom: 15px;">
+                    <button type="button" class="btn btn-info " data-toggle="modal" data-target="#districtModal">
+                        Add District
+                    </button>
+                </div>
+            </div>
+            <?php
+        }
+        ?>
         <div class="row">
             <div class="col-lg-12">
 
