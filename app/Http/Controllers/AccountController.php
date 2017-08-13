@@ -13,6 +13,7 @@ use App\UserGroups;
 use App\Users;
 use App\PermissionsRoles;
 use App\Permissions;
+use App\UsersView;
 
 class AccountController extends Controller {
 
@@ -36,7 +37,7 @@ class AccountController extends Controller {
     }
 
     public function getUsers() {
-        return Users::all();
+        return UsersView::all();
     }
 
     public function deleteUserGroup($id) {

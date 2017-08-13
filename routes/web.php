@@ -26,10 +26,13 @@ Route::get('configurations/institutiontypes', 'ConfigurationController@showInsti
 Route::get('staff/new/{code}', 'StaffController@showprincipal');
 Route::get('staff/new', 'StaffController@showstaff');
 Route::get('staff/all', 'StaffController@showallstaff');
+Route::get('staff/details/{code}', 'StaffController@showstaffdetails');
 Route::get('account/usergroups', 'AccountController@showUserGroups');
 Route::get('account/assignroles', 'AccountController@showrolesandpermissions');
 Route::get('account/users', 'AccountController@showusers');
-Route::get('/logout', function(Request $request) {
+Route::get('students/new', 'StudentController@showstudent');
+Route::get('students/all', 'StudentController@showallstudents');
+Route::get('/logout', function() {
         //Uncomment to see the logs record
         //\Log::info("Session before: ".print_r($request->session()->all(), true));
          Session::flush();
@@ -70,6 +73,8 @@ Route::post('configurations/instituite', 'ConfigurationController@saveInstitute'
 Route::post('staff/savestaffinfo', 'StaffController@saveStaff');
 Route::delete('configurations/institution/{id}', 'ConfigurationController@deleteInstituition');
 Route::get('staff/getstaff', 'StaffController@getStaff');
+Route::get('staff/getstaff/{instutioncode}', 'StaffController@getInstitutionStaff');
+Route::get('staff/getstaffinfo/{staffcode}', 'StaffController@getStaffDetails');
 Route::delete('staff/deletestaff/{id}', 'StaffController@deleteStaff');
 Route::get('account/getusergroups', 'AccountController@getUserGroups');
 Route::delete('account/usergroup/{id}', 'AccountController@deleteUserGroup');
@@ -83,13 +88,19 @@ Route::get('account/user/{id}', 'AccountController@getUserInfo');
 Route::put('account/userinfo', 'AccountController@updateUserInfo');
 Route::post('login/authenticateuser', 'LoginController@authenticateUser');
 Route::post('login/updatepassword', 'LoginController@updatePassword');
-
-//savestaffinfo
-
-
-
-
-
+Route::get('configurations/getinstitutioninstitutetypes/{id}', 'ConfigurationController@getInstituitionInstituteTypes');
+Route::put('institutions/updateinstituite', 'InstituitionController@updateInstitution');
+Route::put('staff/updatestaffinformation', 'StaffController@updateStaffDetails');
+Route::post('students/savestudentinfo', 'StudentController@saveStudentInfo');
+Route::get('students/getstudents', 'StudentController@getStudent');
+Route::get('students/getstudents/{studentcode}', 'StudentController@showstudentdetails');
+Route::put('students/updatestudentinfo', 'StudentController@updateStudentInfo');
+Route::delete('students/deletestudent/{id}', 'StudentController@deleteStudent');
+//Route::post('staff/updatestaffinformation',function () {
+//
+//    return App\Department::where('active', 0)
+//                    ->get();
+//});
 Route::get('posts/{something}', function () {
     //
 })->middleware(['down.for.maintenance']);

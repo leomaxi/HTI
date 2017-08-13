@@ -6,23 +6,6 @@
 
 $(document).ready(function () {
 
- $.ajax({
-        url: '../configurations/getinstitutions',
-        type: "GET",
-        dataType: 'json',
-        success: function (data) {
-
-
-            $.each(data, function (i, item) {
-
-                $('#instituitions').append($('<option>', {
-                    value: item.code,
-                    text: item.name
-                }));
-            });
-
-        }
-    });
 
 
     $.ajax({
@@ -272,7 +255,7 @@ $(document).ready(function () {
                         console.log('data: ' + formData);
                         console.log('send data to server');
                         $.ajax({
-                            url: '../savestaffinfo',
+                            url: 'savestaffinfo',
                             type: "POST",
                             data: formData,
                             dataType: "json",
@@ -290,9 +273,9 @@ $(document).ready(function () {
                                         showCancelButton: false,
                                         confirmButtonText: "OK",
                                         closeOnConfirm: false
-                                    },
+                                    }).then(
                                     function () {
-                                        window.location = "instituitions.php";
+                                        window.location = "all";
                                     });
 
                                 } else {
@@ -304,9 +287,9 @@ $(document).ready(function () {
                                         showCancelButton: false,
                                         confirmButtonText: "OK",
                                         closeOnConfirm: false
-                                    },
+                                    }).then(
                                     function () {
-                                        window.location = "allstaff.php";
+                                        window.location = "all";
                                     });
 //                   
                                 }

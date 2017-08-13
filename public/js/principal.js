@@ -273,25 +273,11 @@ $(document).ready(function () {
                                         showCancelButton: false,
                                         confirmButtonText: "OK",
                                         closeOnConfirm: false
-                                    },
+                                    }).then(
                                     function () {
-                                        window.location = "instituitions.php";
+                                        window.location = "../configurations/instituitions";
                                     });
 
-                                } else {
-                                    console.log('here');
-                                    swal({
-                                        title: "Success",
-                                        text: "Staff Information Saved Successfully",
-                                        type: "success",
-                                        showCancelButton: false,
-                                        confirmButtonText: "OK",
-                                        closeOnConfirm: false
-                                    },
-                                    function () {
-                                        window.location = "allstaff.php";
-                                    });
-//                   
                                 }
                             },
                             error: function (jXHR, textStatus, errorThrown) {

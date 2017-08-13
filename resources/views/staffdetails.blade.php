@@ -32,8 +32,8 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <form id="updateStaffInformation" role="form">
-                          <input type="hidden" class="form-control form-control-lg input-lg"  name="_token" value="<?php echo csrf_token() ?>" />
+                <form id="updateStaffInfo" method='post'>
+                    <input type="hidden" class="form-control form-control-lg input-lg"  name="_token" value="<?php echo csrf_token() ?>" />
 
                     <div class="panel">
                         <div class="panel-heading tab-list">
@@ -73,7 +73,8 @@
                                         <div class="col-sm-12 col-md-6 col-lg-6">
 
                                             <input   name="code" type="hidden" value="{{$staffinfo[0]['code']}}" class="form-control required">
-
+                                            <input   name="staffno" type="hidden" value="{{$staffinfo[0]['staff_no']}}" class="form-control required">
+                                            <input type="hidden" id="regioncode" value="{{$staffinfo[0]['region']}}"/>
                                             <div class="form-group">
                                                 <label class="control-label">First Name *</label>
                                                 <input id="firstname"  name="firstname" type="text" value="{{$staffinfo[0]['firstname']}}" class="form-control required">
@@ -92,10 +93,11 @@
                                                 <label class=control-label">Gender *</label>
 
                                                 <select id="gender" name="gender" class="form-control select2" style="width:100%">
-                                                    <option value="" selected>Select value...</option>
 
-                                                    <option value="male">Male</option>
-                                                    <option value="female">Female</option>
+                                                    <option value="" <?php if ($staffinfo[0]['gender'] == "") echo 'selected="selected"'; ?> >Select value...</option>
+
+                                                    <option value="male" <?php if ($staffinfo[0]['gender'] == "male") echo 'selected="selected"'; ?>>Male</option>
+                                                    <option value="female" <?php if ($staffinfo[0]['gender'] == "female") echo 'selected="selected"'; ?>>Female</option>
                                                 </select>
                                             </div>
 
@@ -114,9 +116,12 @@
 
                                                        class="form-control ">
                                             </div>        
-
                                             <div class="form-group">
-                                                <label for="inputPassword" class=control-label">Region </label>
+                                                <label class="control-label">Region Name</label>
+                                                <input readonly  name="region_name" value="{{$staffinfo[0]['region_name']}}" type="text" class="form-control required">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword" class=control-label">New Region </label>
 
                                                 <select  id="region" name="region" class="form-control select2" style="width:100%">
                                                     <option value="">Select value...</option>
@@ -147,13 +152,13 @@
                                                 <label  class=control-label">Marital Status </label>
 
                                                 <select id="marital_status" name="marital_status" class="form-control select2" style="width:100%">
-                                                    <option value="">Select value...</option>
+                                                    <option value="" <?php if ($staffinfo[0]['marital_status'] == "") echo 'selected="selected"'; ?>>Select value...</option>
 
-                                                    <option value="single">Single</option>
-                                                    <option value="married">Married</option>
-                                                    <option value="divorced">Divorced</option>
-                                                    <option value="widow">Widow</option>
-                                                    <option value="widower">Widower</option>
+                                                    <option value="single" <?php if ($staffinfo[0]['marital_status'] == "single") echo 'selected="selected"'; ?>>Single</option>
+                                                    <option value="married" <?php if ($staffinfo[0]['marital_status'] == "married") echo 'selected="selected"'; ?>>Married</option>
+                                                    <option value="divorced" <?php if ($staffinfo[0]['marital_status'] == "divorced") echo 'selected="selected"'; ?>>Divorced</option>
+                                                    <option value="widow" <?php if ($staffinfo[0]['marital_status'] == "widow") echo 'selected="selected"'; ?>>Widow</option>
+                                                    <option value="widower" <?php if ($staffinfo[0]['marital_status'] == "widower") echo 'selected="selected"'; ?>>Widower</option>
 
                                                 </select>
                                             </div>
@@ -185,10 +190,10 @@
                                                 <select id="identification_type" name="identification_type" class="form-control select2" style="width:100%">
                                                     <option value="">Select value...</option>
 
-                                                    <option value="NHIS">NHIS</option>
-                                                    <option value="Voters IDCard">Voters IDCard</option>
-                                                    <option value="Drivers License">Drivers License</option>
-                                                    <option value="Passport">Passport</option>
+                                                    <option value="NHIS"  <?php if ($staffinfo[0]['identification_type'] == "NHIS") echo 'selected="selected"'; ?>>NHIS</option>
+                                                    <option value="Voters IDCard"  <?php if ($staffinfo[0]['identification_type'] == "Voters IDCard") echo 'selected="selected"'; ?>>Voters IDCard</option>
+                                                    <option value="Drivers License"  <?php if ($staffinfo[0]['identification_type'] == "Drivers License") echo 'selected="selected"'; ?>>Drivers License</option>
+                                                    <option value="Passport"  <?php if ($staffinfo[0]['identification_type'] == "Passport") echo 'selected="selected"'; ?>>Passport</option>
 
                                                 </select>
                                             </div>
@@ -233,9 +238,12 @@
                                                 </textarea>
 
                                             </div>
-
                                             <div class="form-group">
-                                                <label for="inputPassword" class=control-label">Department *</label>
+                                                <label class="control-label">Department Name</label>
+                                                <input readonly  name="department_name" value="{{$staffinfo[0]['department_name']}}" type="text" class="form-control required">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword" class=control-label">New Department *</label>
 
                                                 <select id="department" name="department" class="form-control select2" style="width:100%">
                                                     <option value="">Select value...</option>
@@ -318,7 +326,11 @@
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label for="userName" class="control-label">Grade *</label>
+                                                <label  class="control-label">Grade Type</label>
+                                                <input  name="gradetype" readonly  value="{{$employmentinfo[0]['gradetype']}}" type="text" class="form-control required">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="userName" class="control-label">New Grade </label>
 
                                                 <select id="grade" name="grade" class="form-control select2" style="width:100%">
                                                     <option value="" selected>Select value...</option>
@@ -350,14 +362,14 @@
 
                                                 <select id="kin_relationship" name="kin_relationship" class="form-control select2" style="width:100%">
                                                     <option value="">Select value...</option>
-                                                    <option value="Brother">Brother</option>
-                                                    <option value="Sister">Sister</option>
-                                                    <option value="Daughter">Daughter</option>
-                                                    <option value="Son">Son</option>
-                                                    <option value="Mother">Mother</option>
-                                                    <option value="Father">Father</option>
-                                                    <option value="Husband">Husband</option>
-                                                    <option value="Wife">Wife</option>
+                                                    <option value="Brother" <?php if ($staffinfo[0]['relationship'] == "Brother") echo 'selected="selected"'; ?>>Brother</option>
+                                                    <option value="Sister" <?php if ($staffinfo[0]['relationship'] == "Sister") echo 'selected="selected"'; ?>>Sister</option>
+                                                    <option value="Daughter" <?php if ($staffinfo[0]['relationship'] == "Daughter") echo 'selected="selected"'; ?>>Daughter</option>
+                                                    <option value="Son" <?php if ($staffinfo[0]['relationship'] == "Son") echo 'selected="selected"'; ?>>Son</option>
+                                                    <option value="Mother" <?php if ($staffinfo[0]['relationship'] == "Mother") echo 'selected="selected"'; ?>>Mother</option>
+                                                    <option value="Father" <?php if ($staffinfo[0]['relationship'] == "Father") echo 'selected="selected"'; ?>>Father</option>
+                                                    <option value="Husband" <?php if ($staffinfo[0]['relationship'] == "Husband") echo 'selected="selected"'; ?>>Husband</option>
+                                                    <option value="Wife" <?php if ($staffinfo[0]['relationship'] == "Wife") echo 'selected="selected"'; ?>>Wife</option>
 
 
                                                 </select>
@@ -435,9 +447,9 @@
                     <div class="row pull-right">
 
 
-                        <button type="submit" class="btn btn-info " >
-                            Update Staff Information
-                        </button>
+                        <input type="submit" class="btn btn-info " value=" Update Staff Information
+                               " >
+
 
                     </div>         
                 </form>

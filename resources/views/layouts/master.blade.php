@@ -10,7 +10,7 @@
 
         <title>MOH</title>
         <link type="text/css" rel="stylesheet" href="{{ asset('css/app.css')}}"/>
-         <link type="text/css" rel="stylesheet" href="{{ asset('vendors/iCheck/css/all.css')}}"/>
+        <link type="text/css" rel="stylesheet" href="{{ asset('vendors/iCheck/css/all.css')}}"/>
         <!-- end of global css -->
         <!--page level css -->
         <link rel="stylesheet" href="{{ asset('vendors/swiper/css/swiper.min.css')}}">
@@ -28,7 +28,7 @@
         <!--end of page level css-->
         <link href="{{asset('vendors/select2/css/select2.min.css')}}" rel="stylesheet" type="text/css">
         <link href="{{asset('vendors/select2/css/select2-bootstrap.css')}}" rel="stylesheet" type="text/css">
-         <link rel="stylesheet" type="text/css" href="{{asset('css/custom_css/toastr_notificatons.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/custom_css/toastr_notificatons.css')}}">
 
         <link rel="stylesheet" type="text/css" href="{{asset('vendors/datatables/css/dataTables.bootstrap.css')}}"/>
         <link rel="stylesheet" type="text/css" href="{{asset('css/custom.css')}}">
@@ -37,7 +37,9 @@
         <!--end of page level css-->
         <link rel="stylesheet" type="text/css" href="{{asset('vendors/sweetalert2/css/sweetalert2.min.css')}}"/>
         <link rel="stylesheet" type="text/css" href="{{asset('css/custom_css/sweet_alert2.css')}}">
- <!--        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css')}}">-->
+        <!--        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css')}}">-->
+
+        <link rel="stylesheet" type="text/css" href="{{asset('css/form_layouts.css')}}">
         <!-- END Custom CSS-->
     </head>
     <body class="skin-default">

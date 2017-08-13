@@ -146,9 +146,9 @@ function getUsers()
                     // represent columns as array
                     r[++j] = '<td >' + value.firstname + '</td>';
                     r[++j] = '<td>' + value.email + '</td>';
-                    r[++j] = '<td>' + value.instituition_code + '</td>';
+                    r[++j] = '<td>' + value.institution_name + '</td>';
                     r[++j] = '<td>' + value.role + '</td>';
-                    r[++j] = '<td>' + value.usergroup + '</td>';
+                    r[++j] = '<td>' + value.usergroup_name + '</td>';
                     r[++j] = '<td>' + value.datecreated + '</td>';
                     r[++j] = '<td><button onclick="editUser(\'' + value.id + '\')" class="btn btn-outline-info btn-sm editBtn"  type="button">Edit</button></td>';
 

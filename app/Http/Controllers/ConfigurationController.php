@@ -404,4 +404,10 @@ class ConfigurationController extends Controller {
         //  return view('user.index', ['users' => $users]);
     }
 
+    public function getInstituitionInstituteTypes($id) {
+
+
+        return InstituitionInstituteTypes::where('insitution_code', $id)->pluck('insitute_type_code')->toArray();
+    }
+
 }

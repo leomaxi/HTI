@@ -99,8 +99,8 @@ $('#institutionForm').on('submit', function (e) {
 
     var formData = $(this).serialize();
     console.log(formData);
-    //$('input:submit').attr("disabled", true);
-   // $("#loaderModal").modal('show');
+    $('input:submit').attr("disabled", true);
+    $("#loaderModal").modal('show');
 
     $.ajax({
         url: 'instituite',
@@ -109,11 +109,11 @@ $('#institutionForm').on('submit', function (e) {
         success: function (data) {
             $('input:submit').attr("disabled", false);
             console.log(data);
-          //  $("#loaderModal").modal('hide');
+            $("#loaderModal").modal('hide');
 
             var successStatus = data.success;
             console.log(successStatus);
-          //  document.getElementById("institutionForm").reset();
+            document.getElementById("institutionForm").reset();
 
             $('#district').select2("destroy");
             $('#district').empty();
@@ -135,12 +135,11 @@ $('#institutionForm').on('submit', function (e) {
                     type: "success",
                     showCancelButton: false,
                     confirmButtonText: "Continue",
-    
                 }).then(
-                function () {
-                    window.location = '../staff/new/' + data;
+                        function () {
+                            window.location = '../staff/new/' + data;
 
-                });
+                        });
             }
 
         },

@@ -32,6 +32,25 @@ $.ajax({
     }
 });
 
+
+$.ajax({
+    url: 'getinstituitionstypes',
+    type: "GET",
+    dataType: 'json',
+    success: function (data) {
+
+
+        $.each(data, function (i, item) {
+
+            $('#institution_types').append($('<option>', {
+                value: item.code,
+                text: item.name
+            }));
+        });
+
+    }
+});
+
 $.ajax({
     url: 'getdistricts',
     type: "GET",
@@ -50,7 +69,26 @@ $.ajax({
     }
 });
 
+function getInstitutionStaff(instutioncode) {
+    $.ajax({
+        url: '../staff/getstaff/' + instutioncode,
+        type: "GET",
+        dataType: 'json',
+        success: function (data) {
 
+            console.log('staff:' + data);
+            $.each(data, function (i, item) {
+                var name = item.firstname + ' ' + item.middlename + ' ' + item.surname;
+                $('#staff').append($('<option>', {
+                    value: item.staff_no,
+                    text: name
+                }));
+            });
+
+
+        }
+    });
+}
 
 function getDistrictsBasedOnRegion(region_code) {
 
@@ -64,10 +102,8 @@ function getDistrictsBasedOnRegion(region_code) {
         dataType: 'json',
         success: function (data) {
             console.log(data);
-            $('#district').select2("destroy");
-            $('#district').empty();
 
-            $('#district').select2();
+            $('#district').empty();
             $('#district').append('<option value = ""> Choose... </option>');
 
 
@@ -154,15 +190,22 @@ function editInstitution(code) {
         dataType: "json",
         success: function (data) {
             console.log(data);
+
             $('#code').val(data.code);
             $('#institution_name').val(data.name);
             $('#establishment_date').val(data.date_of_establishment);
+             $('#principal_names').val(data.principal_name);
             $('#region').val(data.region).attr("selected", "selected");
+            //$('#region').val(data.region).trigger('change');
 
-            $('#district').val(data.district).attr("selected", "selected");
             $('#location').val(data.location);
             $('#longitude').val(data.longitude);
             $('#latitude').val(data.latitude);
+            $('#district').val(data.district).attr("selected", "selected");
+            getInstituteTypes(data.code);
+            console.log('staff');
+            getInstitutionStaff(data.code);
+           
 
             $('#editModal').modal('show');
         },
@@ -173,12 +216,29 @@ function editInstitution(code) {
 
 }
 
+function getInstituteTypes(code) {
+
+    $.ajax({
+        url: 'getinstitutioninstitutetypes/' + code,
+        type: "GET",
+        success: function (data) {
+            console.log('data : ' + data);
+            $("#institution_types").val(data);
+            var $multiSelect = $(".select2").select2();
+            $multiSelect.val(data).trigger("change");
+
+
+        }
+    });
+}
+
 function deleteInstituition(code, title) {
     console.log(code + title + 'aaaaa');
     $('#code').val(code);
     $('#beneficiaryholder').html(title);
     $('#confirmModal').modal('show');
 }
+
 
 
 $('#deleteInstitutionForm').on('submit', function (e) {
@@ -218,3 +278,47 @@ $('#deleteInstitutionForm').on('submit', function (e) {
     });
 
 });
+$('#updateinstitutionForm').on('submit', function (e) {
+    e.preventDefault();
+
+    var formData = $(this).serialize();
+    console.log(formData);
+    $('input:submit').attr("disabled", true);
+    $("#loaderModal").modal('show');
+
+    $.ajax({
+        url: '../institutions/updateinstituite',
+        type: "PUT",
+        data: formData,
+        success: function (data) {
+            $('input:submit').attr("disabled", false);
+            console.log(data);
+            $("#loaderModal").modal('hide');
+            $('#editModal').modal('hide');
+            var successStatus = data.success;
+            console.log(successStatus);
+           
+
+            if (data == 1) {
+                swal("Error!", "Couldnt Update Instituitions", "error");
+            } else {
+                getinstitutions();
+                swal({
+                    title: "Success",
+                    text: "Institution Information Updated",
+                    type: "success",
+                    showCancelButton: false,
+                    confirmButtonText: "OK"
+                });
+            }
+
+        },
+        error: function (jXHR, textStatus, errorThrown) {
+            swal("Error!", "Couldnt save:Instituition code already exist", "error");
+
+        }
+    });
+
+
+});
+

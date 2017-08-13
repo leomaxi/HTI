@@ -77,13 +77,13 @@
             <form id="updateinstitutionForm" class="form-horizontal" role="form">
                 <input type="hidden" class="form-control form-control-lg input-lg" id="token" name="_token" value="<?php echo csrf_token() ?>" />
 
-
+                <input type="hidden" class="form-control" name="institute_id" id="institute_id" required >
                 <div class="modal-body">
 
                     <div class="form-group">
                         <label for="input-text" class="col-sm-3 control-label"> Code</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="code" id="code" required >
+                            <input type="text" class="form-control" readonly="true" name="code" id="code" required >
                         </div>
                     </div>
                     <div class="form-group">
@@ -107,12 +107,25 @@
                         </div>
                         <!-- /.input group -->
                     </div>
+                     <div class="form-group">
+                        <label  class="col-sm-3 control-label">Principal Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" readonly name="principal_name" id="principal_names" >
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label  class="col-sm-3 control-label">New Principal</label>
+                        <div class="col-sm-9">
+                            <select id="staff" name="principal" class="form-control" style="width:100%">
+                                <option value="">Choose..</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">Institution Types</label>
                         <div class="col-sm-9">
                             <select name="institution_types[]" id="institution_types"  class="form-control multselect select2" multiple style="width: 100%" required>
-                                <option value="">Select value...</option>
-
 
 
                             </select>
@@ -121,7 +134,7 @@
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">Region</label>
                         <div class="col-sm-9">
-                            <select id="region" name="region" class="form-control " style="width:100%">
+                            <select id="region" name="region" class="form-control" style="width:100%">
 
                             </select>
                         </div>
@@ -205,9 +218,6 @@
 <script type="text/javascript" src="{{ asset('vendors/datatables/js/jquery.dataTables.js')}}"></script>
 <script type="text/javascript" src="{{ asset('vendors/datatables/js/dataTables.bootstrap.js')}}"></script>
 <script type="text/javascript" src="{{ asset('js/custom_js/datatables_custom.js')}}"></script>
-<script type="text/javascript" src="{{ asset('vendors/sweetalert2/js/sweetalert2.min.js')}}"></script>
-<script src="{{ asset('vendors/toastr/js/toastr.min.js')}}"></script>
-
 <script src="{{ asset('js/getinstitution.js')}}" type="text/javascript"></script>
 
 @endsection

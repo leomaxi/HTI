@@ -147,7 +147,8 @@ $permissions = Session::get('permissions');
                 }
                 if (in_array("VIEW_STUDENTS", $permissions)) {
                     ?>
-                    <li class="menu-dropdown" style="display: none">
+                    <li class="menu-dropdown {{ Request::is('students*') ? 'active' : '' }}" >
+
                         <a href="javascript:void(0)">
                             <i class="menu-icon ti-check-box"></i>
                             <span>Students</span>
@@ -157,16 +158,16 @@ $permissions = Session::get('permissions');
                             <?php
                             if (in_array("CREATE_STUDENT", $permissions)) {
                                 ?> 
-                                <li>
-                                    <a href="new-student.php">
+                                <li class="{{ Request::is('students/new') ? 'active' : '' }}">
+                                    <a href="{{ url('students/new') }}">
                                         <i class="fa fa-fw ti-alert"></i> New Student
                                     </a>
                                 </li> 
                                 <?php
                             }
                             ?>
-                            <li>
-                                <a href="students.php">
+                            <li class="{{ Request::is('students/all') ? 'active' : '' }}">
+                                <a href="{{ url('students/all') }}">
                                     <i class="fa fa-fw ti-layout-width-default"></i> All Students
                                 </a>
                             </li>
@@ -202,17 +203,16 @@ $permissions = Session::get('permissions');
                                 <?php
                             }
                             if (in_array("ASSIGN_ROLES", $permissions)) {
-                               
+                                ?>
+
+                                <li class="{{ Request::is('account/assignroles') ? 'active' : '' }}">
+
+                                    <a href="{{ url('account/assignroles') }}">
+                                        <i class="fa fa-fw ti-alert"></i> Assign Roles And Permissions
+                                    </a>
+                                </li> 
+                            <?php }
                             ?>
-
-                            <li class="{{ Request::is('account/assignroles') ? 'active' : '' }}">
-
-                                <a href="{{ url('account/assignroles') }}">
-                                    <i class="fa fa-fw ti-alert"></i> Assign Roles And Permissions
-                                </a>
-                            </li> 
-                            <?php
-                            }?>
                             <li class="{{ Request::is('account/users') ? 'active' : '' }}">
 
                                 <a href="{{ url('account/users') }}">

@@ -4,6 +4,6 @@
 .date-picker-wrapper {
     z-index : 2;
 }
-.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+/*.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
     background-color : #fff;
-}
+}*/
