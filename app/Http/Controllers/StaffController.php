@@ -414,12 +414,16 @@ class StaffController extends Controller {
             return '0';
         }
     }
-    
-    
+
     public function checkEmailExistence($email) {
         $check = Users::where('email', $email)
                 ->first();
-        
+
+        $user = Users::where('email', '=', Input::get('email'))->get();
+        if (count($user) > 0) {
+            echo "There is data";
+        } else
+            echo "No data";
     }
 
 }

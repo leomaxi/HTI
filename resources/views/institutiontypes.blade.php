@@ -9,7 +9,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Institution Types
+          Programs
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -19,7 +19,7 @@
             </li>
 
             <li class="active">
-                Institution Types
+                Programs
             </li>
         </ol>
     </section>
@@ -34,7 +34,7 @@
 
             <div class="right_aligned" style="margin-bottom: 15px;">
                 <button type="button" class="btn btn-info " data-toggle="modal" data-target="#institutionModal">
-                    Add Institution Type
+                    Add Program
                 </button>
             </div>
             <?php
@@ -46,7 +46,7 @@
                 <div class="panel ">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            <i class="ti-layout-grid3"></i> Institution Types
+                            <i class="ti-layout-grid3"></i> Programs
                         </h3>
 
                     </div>
@@ -76,7 +76,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">New Institution Type</h4>
+                        <h4 class="modal-title">New Program</h4>
                     </div>
                     <form role="form" id="saveInstitutionTypeForm">
                         <input type="hidden" class="form-control form-control-lg input-lg"  name="_token" value="<?php echo csrf_token() ?>" />
@@ -88,7 +88,7 @@
 
                                 <div class="col-md-8">
                                     <div class="input-group">
-                                        <label for="first-name">Institution Type</label>
+                                        <label for="first-name">Program</label>
                                         <input type="text" name="name"
                                                required class="form-control m-t-10">
                                     </div>
@@ -144,7 +144,7 @@
                         <div class="modal-body">
                             <div>
                                 <p>
-                                    Are you sure you want to delete this institute type?.<span class="holder" id="nameholder"></span> 
+                                    Are you sure you want to delete this program?.<span class="holder" id="nameholder"></span> 
                                 </p>
                             </div>
                             <input type="hidden" class="form-control form-control-lg input-lg" id="token" name="_token" value="<?php echo csrf_token() ?>" />

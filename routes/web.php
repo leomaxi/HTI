@@ -22,7 +22,7 @@ Route::get('configurations/testdb', 'ConfigurationController@testdb');
 Route::get('configurations/regiondistricts', 'ConfigurationController@showRegionDistricts');
 Route::get('configurations/departments', 'ConfigurationController@showdepartments');
 Route::get('configurations/gradetypes', 'ConfigurationController@showGradeTypes');
-Route::get('configurations/institutiontypes', 'ConfigurationController@showInstitutionTypes');
+Route::get('configurations/programs', 'ConfigurationController@showInstitutionTypes');
 Route::get('staff/new/{code}', 'StaffController@showprincipal');
 Route::get('staff/new', 'StaffController@showstaff');
 Route::get('staff/all', 'StaffController@showallstaff');

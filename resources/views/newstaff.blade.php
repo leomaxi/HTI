@@ -34,7 +34,7 @@
                         <h3 class="panel-title">
                             <i class="livicon" data-name="bell" data-size="16" data-loop="true" data-c="#fff"
                                data-hc="white"></i> 
-                               Principal Information
+                            Principal Information
                         </h3>
 
                     </div>
@@ -88,6 +88,13 @@
                                                 <input  name="institute_code" type="text" hidden  readonly value="{{$instcode}}">
                                                 <input  name="stafftype" type="text" hidden readonly value="principalinfo">
 
+                                                <div class="form-group">
+                                                    <label class="control-label">Instituitions *</label>
+
+                                                    <select id="instituitions" name="institute_code" class="form-control select2" style="width:100%">
+                                                        <option>Choose</option>
+                                                    </select>
+                                                </div>
 
                                                 <div class="form-group">
                                                     <label class="control-label">First Name *</label>
@@ -111,6 +118,21 @@
 
                                                         <option value="male">Male</option>
                                                         <option value="female">Female</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label  class=control-label">Marital Status </label>
+
+                                                    <select id="marital_status" name="marital_status" class="form-control select2" style="width:100%">
+                                                        <option value="">Select value...</option>
+
+                                                        <option value="single">Single</option>
+                                                        <option value="married">Married</option>
+                                                        <option value="divorced">Divorced</option>
+                                                        <option value="widow">Widow</option>
+                                                        <option value="widower">Widower</option>
+
                                                     </select>
                                                 </div>
 
@@ -144,6 +166,11 @@
                                                     <input id="nationality" name="nationality" type="text" class="form-control required">
                                                 </div>   
 
+
+
+
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6">
                                                 <div class="form-group">
                                                     <label  class=control-label">Address *</label>
 
@@ -156,27 +183,7 @@
 
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label  class=control-label">Marital Status </label>
 
-                                                    <select id="marital_status" name="marital_status" class="form-control select2" style="width:100%">
-                                                        <option value="">Select value...</option>
-
-                                                        <option value="single">Single</option>
-                                                        <option value="married">Married</option>
-                                                        <option value="divorced">Divorced</option>
-                                                        <option value="widow">Widow</option>
-                                                        <option value="widower">Widower</option>
-
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label">Staff No *</label>
-                                                    <input id="staffno" name="staffno" type="text"
-                                                           class="form-control required">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
                                                 <div class="form-group">
                                                     <label class="control-label">Postal Address *</label>
                                                     <input id="postal_address" name="postal_address" type="text"
@@ -221,22 +228,6 @@
 
 
 
-                                                <div class="form-group">
-                                                    <label for="confirm" class="control-label">Current Appointment Date  *</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-fw ti-calendar"></i>
-                                                        </div>
-                                                        <input type="text" class="form-control pull-right" name="appointment_date" data-language='en' id="appointment_date" />
-                                                    </div> 
-                                                </div>
-
-
-                                                <div class="form-group">
-                                                    <label for="confirm" class="control-label">Number Of Years  </label>
-                                                    <input id="numberofyears" name="numberofyears" 
-                                                           type="number" class="form-control  ">
-                                                </div>
 
 
                                                 <div class="form-group">
@@ -245,25 +236,13 @@
 
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label for="inputPassword" class=control-label">Department *</label>
-
-                                                    <select id="department" name="department" class="form-control select2" style="width:100%">
-                                                        <option value="">Select value...</option>
-
-                                                    </select>
-                                                </div>
-
-
-
-
-
                                             </div>
 
 
                                         </div>
 
                                     </div>
+
                                     <div class="tab-pane" id="tab2">
                                         <h2 class="hidden">&nbsp;</h2>
 
@@ -307,7 +286,7 @@
                                         <div class="row">
                                             <div class="col-sm-12 col-md-6 col-lg-6">
                                                 <div class="form-group">
-                                                    <label  class="control-label">Start Date *</label>
+                                                    <label  class="control-label">1st Appointment Date *</label>
                                                     <div class="input-group">
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-fw ti-calendar"></i>
@@ -316,7 +295,7 @@
                                                     </div> 
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="userName" class="control-label">End Date</label>
+                                                    <label for="userName" class="control-label">Current Appointment Date</label>
                                                     <div class="input-group">
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-fw ti-calendar"></i>
@@ -325,20 +304,39 @@
                                                     </div> 
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="control-label">Qualification *</label>
+                                                    <label class="control-label">Entry Qualification *</label>
                                                     <input  name="qualification" id="qualification" type="text" class="form-control required">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label  class="control-label">Staff Class *</label>
-                                                    <input  name="staff_class" type="text" id="staff_class" class="form-control required">
+                                                    <label for="userName" class="control-label">Entry Grade *</label>
+
+                                                    <select  name="grade" class="grade form-control select2" style="width:100%">
+                                                        <option value="" selected>Select value...</option>
+
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="confirm" class="control-label">No. of Years of Active Sevice </label>
+                                                    <input id="numberofyears" name="numberofyears" 
+                                                           type="number" class="form-control  ">
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-6 col-lg-6">
                                                 <div class="form-group">
-                                                    <label for="userName" class="control-label">Grade *</label>
+                                                    <label for="userName" class="control-label">Current Grade *</label>
 
-                                                    <select id="grade" name="grade" class="form-control select2" style="width:100%">
+                                                    <select  name="current_grade" class="grade form-control select2" style="width:100%">
                                                         <option value="" selected>Select value...</option>
+
+                                                    </select>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label for="inputPassword" class=control-label">Department *</label>
+
+                                                    <select id="department" name="department" class="form-control select2" style="width:100%">
+                                                        <option value="">Select value...</option>
 
                                                     </select>
                                                 </div>
@@ -436,14 +434,18 @@
                                                     <input  name="branch" id="branch" type="text" class="form-control required">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label  class="control-label">Tin*</label>
+                                                    <label  class="control-label">TIN*</label>
                                                     <input  name="tin" id="tin" type="text" class="form-control required">
                                                 </div>
-
+                                                <div class="form-group">
+                                                    <label  class="control-label">SNNIT No.*</label>
+                                                    <input  name="snnitno" id="snnitno" type="text" class="form-control required">
+                                                </div>
                                             </div>
                                         </div>
 
                                     </div>
+
 
 
 

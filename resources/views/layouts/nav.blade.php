@@ -87,9 +87,9 @@ $permissions = Session::get('permissions');
                             }
                             if (in_array("VIEW_INSTITUTION_TYPES", $permissions)) {
                                 ?>
-                                <li class="{{ Request::is('configurations/institutiontypes') ? 'active' : '' }}">
-                                    <a href="{{ url('configurations/institutiontypes') }}">
-                                        <i class="fa fa-fw ti-alert"></i> Institutions Types
+                                <li class="{{ Request::is('configurations/programs') ? 'active' : '' }}">
+                                    <a href="{{ url('configurations/programs') }}">
+                                        <i class="fa fa-fw ti-alert"></i> Programs
                                     </a>
                                 </li>
                                 <?php
@@ -99,6 +99,15 @@ $permissions = Session::get('permissions');
                                 <li class="{{ Request::is('configurations/gradetypes') ? 'active' : '' }}">
                                     <a href="{{ url('configurations/gradetypes') }}">
                                         <i class="fa fa-fw ti-alert"></i> Grade Types
+                                    </a>
+                                </li>
+                                <?php
+                            }
+                               if (in_array("VIEW_PROFESSIONAL_BODY", $permissions)) {
+                                ?>
+                                <li class="{{ Request::is('configurations/professionalbodies') ? 'active' : '' }}">
+                                    <a href="{{ url('configurations/professionalbodies') }}">
+                                        <i class="fa fa-fw ti-alert"></i> Professional Bodies
                                     </a>
                                 </li>
                                 <?php
