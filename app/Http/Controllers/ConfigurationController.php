@@ -339,23 +339,32 @@ class ConfigurationController extends Controller {
 
         $data = $request->all();
         $new = new Instituition();
-        $new->code = $data['code'];
-        $new->name = $data['institution_name'];
-        $new->region = $data['region'];
-        $new->district = $data['district'];
-        $new->location = $data['location'];
-        $new->longitude = $data['longitude'];
-        $new->latitude = $data['latitude'];
-        $new->date_of_establishment = $data['date_established'];
 
-        $save = $new->save();
-        if (!$save) {
-            return 'error';
+
+        $code_existence = $this->checkInstitutionCodeExistence($data['code']);
+//return $code_existence;       
+        if ($code_existence == '0') {
+            $new->code = $data['code'];
+            $new->name = $data['institution_name'];
+            $new->region = $data['region'];
+            $new->district = $data['district'];
+            $new->location = $data['location'];
+            $new->longitude = $data['longitude'];
+            $new->latitude = $data['latitude'];
+            $new->date_of_establishment = $data['date_established'];
+
+            $save = $new->save();
+            if (!$save) {
+                return 'error';
+            } else {
+                $this->saveInstituteInstitutionTypes($data['code'], $data['institution_types']);
+                $this->saveInstituteProfessionalBodies($data['code'], $data['professional_bodies']);
+                return $data['code'];
+            }
         } else {
-            $this->saveInstituteInstitutionTypes($data['code'], $data['institution_types']);
-            $this->saveInstituteProfessionalBodies($data['code'], $data['professional_bodies']);
-            return $data['code'];
+            return 'exists';
         }
+
 
 
         //return $new->id;
@@ -386,6 +395,7 @@ class ConfigurationController extends Controller {
 
         InstituitionProfessionalBodies::insert($data); // Eloquent
     }
+
     public function deleteInstituition($id) {
 
 
@@ -438,8 +448,8 @@ class ConfigurationController extends Controller {
     public function saveProfessionalBody(Request $request) {
 
         $data = $request->all();
-       
-        
+
+
         $new = new ProfessionalBodies();
         $new->code = $this->generateuniqueCode(8);
         $new->name = $data['professional_body'];
@@ -450,12 +460,12 @@ class ConfigurationController extends Controller {
             return '0';
         }
     }
-    
+
     public function updateProfessionalBody(Request $request) {
-        
-         $data = $request->all();
-       
-           $id = $data['code'];
+
+        $data = $request->all();
+
+        $id = $data['code'];
         $update = ProfessionalBodies::find($id);
         $update->name = $data['name'];
         $saved = $update->save();
@@ -465,9 +475,9 @@ class ConfigurationController extends Controller {
             return '0';
         }
     }
-    
+
     public function deleteProfessionalBody($id) {
-         $delete = ProfessionalBodies::find($id);
+        $delete = ProfessionalBodies::find($id);
         $delete->active = '1';
         $saved = $delete->save();
         if (!$saved) {
@@ -476,11 +486,23 @@ class ConfigurationController extends Controller {
             return '0';
         }
     }
-    
+
     public function getInstituitionProfessionalBodies($id) {
 
 
         return InstituitionProfessionalBodies::where('insitution_code', $id)->pluck('professionalbody_code')->toArray();
+    }
+
+    public function checkInstitutionCodeExistence($code) {
+
+        $check = Instituition::where('code', '=', $code)->count();
+        if ($check == 0) {
+            //it doesnt exist 
+            return '0';
+        } else {
+            //its exists
+            return '1';
+        }
     }
 
 }

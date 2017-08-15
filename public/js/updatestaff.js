@@ -4,20 +4,20 @@
  * and open the template in the editor.
  */
 $('#dateofbirth').datepicker({
-        dateFormat: 'dd-mm-yyyy'
+    dateFormat: 'dd-mm-yyyy'
 
-    });
+});
 
-    $('#appointment_date').datepicker({
-        dateFormat: 'dd-mm-yyyy'
-    });
-    $('#startdate').datepicker({
-        dateFormat: 'dd-mm-yyyy'
-    });
+$('#appointment_date').datepicker({
+    dateFormat: 'dd-mm-yyyy'
+});
+$('#startdate').datepicker({
+    dateFormat: 'dd-mm-yyyy'
+});
 
-    $('#enddate').datepicker({
-        dateFormat: 'dd-mm-yyyy'
-    });
+$('#enddate').datepicker({
+    dateFormat: 'dd-mm-yyyy'
+});
 
 $('.select2').select2();
 $.ajax({
@@ -64,7 +64,25 @@ $.ajax({
 
         $.each(data, function (i, item) {
 
-            $('#grade').append($('<option>', {
+            $('.grade').append($('<option>', {
+                value: item.code,
+                text: item.name
+            }));
+        });
+
+    }
+});
+
+$.ajax({
+    url: '../../configurations/getprofessionalbodies',
+    type: "GET",
+    dataType: 'json',
+    success: function (data) {
+
+
+        $.each(data, function (i, item) {
+
+            $('#professional_body').append($('<option>', {
                 value: item.code,
                 text: item.name
             }));
@@ -77,7 +95,7 @@ $.ajax({
 
 
 var region_selected = $('#regioncode').val();
-console.log('region:'+region_selected);
+console.log('region:' + region_selected);
 
 $('#updateStaffInfo').on('submit', function (e) {
     e.preventDefault();

@@ -38,7 +38,7 @@
 
                     </div>
                     <div class="panel-body">
-                        <form id="institutionForm" class="form-horizontal" role="form">
+                        <form id="institutionForm" class="form-horizontal " role="form">
                             <input type="hidden" class="form-control form-control-lg input-lg"  name="_token" value="<?php echo csrf_token() ?>" />
 
                             <div class="form-group">
@@ -50,7 +50,7 @@
                             <div class="form-group">
                                 <label  class="col-sm-2 control-label">Institution Name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="institution_name" id="institution_name" >
+                                    <input type="text" class="form-control" name="institution_name" id="institution_name" required>
                                 </div>
                             </div>
 
@@ -63,7 +63,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-fw ti-calendar"></i>
                                         </div>
-                                        <input type="text" class="form-control pull-right" name="date_established" data-language='en' id="establishment_date" />
+                                        <input required type="text" class="form-control pull-right" name="date_established" data-language='en' id="establishment_date" />
                                     </div> 
                                 </div>
                                 <!-- /.input group -->
@@ -94,7 +94,7 @@
                             <div class="form-group">
                                 <label  class="col-sm-2 control-label">Region</label>
                                 <div class="col-sm-10">
-                                    <select id="region" name="region" class="form-control select2" style="width:100%">
+                                    <select id="region" name="region" class="form-control select2" style="width:100%" required>
                                         <option value="">Select value...</option>
 
 
@@ -107,7 +107,7 @@
                             <div class="form-group">
                                 <label  class="col-sm-2 control-label">District</label>
                                 <div class="col-sm-10">
-                                    <select id="district" name="district" class="form-control select2" style="width:100%">
+                                    <select id="district" name="district" class="form-control select2" style="width:100%" required>
                                         <option value="">Select value...</option>
 
 
@@ -119,7 +119,7 @@
                             <div class="form-group">
                                 <label  class="col-sm-2 control-label">Location</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="location" class="form-control" />
+                                    <input type="text" name="location" class="form-control" required />
                                 </div>
                             </div>
                             <div class="form-group">

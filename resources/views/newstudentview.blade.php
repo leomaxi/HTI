@@ -122,6 +122,21 @@
                                                         <option value="female">Female</option>
                                                     </select>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label  class=control-label">Marital Status </label>
+
+                                                    <select id="marital_status" name="marital_status" class="form-control select2" style="width:100%">
+                                                        <option value="">Select value...</option>
+
+                                                        <option value="single">Single</option>
+                                                        <option value="married">Married</option>
+                                                        <option value="divorced">Divorced</option>
+                                                        <option value="widow">Widow</option>
+                                                        <option value="widower">Widower</option>
+
+                                                    </select>
+                                                </div>
+
 
                                                 <div class="form-group">
                                                     <label  class="control-label">Date Of BIrth  *</label>
@@ -158,11 +173,7 @@
                                                 </div>
 
 
-                                                <div class="form-group">
-                                                    <label  class=control-label">Address *</label>
 
-                                                    <textarea name="address"rows="5" style="width: 100%" ></textarea>
-                                                </div>
 
 
 
@@ -180,19 +191,11 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label  class=control-label">Marital Status </label>
+                                                    <label  class=control-label">Res. Address *</label>
 
-                                                    <select id="marital_status" name="marital_status" class="form-control select2" style="width:100%">
-                                                        <option value="">Select value...</option>
-
-                                                        <option value="single">Single</option>
-                                                        <option value="married">Married</option>
-                                                        <option value="divorced">Divorced</option>
-                                                        <option value="widow">Widow</option>
-                                                        <option value="widower">Widower</option>
-
-                                                    </select>
+                                                    <textarea name="address"rows="5" style="width: 100%" ></textarea>
                                                 </div>
+
                                                 <div class="form-group">
                                                     <label class="control-label">Postal Address *</label>
                                                     <input id="postal_address" name="postal_address" type="text"
@@ -254,30 +257,33 @@
                                                     <label  class="control-label">Guardian Lastname </label>
                                                     <input  name="guardian_lastname" id="guardian_lastname" type="text" class="form-control ">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label  class="control-label">Address </label>
-                                                    <input  name="guardian_address" id="guardian_address" type="text" class="form-control ">
-                                                </div>
+
+
                                                 <div class="form-group">
                                                     <label  class="control-label">Mobile No </label>
                                                     <input  name="guardian_contact" id="guardian_contact" type="text" class="form-control ">
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
                                                 <div class="form-group">
                                                     <label  class="control-label">Email </label>
                                                     <input  name="guardian_email" id="guardian_email" type="email" class="form-control ">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group">
+                                                    <label  class="control-label">State </label>
+                                                    <input  name="guardian_state" id="guardian_state" type="text" class="form-control ">
                                                 </div>
                                                 <div class="form-group">
                                                     <label  class="control-label">Suburb </label>
                                                     <input  name="guardian_suburb" id="guardian_suburb" type="text" class="form-control ">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label  class="control-label">State </label>
-                                                    <input  name="guardian_state" id="guardian_state" type="text" class="form-control ">
+                                                    <label  class="control-label">Res. Address </label>
+                                                    <input  name="guardian_address" id="guardian_address" type="text" class="form-control ">
                                                 </div>
+
                                                 <div class="form-group">
-                                                    <label class="control-label">PostCode </label>
+                                                    <label class="control-label">Postal Address  </label>
                                                     <input  name="guardian_postcode" id="guardian_postcode" type="text" class="form-control ">
                                                 </div>
                                             </div>
@@ -342,14 +348,19 @@
                                             </div>
                                             <div class="col-sm-12 col-md-6 col-lg-6">
 
+                                                <div class="form-group">
+                                                    <label  class="control-label">Certificate Type *</label>
+                                                    <input  name="certificatype"  type="text" class="form-control required">
+                                                </div> 
 
                                                 <div class="form-group">
                                                     <label class="control-label">Year of Seating for Licensetial </label>
                                                     <input  name="year_of_seating" id="year_of_seating" type="text" class="form-control ">
                                                 </div>
+
                                                 <div class="form-group">
-                                                    <label  class="control-label">Results *</label>
-                                                    <input  name="results" id="results" type="text" class="form-control required">
+                                                    <label  class="control-label">Index No *</label>
+                                                    <input  name="indexno"  type="text" class="form-control required">
                                                 </div>
                                             </div>
                                         </div>
@@ -383,18 +394,6 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="userName" class="control-label">Address </label>
-                                                    <textarea rows="5" name="kin_address" id="kin_address" style="width: 100%" ></textarea>
-
-                                                </div>
-                                                <div class="form-group">
-                                                    <label  class="control-label">Suburb </label>
-                                                    <input  name="kin_suburb" id="kin_suburb" type="text" class="form-control required">
-                                                </div>
-
-                                            </div>
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
-                                                <div class="form-group">
                                                     <label  class="control-label">Email Address </label>
                                                     <input  name="kin_email" id="kin_email" type="email" class="form-control required">
                                                 </div>
@@ -402,6 +401,20 @@
                                                     <label class="control-label">Contact No </label>
                                                     <input  name="kin_contactno" id="kin_contactno" type="text" class="form-control required">
                                                 </div>
+
+
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group">
+                                                    <label  class="control-label">Suburb </label>
+                                                    <input  name="kin_suburb" id="kin_suburb" type="text" class="form-control required">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="userName" class="control-label">Res. Address </label>
+                                                    <textarea rows="5" name="kin_address" id="kin_address" style="width: 100%" ></textarea>
+
+                                                </div>
+
                                                 <div class="form-group">
                                                     <label  class="control-label">Postal Address </label>
                                                     <input  name="kin_postal" id="kin_postal" type="text" class="form-control required">
@@ -438,22 +451,14 @@
                                             <div class="col-sm-12 col-md-6 col-lg-6">
 
                                                 <div class="form-group">
-                                                    <label  class="control-label">BSB*</label>
-                                                    <input  name="BSB" id="BSB" type="text" class="form-control required">
+                                                    <label  class="control-label">SNNIT</label>
+                                                    <input  name="SNNIT" type="text" class="form-control required">
                                                 </div>
                                                 <div class="form-group">
                                                     <label  class="control-label">Name of Superannutation fund</label>
                                                     <input  name="superannutation_fund" id="superannutation_fund" type="text" class="form-control required">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label  class="control-label">Start Date  *</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-fw ti-calendar"></i>
-                                                        </div>
-                                                        <input type="text" class="form-control pull-right" name="startdate" data-language='en' id="startdate" />
-                                                    </div> 
-                                                </div>
+
 
                                                 <div class="form-group">
                                                     <label  class="control-label">Tax Identification Number</label>

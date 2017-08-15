@@ -17,7 +17,8 @@ use App\Instituition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\StaffView;
-
+use App\StaffEmploymentView;
+use App\StaffAcademicView;
 class StaffController extends Controller {
 
     public function showstaff() {
@@ -62,69 +63,79 @@ class StaffController extends Controller {
         $data = $request->all();
         $response = array();
         $new = new Staff();
+        $email_existence = $this->checkEmailExistence($data['email']);
+        if ($email_existence == '0') {
+            $new->code = $this->generateuniqueCode(8);
+            $new->instituition_code = $data['institute_code'];
+            $new->staff_no = 'STF' . $this->generateuniqueCode(8);
 
-        $new->code = $this->generateuniqueCode(8);
-        $new->instituition_code = $data['institute_code'];
-        $new->staff_no = $data['staffno'];
-        $new->firstname = $data['firstname'];
-        $new->middlename = $data['middlename'];
-        $new->surname = $data['lastname'];
-        $new->gender = $data['gender'];
-        $new->dob = $data['dateofbirth'];
-        $new->place_of_birth = $data['placeofbirth'];
-        $new->region = $data['region'];
-        $new->nationality = $data['nationality'];
-        $new->address = $data['address'];
-        $new->suburb = $data['suburb'];
-        $new->postcode = $data['postal_address'];
-        $new->contact_no = $data['contactno'];
-        $new->email_address = $data['email'];
-        $new->marital_status = $data['marital_status'];
-        $new->identification_number = $data['identification_number'];
-        $new->identification_type = $data['identification_type'];
-        $new->next_of_kin = $data['nextofkin'];
-        $new->relationship = $data['kin_relationship'];
-        $new->kin_address = $data['kin_address'];
-        $new->kin_email = $data['kin_email'];
-        $new->kin_contactno = $data['kin_contactno'];
-        $new->kin_postcode = $data['kin_postal'];
-        $new->current_appointment_date = $data['appointment_date'];
-        $new->years = $data['numberofyears'];
-        $new->area_of_expertise = $data['areaofexpertise'];
-        $new->highest_qualification = $data['highest_qualification'];
-        $new->department = $data['department'];
-        $new->createdby = Session::get('id');
+            $new->firstname = $data['firstname'];
+            $new->middlename = $data['middlename'];
+            $new->surname = $data['lastname'];
+            $new->gender = $data['gender'];
+            $new->dob = $data['dateofbirth'];
+            $new->place_of_birth = $data['placeofbirth'];
+            $new->region = $data['region'];
+            $new->nationality = $data['nationality'];
+            $new->address = $data['address'];
+            $new->suburb = $data['suburb'];
+            $new->postcode = $data['postal_address'];
+            $new->contact_no = $data['contactno'];
+            $new->email_address = $data['email'];
+            $new->marital_status = $data['marital_status'];
+            $new->identification_number = $data['identification_number'];
+            $new->identification_type = $data['identification_type'];
+            $new->next_of_kin = $data['nextofkin'];
+            $new->relationship = $data['kin_relationship'];
+            $new->kin_address = $data['kin_address'];
+            $new->kin_email = $data['kin_email'];
+            $new->kin_contactno = $data['kin_contactno'];
+            $new->kin_postcode = $data['kin_postal'];
+            $new->years = $data['numberofyears'];
+            $new->area_of_expertise = $data['areaofexpertise'];
+            $new->highest_qualification = $data['highest_qualification'];
+            $new->department = $data['department'];
+            $new->createdby = Session::get('id');
 
-        $saved = $new->save();
-        $code = $new->code;
-        if (!$saved) {
-            $response['success'] = '1';
-            $response['message'] = 'Couldnt save';
-            return json_encode($response);
-        } else {
-            $this->saveStaffAcademicDetails($data);
-            $this->saveStaffBankDetails($data);
-            $this->saveStaffEmploymentDetails($data);
-
-            if ($data['stafftype'] == "principalinfo") {
-                $this->setInstituitionPrincipal($data['institute_code'], $data['staffno']);
-
-                $response['type'] = 'principal';
+            $saved = $new->save();
+            $code = $new->code;
+            $staffno = $new->staff_no;
+            if (!$saved) {
+                $response['success'] = '1';
+                $response['message'] = 'Couldnt save';
+                return json_encode($response);
             } else {
-                $response['type'] = 'staff';
-            }
-            $this->saveUsers($code, $data, $response['type']);
-            $response['success'] = '0';
+                $this->saveStaffAcademicDetails($staffno, $data);
+                $this->saveStaffBankDetails($staffno, $data);
+                $this->saveStaffEmploymentDetails($staffno, $data);
 
+                if ($data['stafftype'] == "principalinfo") {
+                    $this->setInstituitionPrincipal($data['institute_code'], $staffno);
+
+                    $response['type'] = 'principal';
+                } else {
+                    $response['type'] = 'staff';
+                }
+                $this->saveUsers($code, $data, $response['type']);
+                $response['success'] = '0';
+
+                return json_encode($response);
+            }
+        }
+
+
+        if ($email_existence == "1") {
+            $response['success'] = '1';
+            $response['message'] = 'Email already exists';
             return json_encode($response);
         }
     }
 
-    private function saveStaffAcademicDetails($data) {
+    private function saveStaffAcademicDetails($staffno, $data) {
 
 
         $new = new StaffAcademic();
-        $new->staff_no = $data['staffno'];
+        $new->staff_no = $staffno;
         $new->instituition_code = $data['institute_code'];
         $new->program = $data['programofstudy'];
         $new->completion_year = $data['completion_year'];
@@ -141,17 +152,18 @@ class StaffController extends Controller {
         }
     }
 
-    private function saveStaffBankDetails($data) {
+    private function saveStaffBankDetails($staffno, $data) {
 
 
         $new = new StaffBank();
-        $new->staff_no = $data['staffno'];
+        $new->staff_no = $staffno;
         $new->instituition_code = $data['institute_code'];
         $new->bank = $data['bank_name'];
         $new->account_name = $data['account_name'];
         $new->account_number = $data['account_number'];
         $new->branch = $data['branch'];
         $new->tin = $data['tin'];
+        $new->ssniit = $data['SNNIT'];
         $saved = $new->save();
         if (!$saved) {
             return '1';
@@ -161,19 +173,19 @@ class StaffController extends Controller {
         }
     }
 
-    private function saveStaffEmploymentDetails($data) {
+    private function saveStaffEmploymentDetails($staffno, $data) {
 
         $new = new StaffEmployment();
-        $new->staff_no = $data['staffno'];
+
+        $new->staff_no = $staffno;
         $new->instituition_code = $data['institute_code'];
         $new->start_date = $data['startdate'];
-        $new->end_date = $data['enddate'];
+        $new->current_appointment_date = $data['enddate'];
         $new->qualification = $data['qualification'];
         $new->grade = $data['grade'];
         $new->employment_type = $data['employment_type'];
-        $new->staff_class = $data['staff_class'];
         $new->staffid = $data['staffid'];
-
+     
         $saved = $new->save();
         if (!$saved) {
             return '1';
@@ -251,13 +263,13 @@ class StaffController extends Controller {
 
     public function getStaffAcademicDetails($staff_no) {
 
-        return StaffAcademic::where('staff_no', $staff_no)
+        return StaffAcademicView::where('staff_no', $staff_no)
                         ->get();
     }
 
     public function getStaffEmploymentDetails($staff_no) {
 
-        return StaffEmployment::where('staff_no', $staff_no)
+        return StaffEmploymentView::where('staff_no', $staff_no)
                         ->get();
     }
 
@@ -288,9 +300,17 @@ class StaffController extends Controller {
 
         $new = Staff::where('code', $data['code'])
                 ->first();
+        // $email_existence = $this->checkEmailExistence($data['email']);
+
 
         if (!empty($data['institute_code'])) {
             $new->instituition_code = $data['institute_code'];
+        }
+        if (!empty($data['region'])) {
+            $new->region = $data['region'];
+        }
+        if (!empty($data['department'])) {
+            $new->department = $data['department'];
         }
 
         $new->staff_no = $data['staffno'];
@@ -300,11 +320,6 @@ class StaffController extends Controller {
         $new->gender = $data['gender'];
         $new->dob = $data['dateofbirth'];
         $new->place_of_birth = $data['placeofbirth'];
-        if (!empty($data['region'])) {
-            $new->region = $data['region'];
-        }
-
-
         $new->nationality = $data['nationality'];
         $new->address = $data['address'];
         $new->suburb = $data['suburb'];
@@ -320,19 +335,13 @@ class StaffController extends Controller {
         $new->kin_email = $data['kin_email'];
         $new->kin_contactno = $data['kin_contactno'];
         $new->kin_postcode = $data['kin_postal'];
-        $new->current_appointment_date = $data['appointment_date'];
         $new->years = $data['numberofyears'];
         $new->area_of_expertise = $data['areaofexpertise'];
         $new->highest_qualification = $data['highest_qualification'];
-        if (!empty($data['department'])) {
-            $new->department = $data['department'];
-        }
-
-
         $new->createdby = Session::get('id');
 
         $saved = $new->save();
-        $code = $new->code;
+
         if (!$saved) {
             return '1';
         } else {
@@ -352,11 +361,12 @@ class StaffController extends Controller {
         if (!empty($data['institute_code'])) {
             $new->instituition_code = $data['institute_code'];
         }
-
+        if (!empty($data['professional_body'])) {
+            $new->professional_body = $data['professional_body'];
+        }
         $new->program = $data['programofstudy'];
         $new->completion_year = $data['completion_year'];
         $new->certificate_type = $data['certificate_type'];
-        $new->professional_body = $data['professional_body'];
         $new->professional_id = $data['professional_id'];
         $new->last_institution_completed = $data['last_institution_completed'];
 
@@ -382,6 +392,7 @@ class StaffController extends Controller {
         $new->account_number = $data['account_number'];
         $new->branch = $data['branch'];
         $new->tin = $data['tin'];
+         $new->ssniit = $data['snnitno'];
         $saved = $new->save();
         if (!$saved) {
             return '1';
@@ -398,13 +409,17 @@ class StaffController extends Controller {
         if (!empty($data['institute_code'])) {
             $new->instituition_code = $data['institute_code'];
         }
+        if (!empty($data['gradetype'])) {
+            $new->grade = $data['gradetype'];
+        }
+        if (!empty($data['current_grade'])) {
+            $new->current_grade = $data['current_grade'];
+        }
 
         $new->start_date = $data['startdate'];
-        $new->end_date = $data['enddate'];
+        $new->current_appointment_date = $data['enddate'];
         $new->qualification = $data['qualification'];
-        $new->grade = $data['grade'];
         $new->employment_type = $data['employment_type'];
-        $new->staff_class = $data['staff_class'];
         $new->staffid = $data['staffid'];
 
         $saved = $new->save();
@@ -416,14 +431,15 @@ class StaffController extends Controller {
     }
 
     public function checkEmailExistence($email) {
-        $check = Users::where('email', $email)
-                ->first();
 
-        $user = Users::where('email', '=', Input::get('email'))->get();
-        if (count($user) > 0) {
-            echo "There is data";
-        } else
-            echo "No data";
+        $check = Users::where('email', '=', $email)->count();
+        if ($check == 0) {
+            //it doesnt exist 
+            return '0';
+        } else {
+            //its exists
+            return '1';
+        }
     }
 
 }

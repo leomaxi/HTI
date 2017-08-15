@@ -27,7 +27,7 @@ $(document).ready(function () {
     });
 
 
-    
+
     $.ajax({
         url: '../configurations/getinstitutions',
         type: "GET",
@@ -77,7 +77,7 @@ $(document).ready(function () {
 
             $.each(data, function (i, item) {
 
-                $('#grade').append($('<option>', {
+                $('.grade').append($('<option>', {
                     value: item.code,
                     text: item.name
                 }));
@@ -85,7 +85,26 @@ $(document).ready(function () {
 
         }
     });
+    
+//professional_body
 
+$.ajax({
+        url: '../configurations/getprofessionalbodies',
+        type: "GET",
+        dataType: 'json',
+        success: function (data) {
+
+
+            $.each(data, function (i, item) {
+
+                $('#professional_body').append($('<option>', {
+                    value: item.code,
+                    text: item.name
+                }));
+            });
+
+        }
+    });
 
     $('#dateofbirth').datepicker({
         dateFormat: 'dd-mm-yyyy'
@@ -119,78 +138,79 @@ $(document).ready(function () {
                 },
                 required: true,
                 minlength: 3
+            },
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: 'The email address is required'
+                    },
+                    regexp: {
+                        regexp: /^\S+@\S{1,}\.\S{1,}$/,
+                        message: 'Please enter valid email format'
+                    }
+                }
+            },
+            lastname: {
+                validators: {
+                    notEmpty: {
+                        message: 'lastname is required '
+                    }
+                }
+            },
+            nationality: {
+                validators: {
+                    notEmpty: {
+                        message: 'nationality is required '
+                    }
+                }
+            }, highest_qualification: {
+                validators: {
+                    notEmpty: {
+                        message: 'highest_qualification is required '
+                    }
+                }
+            }, qualification: {
+                validators: {
+                    notEmpty: {
+                        message: 'qualification is required '
+                    }
+                }
+            },
+            department: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please select your department.'
+                    }
+                }
+            },
+            institute_code: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please select your institution.'
+                    }
+                }
+            },
+            gender: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please select your gender.'
+                    }
+                }
+            },
+            grade: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please select your grade.'
+                    }
+                }
+            },
+            current_grade: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please select your current grade.'
+                    }
+                }
             }
-//            email: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'The email address is required'
-//                    },
-//                    regexp: {
-//                        regexp: /^\S+@\S{1,}\.\S{1,}$/,
-//                        message: 'Please enter valid email format'
-//                    }
-//                }
-//            },
-//            lastname: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'lastname is required '
-//                    }
-//                }
-//            },
-//            nationality: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'nationality is required '
-//                    }
-//                }
-//            }, staffno: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'staffno is required '
-//                    }
-//                }
-//            }, highest_qualification: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'highest_qualification is required '
-//                    }
-//                }
-//            }, qualification: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'qualification is required '
-//                    }
-//               }
-//            },
-//            department: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'Please select your department.'
-//                    }
-//                }
-//            },
-//            gender: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'Please select your gender.'
-//                    }
-//                }
-//            },
-//            grade: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'Please select your grade.'
-//                    }
-//                }
-//            },
-//            acceptTerms: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'The checkbox must be checked'
-//                    }
-//                }
-//            }
         }
     });
 
@@ -251,7 +271,7 @@ $(document).ready(function () {
                     function (result) {
                         console.log('send');
                         var formData = $("#staffForm").serialize();
-
+                        $("#loaderModal").modal('show');
                         console.log('data: ' + formData);
                         console.log('send data to server');
                         $.ajax({
@@ -260,26 +280,13 @@ $(document).ready(function () {
                             data: formData,
                             dataType: "json",
                             success: function (data) {
+                                $("#loaderModal").modal('hide');
                                 console.log(data);
                                 if (data.success == 1) {
                                     swal("Error", data.message, "danger");
 
 
-                                } else if (data.type === "principal") {
-                                    swal({
-                                        title: "Success",
-                                        text: "Principal Information Saved Successfully",
-                                        type: "success",
-                                        showCancelButton: false,
-                                        confirmButtonText: "OK",
-                                        closeOnConfirm: false
-                                    }).then(
-                                    function () {
-                                        window.location = "all";
-                                    });
-
-                                } else {
-                                    console.log('here');
+                                } else if (data.success == 0) {
                                     swal({
                                         title: "Success",
                                         text: "Staff Information Saved Successfully",
@@ -288,14 +295,15 @@ $(document).ready(function () {
                                         confirmButtonText: "OK",
                                         closeOnConfirm: false
                                     }).then(
-                                    function () {
-                                        window.location = "all";
-                                    });
-//                   
+                                            function () {
+                                                window.location = "all";
+                                            });
+
                                 }
                             },
                             error: function (jXHR, textStatus, errorThrown) {
-                                alert(errorThrown);
+                                swal("Error!", "Couldnt save:Contact System Administrator", "error");
+
                             }
                         });
 

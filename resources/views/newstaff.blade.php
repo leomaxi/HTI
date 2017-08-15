@@ -86,13 +86,12 @@
                                         <div class="row">
                                             <div class="col-sm-12 col-md-6 col-lg-6">
                                                 <input  name="institute_code" type="text" hidden  readonly value="{{$instcode}}">
-                                                <input  name="stafftype" type="text" hidden readonly value="principalinfo">
-
+                                                <input  name="stafftype" type="text" hidden readonly value="staff">
                                                 <div class="form-group">
-                                                    <label class="control-label">Instituitions *</label>
+                                                    <label class="control-label">Institutions *</label>
 
                                                     <select id="instituitions" name="institute_code" class="form-control select2" style="width:100%">
-                                                        <option>Choose</option>
+                                                        <option value="">Choose</option>
                                                     </select>
                                                 </div>
 
@@ -137,7 +136,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label  class="control-label">Date Of BIrth  *</label>
+                                                    <label  class="control-label">Date Of BIrth  </label>
                                                     <div class="input-group">
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-fw ti-calendar"></i>
@@ -171,26 +170,26 @@
 
                                             </div>
                                             <div class="col-sm-12 col-md-6 col-lg-6">
+
+
                                                 <div class="form-group">
-                                                    <label  class=control-label">Address *</label>
+                                                    <label for="confirm" class="control-label">Suburb  </label>
+                                                    <input id="suburb" name="suburb" type="text" class="form-control required">
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label  class=control-label">Res. Address </label>
 
                                                     <textarea name="address"rows="5" style="width: 100%" ></textarea>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="confirm" class="control-label">Suburb  *</label>
-                                                    <input id="suburb" name="suburb" type="text" class="form-control required">
-
-                                                </div>
-
-
-                                                <div class="form-group">
-                                                    <label class="control-label">Postal Address *</label>
+                                                    <label class="control-label">Postal Address </label>
                                                     <input id="postal_address" name="postal_address" type="text"
                                                            class="form-control required">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="control-label">Contact No *</label>
+                                                    <label class="control-label">Contact No </label>
                                                     <input id="contactno" name="contactno" 
                                                            type="text" class="form-control required ">
                                                 </div>
@@ -236,13 +235,18 @@
 
                                                 </div>
 
+
+
+
+
+
+
                                             </div>
 
 
                                         </div>
 
                                     </div>
-
                                     <div class="tab-pane" id="tab2">
                                         <h2 class="hidden">&nbsp;</h2>
 
@@ -267,9 +271,15 @@
                                                     <label  class="control-label">Certificate Type </label>
                                                     <input  name="certificate_type" id="certificate_type" type="text" class="form-control ">
                                                 </div>
+
+
                                                 <div class="form-group">
                                                     <label  class="control-label">Professional Body </label>
-                                                    <input  name="professional_body" id="professional_body" type="text" class="form-control ">
+
+                                                    <select  id="professional_body" name="professional_body" class="form-control select2" style="width:100%">
+                                                        <option value="">Select value...</option>
+
+                                                    </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Professional Id </label>
@@ -380,14 +390,16 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="userName" class="control-label">Address </label>
-                                                    <textarea rows="5" name="kin_address" id="kin_address" style="width: 100%" ></textarea>
-
-                                                </div>
-                                                <div class="form-group">
                                                     <label  class="control-label">Suburb </label>
                                                     <input  name="kin_suburb" id="kin_suburb" type="text" class="form-control required">
                                                 </div>
+
+                                                <div class="form-group">
+                                                    <label for="userName" class="control-label">Res. Address </label>
+                                                    <textarea rows="5" name="kin_address" id="kin_address" style="width: 100%" ></textarea>
+
+                                                </div>
+
 
                                             </div>
                                             <div class="col-sm-12 col-md-6 col-lg-6">

@@ -25,10 +25,10 @@
     </section>
     <!--section ends-->
     <section class="content">
-        <!--        {{$staffinfo}}
-                {{$employmentinfo}}
-                {{$academicinfo}}
-                {{$bankinfo}}-->
+<!--        {{$staffinfo}}
+        {{$employmentinfo}}
+        {{$academicinfo}}
+        {{$bankinfo}}-->
 
         <div class="row">
             <div class="col-lg-12">
@@ -102,6 +102,21 @@
                                             </div>
 
                                             <div class="form-group">
+                                                <label  class=control-label">Marital Status </label>
+
+                                                <select id="marital_status" name="marital_status" class="form-control select2" style="width:100%">
+                                                    <option value="" <?php if ($staffinfo[0]['marital_status'] == "") echo 'selected="selected"'; ?>>Select value...</option>
+
+                                                    <option value="single" <?php if ($staffinfo[0]['marital_status'] == "single") echo 'selected="selected"'; ?>>Single</option>
+                                                    <option value="married" <?php if ($staffinfo[0]['marital_status'] == "married") echo 'selected="selected"'; ?>>Married</option>
+                                                    <option value="divorced" <?php if ($staffinfo[0]['marital_status'] == "divorced") echo 'selected="selected"'; ?>>Divorced</option>
+                                                    <option value="widow" <?php if ($staffinfo[0]['marital_status'] == "widow") echo 'selected="selected"'; ?>>Widow</option>
+                                                    <option value="widower" <?php if ($staffinfo[0]['marital_status'] == "widower") echo 'selected="selected"'; ?>>Widower</option>
+
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
                                                 <label  class="control-label">Date Of BIrth  *</label>
                                                 <div class="input-group">
                                                     <div class="input-group-addon">
@@ -134,56 +149,17 @@
                                                 <input id="nationality" name="nationality" value="{{$staffinfo[0]['nationality']}}" type="text" class="form-control required">
                                             </div>   
 
-                                            <div class="form-group">
-                                                <label  class=control-label">Address *</label>
 
-                                                <textarea name="address"rows="5"   style="width: 100%" >
-                                                {{$staffinfo[0]['address']}}
-                                                </textarea>
-                                            </div>
 
-                                            <div class="form-group">
-                                                <label for="confirm" class="control-label">Suburb  *</label>
-                                                <input id="suburb" name="suburb" value="{{$staffinfo[0]['suburb']}}" type="text" class="form-control required">
 
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label  class=control-label">Marital Status </label>
-
-                                                <select id="marital_status" name="marital_status" class="form-control select2" style="width:100%">
-                                                    <option value="" <?php if ($staffinfo[0]['marital_status'] == "") echo 'selected="selected"'; ?>>Select value...</option>
-
-                                                    <option value="single" <?php if ($staffinfo[0]['marital_status'] == "single") echo 'selected="selected"'; ?>>Single</option>
-                                                    <option value="married" <?php if ($staffinfo[0]['marital_status'] == "married") echo 'selected="selected"'; ?>>Married</option>
-                                                    <option value="divorced" <?php if ($staffinfo[0]['marital_status'] == "divorced") echo 'selected="selected"'; ?>>Divorced</option>
-                                                    <option value="widow" <?php if ($staffinfo[0]['marital_status'] == "widow") echo 'selected="selected"'; ?>>Widow</option>
-                                                    <option value="widower" <?php if ($staffinfo[0]['marital_status'] == "widower") echo 'selected="selected"'; ?>>Widower</option>
-
-                                                </select>
-                                            </div>
                                             <div class="form-group">
                                                 <label class="control-label">Staff No *</label>
                                                 <input id="staffno" name="staffno" disabled value="{{$staffinfo[0]['staff_no']}}"  type="text"
                                                        class="form-control required">
                                             </div>
+
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6">
-                                            <div class="form-group">
-                                                <label class="control-label">Postal Address *</label>
-                                                <input id="postal_address" name="postal_address" value="{{$staffinfo[0]['postcode']}}"  type="text"
-                                                       class="form-control required">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label">Contact No *</label>
-                                                <input id="contactno" name="contactno" value="{{$staffinfo[0]['contact_no']}}"
-                                                       type="text" class="form-control required ">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="password" class="control-label">Email Address *</label>
-                                                <input id="email" name="email" value="{{$staffinfo[0]['email_address']}}" type="email"
-                                                       class="form-control required email">
-                                            </div>
 
                                             <div class="form-group">
                                                 <label for="confirm" class="control-label">Identification Type  </label>
@@ -201,7 +177,40 @@
                                                 <label for="confirm" class="control-label">Identification Number  </label>
                                                 <input id="identification_number" value="{{$staffinfo[0]['identification_number']}}" name="identification_number" 
                                                        type="text" class="form-control required ">
-                                            </div>        
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="confirm" class="control-label">Suburb  *</label>
+                                                <input id="suburb" name="suburb" value="{{$staffinfo[0]['suburb']}}" type="text" class="form-control required">
+
+                                            </div>
+                                            <div class="form-group">
+
+                                                <label  class=control-label">Res. Address *</label>
+
+                                                <textarea name="address"rows="5"   style="width: 100%" >
+                                                {{$staffinfo[0]['address']}}
+                                                </textarea>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label class="control-label">Postal Address *</label>
+                                                <input id="postal_address" name="postal_address" value="{{$staffinfo[0]['postcode']}}"  type="text"
+                                                       class="form-control required">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Contact No *</label>
+                                                <input id="contactno" name="contactno" value="{{$staffinfo[0]['contact_no']}}"
+                                                       type="text" class="form-control required ">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password" class="control-label">Email Address *</label>
+                                                <input id="email" name="email" value="{{$staffinfo[0]['email_address']}}" type="email"
+                                                       class="form-control required email">
+                                            </div>
+
+
 
 
 
@@ -212,25 +221,6 @@
                                             </div>   
 
 
-
-                                            <div class="form-group">
-                                                <label for="confirm" class="control-label">Current Appointment Date  *</label>
-                                                <div class="input-group">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-fw ti-calendar"></i>
-                                                    </div>
-                                                    <input type="text" class="form-control pull-right" value="{{$staffinfo[0]['current_appointment_date']}}" name="appointment_date" data-language='en' id="appointment_date" />
-                                                </div> 
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <label for="confirm" class="control-label">Number Of Years  </label>
-                                                <input id="numberofyears" value="{{$staffinfo[0]['years']}}" name="numberofyears" 
-                                                       type="number" class="form-control  ">
-                                            </div>
-
-
                                             <div class="form-group">
                                                 <label for="confirm" class="control-label">Area of Expertise  </label>
                                                 <textarea rows="5"  name="areaofexpertise" id="areaofexpertise" style="width: 100%" >
@@ -238,22 +228,6 @@
                                                 </textarea>
 
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label">Department Name</label>
-                                                <input readonly  name="department_name" value="{{$staffinfo[0]['department_name']}}" type="text" class="form-control required">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword" class=control-label">New Department *</label>
-
-                                                <select id="department" name="department" class="form-control select2" style="width:100%">
-                                                    <option value="">Select value...</option>
-
-                                                </select>
-                                            </div>
-
-
-
-
 
                                         </div>
 
@@ -284,7 +258,17 @@
                                             </div>
                                             <div class="form-group">
                                                 <label  class="control-label">Professional Body </label>
-                                                <input  name="professional_body"  value="{{$academicinfo[0]['professional_body']}}" id="professional_body" type="text" class="form-control ">
+                                                <input readonly   value="{{$academicinfo[0]['professional_body_name']}}"  type="text" class="form-control ">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label  class="control-label">New Professional Body </label>
+
+                                                <select  id="professional_body" name="professional_body" class="form-control select2" style="width:100%">
+                                                    <option value="">Select value...</option>
+
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label">Professional Id </label>
@@ -298,7 +282,7 @@
                                     <div class="row">
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label  class="control-label">Start Date *</label>
+                                                <label  class="control-label">1st Appointment Date *</label>
                                                 <div class="input-group">
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-fw ti-calendar"></i>
@@ -307,32 +291,50 @@
                                                 </div> 
                                             </div>
                                             <div class="form-group">
-                                                <label for="userName" class="control-label">End Date</label>
+                                                <label for="userName" class="control-label">Current Appointment Date</label>
                                                 <div class="input-group">
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-fw ti-calendar"></i>
                                                     </div>
-                                                    <input type="text" class="form-control pull-right" value="{{$employmentinfo[0]['end_date']}}" name="enddate" data-language='en' id="enddate" />
+                                                    <input type="text" class="form-control pull-right" value="{{$employmentinfo[0]['current_appointment_date']}}" name="enddate" data-language='en' id="enddate" />
                                                 </div> 
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label">Qualification *</label>
+                                                <label class="control-label">Entry Qualification *</label>
                                                 <input  name="qualification" id="qualification" value="{{$employmentinfo[0]['qualification']}}" type="text" class="form-control required">
                                             </div>
                                             <div class="form-group">
-                                                <label  class="control-label">Staff Class *</label>
-                                                <input  name="staff_class" type="text" value="{{$employmentinfo[0]['staff_class']}}" id="staff_class" class="form-control required">
+                                                <label  class="control-label">Entry Grade</label>
+                                                <input  readonly  value="{{$employmentinfo[0]['grade_name']}}" type="text" class="form-control required">
                                             </div>
+                                            <div class="form-group">
+                                                <label for="userName" class="control-label">New Entry Grade *</label>
+
+                                                <select  name="gradetype" class="grade form-control select2" style="width:100%">
+                                                    <option value="" selected>Select value...</option>
+
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="confirm" class="control-label">No. of Years of Active Sevice </label>
+                                                <input id="numberofyears" value="{{$staffinfo[0]['years']}}" name="numberofyears" 
+                                                       type="number" class="form-control  ">
+                                            </div>
+
+
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label  class="control-label">Grade Type</label>
-                                                <input  name="gradetype" readonly  value="{{$employmentinfo[0]['gradetype']}}" type="text" class="form-control required">
+                                                <label  class="control-label">Current Grade</label>
+                                                <input   readonly  value="{{$employmentinfo[0]['current_grade_name']}}" type="text" class=" form-control required">
                                             </div>
                                             <div class="form-group">
-                                                <label for="userName" class="control-label">New Grade </label>
+                                                <label for="userName" class="control-label">
+                                                    New  Current Grade
+                                                </label>
 
-                                                <select id="grade" name="grade" class="form-control select2" style="width:100%">
+                                                <select  name="current_grade" class="grade form-control select2" style="width:100%">
                                                     <option value="" selected>Select value...</option>
 
                                                 </select>
@@ -344,6 +346,18 @@
                                             <div class="form-group">
                                                 <label class="control-label">Employment Type </label>
                                                 <input  name="employment_type" value="{{$employmentinfo[0]['employment_type']}}" id="employment_type" type="text" class="form-control ">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Department Name</label>
+                                                <input readonly  name="department_name" value="{{$staffinfo[0]['department_name']}}" type="text" class="form-control required">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword" class=control-label">New Department *</label>
+
+                                                <select id="department" name="department" class="form-control select2" style="width:100%">
+                                                    <option value="">Select value...</option>
+
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -431,7 +445,10 @@
                                                 <label  class="control-label">Tin*</label>
                                                 <input  name="tin" id="tin" type="text" value="{{$bankinfo[0]['tin']}}" class="form-control required">
                                             </div>
-
+                                            <div class="form-group">
+                                                <label  class="control-label">SNNIT No.*</label>
+                                                <input  name="snnitno" id="snnitno" value="{{$bankinfo[0]['ssniit']}}" type="text" class="form-control required">
+                                            </div>
                                         </div>
                                     </div>
 

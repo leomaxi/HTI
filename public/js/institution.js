@@ -131,22 +131,26 @@ $('#institutionForm').on('submit', function (e) {
 
             var successStatus = data.success;
             console.log(successStatus);
-            document.getElementById("institutionForm").reset();
-
-            $('#district').select2("destroy");
-            $('#district').empty();
-            $('#district').select2();
-            $('#district').append('<option value = ""> Loading... </option>');
-
-            $('#region').select2("destroy");
-            $('#region').select2();
-
-            $('#institution_types').select2("destroy");
-            $('#institution_types').select2();
 
             if (data == "error") {
                 swal("Error!", "Couldnt Save", "error");
+            } else if (data == "exists") {
+                swal("Error!", "Couldnt save:Instituition code already exist", "error");
+
             } else {
+                document.getElementById("institutionForm").reset();
+
+                $('#district').select2("destroy");
+                $('#district').empty();
+                $('#district').select2();
+                $('#district').append('<option value = ""> Loading... </option>');
+
+                $('#region').select2("destroy");
+                $('#region').select2();
+
+                $('#institution_types').select2("destroy");
+                $('#institution_types').select2();
+
                 swal({
                     title: "Success",
                     text: "Institution Information Saved.Click continue to add principal Information?",
@@ -162,8 +166,9 @@ $('#institutionForm').on('submit', function (e) {
 
         },
         error: function (jXHR, textStatus, errorThrown) {
+            $('input:submit').attr("disabled", false);
             $("#loaderModal").modal('hide');
-            swal("Error!", "Couldnt save:Instituition code already exist", "error");
+            swal("Error!", "Couldnt save:Contact System Administrator", "error");
 
         }
     });
