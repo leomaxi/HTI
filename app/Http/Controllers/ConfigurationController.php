@@ -22,6 +22,8 @@ use App\InstitutionTypes;
 use App\GradeTypes;
 use App\InstitutionView;
 use App\InstituitionInstituteTypes;
+use App\ProfessionalBodies;
+use App\InstituitionProfessionalBodies;
 use GuzzleHttp;
 use Illuminate\Database\Eloquent;
 
@@ -61,6 +63,10 @@ class ConfigurationController extends Controller {
 
         // echo 'goood';
         return view('institutiontypes');
+    }
+
+    public function showProfessionalbodies() {
+        return view('professionalbodies');
     }
 
     public function getDistricts() {
@@ -347,6 +353,7 @@ class ConfigurationController extends Controller {
             return 'error';
         } else {
             $this->saveInstituteInstitutionTypes($data['code'], $data['institution_types']);
+            $this->saveInstituteProfessionalBodies($data['code'], $data['professional_bodies']);
             return $data['code'];
         }
 
@@ -367,6 +374,18 @@ class ConfigurationController extends Controller {
         InstituitionInstituteTypes::insert($data); // Eloquent
     }
 
+    public function saveInstituteProfessionalBodies($instcode, $professionalbodies) {
+
+        $data = [];
+        foreach ($professionalbodies as $item) {
+            $data[] = array(
+                'insitution_code' => $instcode,
+                'professionalbody_code' => $item
+            );
+        }
+
+        InstituitionProfessionalBodies::insert($data); // Eloquent
+    }
     public function deleteInstituition($id) {
 
 
@@ -408,6 +427,60 @@ class ConfigurationController extends Controller {
 
 
         return InstituitionInstituteTypes::where('insitution_code', $id)->pluck('insitute_type_code')->toArray();
+    }
+
+    public function getProfessionalBodies() {
+
+        return ProfessionalBodies::where('active', 0)
+                        ->get();
+    }
+
+    public function saveProfessionalBody(Request $request) {
+
+        $data = $request->all();
+       
+        
+        $new = new ProfessionalBodies();
+        $new->code = $this->generateuniqueCode(8);
+        $new->name = $data['professional_body'];
+        $saved = $new->save();
+        if (!$saved) {
+            return '1';
+        } else {
+            return '0';
+        }
+    }
+    
+    public function updateProfessionalBody(Request $request) {
+        
+         $data = $request->all();
+       
+           $id = $data['code'];
+        $update = ProfessionalBodies::find($id);
+        $update->name = $data['name'];
+        $saved = $update->save();
+        if (!$saved) {
+            return '1';
+        } else {
+            return '0';
+        }
+    }
+    
+    public function deleteProfessionalBody($id) {
+         $delete = ProfessionalBodies::find($id);
+        $delete->active = '1';
+        $saved = $delete->save();
+        if (!$saved) {
+            return '1';
+        } else {
+            return '0';
+        }
+    }
+    
+    public function getInstituitionProfessionalBodies($id) {
+
+
+        return InstituitionProfessionalBodies::where('insitution_code', $id)->pluck('professionalbody_code')->toArray();
     }
 
 }

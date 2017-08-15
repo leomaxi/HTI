@@ -103,7 +103,7 @@ $permissions = Session::get('permissions');
                                 </li>
                                 <?php
                             }
-                               if (in_array("VIEW_PROFESSIONAL_BODY", $permissions)) {
+                               if (in_array("VIEW_PROFESSIONAL_BODIES", $permissions)) {
                                 ?>
                                 <li class="{{ Request::is('configurations/professionalbodies') ? 'active' : '' }}">
                                     <a href="{{ url('configurations/professionalbodies') }}">

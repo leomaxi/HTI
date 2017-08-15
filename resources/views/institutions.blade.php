@@ -107,13 +107,13 @@
                         </div>
                         <!-- /.input group -->
                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
                         <label  class="col-sm-3 control-label">Principal Name</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" readonly name="principal_name" id="principal_names" >
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">New Principal</label>
                         <div class="col-sm-9">
@@ -126,6 +126,17 @@
                         <label  class="col-sm-3 control-label">Institution Types</label>
                         <div class="col-sm-9">
                             <select name="institution_types[]" id="institution_types"  class="form-control multselect select2" multiple style="width: 100%" required>
+
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">Professional Bodies</label>
+                        <div class="col-sm-10">
+                            <select name="professional_bodies[]" id="professional_bodies"  class="form-control multselect select2" multiple style="width: 100%" required>
+                                <option value="">Select value...</option>
+
 
 
                             </select>

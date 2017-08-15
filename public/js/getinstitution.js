@@ -52,6 +52,24 @@ $.ajax({
 });
 
 $.ajax({
+    url: 'getprofessionalbodies',
+    type: "GET",
+    dataType: 'json',
+    success: function (data) {
+
+
+        $.each(data, function (i, item) {
+
+            $('#professional_bodies').append($('<option>', {
+                value: item.code,
+                text: item.name
+            }));
+        });
+
+    }
+});
+
+$.ajax({
     url: 'getdistricts',
     type: "GET",
     dataType: 'json',
@@ -194,7 +212,7 @@ function editInstitution(code) {
             $('#code').val(data.code);
             $('#institution_name').val(data.name);
             $('#establishment_date').val(data.date_of_establishment);
-             $('#principal_names').val(data.principal_name);
+            $('#principal_names').val(data.principal_name);
             $('#region').val(data.region).attr("selected", "selected");
             //$('#region').val(data.region).trigger('change');
 
@@ -203,9 +221,10 @@ function editInstitution(code) {
             $('#latitude').val(data.latitude);
             $('#district').val(data.district).attr("selected", "selected");
             getInstituteTypes(data.code);
+            getInstituteProfessionalBodies(data.code);
             console.log('staff');
             getInstitutionStaff(data.code);
-           
+
 
             $('#editModal').modal('show');
         },
@@ -224,7 +243,23 @@ function getInstituteTypes(code) {
         success: function (data) {
             console.log('data : ' + data);
             $("#institution_types").val(data);
-            var $multiSelect = $(".select2").select2();
+            var $multiSelect = $("#institution_types").select2();
+            $multiSelect.val(data).trigger("change");
+
+
+        }
+    });
+}
+
+function getInstituteProfessionalBodies(code) {
+
+    $.ajax({
+        url: 'getinstitutionprofessionalbodies/' + code,
+        type: "GET",
+        success: function (data) {
+            console.log('professional data : ' + data);
+            $("#professional_bodies").val(data);
+            var $multiSelect = $("#professional_bodies").select2();
             $multiSelect.val(data).trigger("change");
 
 
@@ -297,7 +332,7 @@ $('#updateinstitutionForm').on('submit', function (e) {
             $('#editModal').modal('hide');
             var successStatus = data.success;
             console.log(successStatus);
-           
+
 
             if (data == 1) {
                 swal("Error!", "Couldnt Update Instituitions", "error");

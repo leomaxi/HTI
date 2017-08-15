@@ -23,6 +23,7 @@ Route::get('configurations/regiondistricts', 'ConfigurationController@showRegion
 Route::get('configurations/departments', 'ConfigurationController@showdepartments');
 Route::get('configurations/gradetypes', 'ConfigurationController@showGradeTypes');
 Route::get('configurations/programs', 'ConfigurationController@showInstitutionTypes');
+Route::get('configurations/professionalbodies', 'ConfigurationController@showProfessionalbodies');
 Route::get('staff/new/{code}', 'StaffController@showprincipal');
 Route::get('staff/new', 'StaffController@showstaff');
 Route::get('staff/all', 'StaffController@showallstaff');
@@ -96,6 +97,14 @@ Route::get('students/getstudents', 'StudentController@getStudent');
 Route::get('students/getstudents/{studentcode}', 'StudentController@showstudentdetails');
 Route::put('students/updatestudentinfo', 'StudentController@updateStudentInfo');
 Route::delete('students/deletestudent/{id}', 'StudentController@deleteStudent');
+Route::get('configurations/getprofessionalbodies', 'ConfigurationController@getProfessionalBodies');
+Route::post('configurations/saveprofessionalbody', 'ConfigurationController@saveProfessionalBody');
+Route::put('configurations/professionalbody', 'ConfigurationController@updateProfessionalBody');
+Route::delete('configurations/deleteprofessionalbody/{id}', 'ConfigurationController@deleteProfessionalBody');
+Route::get('configurations/getinstitutionprofessionalbodies/{id}', 'ConfigurationController@getInstituitionProfessionalBodies');
+
+
+//professionalbody
 //Route::post('staff/updatestaffinformation',function () {
 //
 //    return App\Department::where('active', 0)

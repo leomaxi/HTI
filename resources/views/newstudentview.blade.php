@@ -35,7 +35,7 @@
                     </div>
                     <div class="panel-body">
                         <form id="studentForm" method="post" action="#">
-                             <input type="hidden" class="form-control form-control-lg input-lg"  name="_token" value="<?php echo csrf_token() ?>" />
+                            <input type="hidden" class="form-control form-control-lg input-lg"  name="_token" value="<?php echo csrf_token() ?>" />
 
                             <div id="rootwizard">
                                 <ul>
@@ -143,6 +143,15 @@
                                                     <label for="inputPassword" class=control-label">Region </label>
 
                                                     <select  id="region" name="region" class="form-control select2" style="width:100%">
+                                                        <option value="">Select value...</option>
+
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="inputPassword" class=control-label">Districts </label>
+
+                                                    <select  id="district" name="district" class="form-control select2" style="width:100%">
                                                         <option value="">Select value...</option>
 
                                                     </select>

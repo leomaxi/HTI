@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use App\Instituition;
 use App\InstituitionInstituteTypes;
 use App\Http\Controllers\ConfigurationController;
+use App\InstituitionProfessionalBodies;
 use Illuminate\Support\Facades\Session;
 use App\Users;
 use App\Staff;
@@ -40,6 +41,7 @@ class InstituitionController extends Controller {
 
         $institute_code = $data['code'];
         $institutetypes = $data['institution_types'];
+        $professionalbodies = $data['professional_bodies'];
         $new = Instituition::where('code', $data['code'])
                 ->get();
         $old_principal = $new[0]['principal_no'];
@@ -64,8 +66,11 @@ class InstituitionController extends Controller {
             return '1';
         } else {
             $this->deleteInstituteInstitutionTypes($data['code']);
+            $this->deleteInstituitionProfessionalBodies($data['code']);
             $new = new ConfigurationController();
             $new->saveInstituteInstitutionTypes($data['code'], $institutetypes);
+            $new = new ConfigurationController();
+            $new->saveInstituteProfessionalBodies($data['code'], $professionalbodies);
             if (!empty($data['principal'])) {
                 $old_usercode = $this->getStaffCode($old_principal, $data['code']);
                 $this->updateUser($old_usercode, 'staff');
@@ -80,6 +85,19 @@ class InstituitionController extends Controller {
 
 
         $delete = InstituitionInstituteTypes::where('insitution_code', $institution_code)
+                ->delete();
+
+        if (!$delete) {
+            return '1';
+        } else {
+            return '0';
+        }
+    }
+    
+    public function deleteInstituitionProfessionalBodies($institution_code) {
+
+
+        $delete = InstituitionProfessionalBodies::where('insitution_code', $institution_code)
                 ->delete();
 
         if (!$delete) {

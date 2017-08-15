@@ -77,7 +77,25 @@
 
     }
 });
-   
+
+//district
+   $.ajax({
+    url: '../configurations/getdistricts',
+    type: "GET",
+    dataType: 'json',
+    success: function (data) {
+
+
+        $.each(data, function (i, item) {
+
+            $('#district').append($('<option>', {
+                value: item.code,
+                text: item.name
+            }));
+        });
+
+    }
+});
 
 
     $('#dateofbirth').datepicker({

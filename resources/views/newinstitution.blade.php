@@ -79,6 +79,18 @@
                                     </select>
                                 </div>
                             </div>
+                            
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label">Professional Bodies</label>
+                                <div class="col-sm-10">
+                                    <select name="professional_bodies[]" id="professional_bodies"  class="form-control multselect select2" multiple style="width: 100%" required>
+                                        <option value="">Select value...</option>
+
+
+
+                                    </select>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label  class="col-sm-2 control-label">Region</label>
                                 <div class="col-sm-10">

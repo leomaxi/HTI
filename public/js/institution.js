@@ -50,7 +50,25 @@ $.ajax({
     }
 });
 
+//professional_bodies
 
+$.ajax({
+    url: 'getprofessionalbodies',
+    type: "GET",
+    dataType: 'json',
+    success: function (data) {
+
+
+        $.each(data, function (i, item) {
+
+            $('#professional_bodies').append($('<option>', {
+                value: item.code,
+                text: item.name
+            }));
+        });
+
+    }
+});
 
 function getDistrictsBasedOnRegion(region_code) {
 
@@ -144,6 +162,7 @@ $('#institutionForm').on('submit', function (e) {
 
         },
         error: function (jXHR, textStatus, errorThrown) {
+            $("#loaderModal").modal('hide');
             swal("Error!", "Couldnt save:Instituition code already exist", "error");
 
         }
