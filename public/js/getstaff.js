@@ -30,7 +30,7 @@ function getStaff()
                     var name = value.firstname + ' ' + value.middlename + ' ' + value.surname;
                     var j = -1;
                     var r = new Array();
-                    r[++j] = '<td>' + value.instituition_code + '</td>';
+                    r[++j] = '<td>' + value.institution_name + '</td>';
                     r[++j] = '<td>' + value.staff_no + '</td>';
                     r[++j] = '<td> ' + value.firstname + ' ' + value.middlename + ' ' + value.surname + '</td>';
                     r[++j] = '<td>' + value.gender + '</td>';

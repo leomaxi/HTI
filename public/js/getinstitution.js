@@ -93,7 +93,8 @@ function getInstitutionStaff(instutioncode) {
         type: "GET",
         dataType: 'json',
         success: function (data) {
-
+            $('#staff').empty();
+              $('#staff').append('<option value="">Choose..</option>');
             console.log('staff:' + data);
             $.each(data, function (i, item) {
                 var name = item.firstname + ' ' + item.middlename + ' ' + item.surname;
@@ -172,12 +173,14 @@ function getinstitutions()
 
                 var rowNum = 0;
                 $.each(data, function (key, value) {
+                    
+                  var principal_name=  value.firstname+' '+value.middlename+' '+value.surname;
                     var j = -1;
                     var r = new Array();
                     r[++j] = '<td>' + value.code + '</td>';
                     r[++j] = '<td> ' + value.name + '</td>';
                     r[++j] = '<td>' + value.date_of_establishment + '</td>';
-                    r[++j] = '<td>' + value.principal_name + '</td>';
+                    r[++j] = '<td>' + principal_name + '</td>';
                     r[++j] = '<td>' + value.location + '</td>';
 
                     r[++j] = '<td><button type="button" onclick="editInstitution(\'' + value.id + '\')" class="btn btn-outline-info btn-sm  col-sm-6 btn-edit editBtn" ><i class="fa fa-edit""></i><span class="hidden-md hidden-sm hidden-xs"> </span></</button>\n\
@@ -212,7 +215,7 @@ function editInstitution(code) {
             $('#code').val(data.code);
             $('#institution_name').val(data.name);
             $('#establishment_date').val(data.date_of_establishment);
-            $('#principal_names').val(data.principal_name);
+            $('#principal_names').val(data.firstname+' '+data.middlename+' '+data.surname);
             $('#region').val(data.region).attr("selected", "selected");
             //$('#region').val(data.region).trigger('change');
 
@@ -327,7 +330,7 @@ $('#updateinstitutionForm').on('submit', function (e) {
         data: formData,
         success: function (data) {
             $('input:submit').attr("disabled", false);
-            console.log('server data: '+data);
+            console.log('server data: ' + data);
             $("#loaderModal").modal('hide');
             $('#editModal').modal('hide');
             var successStatus = data.success;
@@ -349,7 +352,8 @@ $('#updateinstitutionForm').on('submit', function (e) {
 
         },
         error: function (jXHR, textStatus, errorThrown) {
-            swal("Error!", "Couldnt save:Instituition code already exist", "error");
+              $("#loaderModal").modal('hide');
+            swal("Error!", "Couldnt update:COntact System Administrator", "error");
 
         }
     });

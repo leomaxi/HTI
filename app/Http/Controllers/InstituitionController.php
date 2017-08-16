@@ -39,7 +39,6 @@ class InstituitionController extends Controller {
 
 
 
-        $institute_code = $data['code'];
         $institutetypes = $data['institution_types'];
         $professionalbodies = $data['professional_bodies'];
         $new = Instituition::where('code', $data['code'])
@@ -56,11 +55,11 @@ class InstituitionController extends Controller {
         $update->latitude = $data['latitude'];
         $update->date_of_establishment = $data['date_established'];
 
-        if (!empty($data['principal'])) {
-            $update->principal_no = $data['principal'];
-            $new_usercode = $this->getStaffCode($data['principal'], $data['code']);
-            $this->updateUser($new_usercode, 'principal');
-        }
+//        if (!empty($data['principal'])) {
+//            $update->principal_no = $data['principal'];
+//            $new_usercode = $this->getStaffCode($data['principal'], $data['code']);
+//            $this->updateUser($new_usercode, 'principal');
+//        }
 
         $update->last_modifiedby = Session::get('id');
 
@@ -75,12 +74,12 @@ class InstituitionController extends Controller {
             $new = new ConfigurationController();
             $new->saveInstituteProfessionalBodies($data['code'], $professionalbodies);
 
-            if (!empty($data['principal'])) {
-                $old_usercode = $this->getStaffCode($old_principal, $data['code']);
-                $this->updateUser($old_usercode, 'staff');
-                
-            }
-            return '0' . $data['principal'].':'.$old_usercode;
+//            if (!empty($data['principal'])) {
+//                $old_usercode = $this->getStaffCode($old_principal, $data['code']);
+//                $this->updateUser($old_usercode, 'staff');
+//                
+//            }
+            return '0';
         }
     }
 
