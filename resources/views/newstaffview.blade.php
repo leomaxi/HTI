@@ -86,13 +86,19 @@
                                         <div class="row">
                                             <div class="col-sm-12 col-md-6 col-lg-6">
                                                 <input  name="stafftype" type="text" hidden readonly value="staff">
-                                                <div class="form-group">
-                                                    <label class="control-label">Institutions *</label>
+                                                <?php
+                                                if (Session::get('role') != "principal") {
+                                                    ?>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Institutions *</label>
 
-                                                    <select id="instituitions" name="institute_code" class="form-control select2" style="width:100%">
-                                                        <option value="">Choose</option>
-                                                    </select>
-                                                </div>
+                                                        <select id="instituitions" name="institute_code" class="form-control select2" style="width:100%">
+                                                            <option value="">Choose</option>
+                                                        </select>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                ?>
 
                                                 <div class="form-group">
                                                     <label class="control-label">First Name *</label>
@@ -270,7 +276,7 @@
                                                     <label  class="control-label">Certificate Type </label>
                                                     <input  name="certificate_type" id="certificate_type" type="text" class="form-control ">
                                                 </div>
-                       
+
 
                                                 <div class="form-group">
                                                     <label  class="control-label">Professional Body </label>

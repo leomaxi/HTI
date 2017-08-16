@@ -85,10 +85,10 @@ $(document).ready(function () {
 
         }
     });
-    
+
 //professional_body
 
-$.ajax({
+    $.ajax({
         url: '../configurations/getprofessionalbodies',
         type: "GET",
         dataType: 'json',
@@ -107,19 +107,19 @@ $.ajax({
     });
 
     $('#dateofbirth').datepicker({
-        dateFormat: 'dd-mm-yyyy'
+        dateFormat: 'yyyy-mm-dd'
 
     });
 
     $('#appointment_date').datepicker({
-        dateFormat: 'dd-mm-yyyy'
+        dateFormat: 'yyyy-mm-dd'
     });
     $('#startdate').datepicker({
-        dateFormat: 'dd-mm-yyyy'
+         dateFormat: 'yyyy-mm-dd'
     });
 
     $('#enddate').datepicker({
-        dateFormat: 'dd-mm-yyyy'
+        dateFormat: 'yyyy-mm-dd'
     });
 
     $(".select2").select2({
@@ -302,6 +302,8 @@ $.ajax({
                                 }
                             },
                             error: function (jXHR, textStatus, errorThrown) {
+                                $("#loaderModal").modal('hide');
+
                                 swal("Error!", "Couldnt save:Contact System Administrator", "error");
 
                             }

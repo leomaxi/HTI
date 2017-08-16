@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Session;
 use App\StaffView;
 use App\StaffEmploymentView;
 use App\StaffAcademicView;
+
 class StaffController extends Controller {
 
     public function showstaff() {
@@ -54,6 +55,10 @@ class StaffController extends Controller {
 
     public function getStaff() {
 
+        if (Session::get('role') == "principal") {
+            $instituition_code = Session::get('institute');
+            return StaffView::where([ ['active', '=', 0], ['instituition_code', '=', $instituition_code]])->get();
+        }
         return StaffView::where('active', 0)
                         ->get();
     }
@@ -66,7 +71,12 @@ class StaffController extends Controller {
         $email_existence = $this->checkEmailExistence($data['email']);
         if ($email_existence == '0') {
             $new->code = $this->generateuniqueCode(8);
-            $new->instituition_code = $data['institute_code'];
+            if (Session::get('role') == "principal") {
+                $new->instituition_code = Session::get('institute');
+            } else {
+                $new->instituition_code = $data['institute_code'];
+            }
+
             $new->staff_no = 'STF' . $this->generateuniqueCode(8);
 
             $new->firstname = $data['firstname'];
@@ -110,7 +120,7 @@ class StaffController extends Controller {
                 $this->saveStaffEmploymentDetails($staffno, $data);
 
                 if ($data['stafftype'] == "principalinfo") {
-                    $this->setInstituitionPrincipal($data['institute_code'], $staffno);
+                    $this->setInstituitionPrincipal($new->instituition_code, $staffno);
 
                     $response['type'] = 'principal';
                 } else {
@@ -135,8 +145,12 @@ class StaffController extends Controller {
 
 
         $new = new StaffAcademic();
+        if (Session::get('role') == "principal") {
+            $new->instituition_code = Session::get('institute');
+        } else {
+            $new->instituition_code = $data['institute_code'];
+        }
         $new->staff_no = $staffno;
-        $new->instituition_code = $data['institute_code'];
         $new->program = $data['programofstudy'];
         $new->completion_year = $data['completion_year'];
         $new->certificate_type = $data['certificate_type'];
@@ -156,8 +170,12 @@ class StaffController extends Controller {
 
 
         $new = new StaffBank();
+        if (Session::get('role') == "principal") {
+            $new->instituition_code = Session::get('institute');
+        } else {
+            $new->instituition_code = $data['institute_code'];
+        }
         $new->staff_no = $staffno;
-        $new->instituition_code = $data['institute_code'];
         $new->bank = $data['bank_name'];
         $new->account_name = $data['account_name'];
         $new->account_number = $data['account_number'];
@@ -176,16 +194,19 @@ class StaffController extends Controller {
     private function saveStaffEmploymentDetails($staffno, $data) {
 
         $new = new StaffEmployment();
-
+        if (Session::get('role') == "principal") {
+            $new->instituition_code = Session::get('institute');
+        } else {
+            $new->instituition_code = $data['institute_code'];
+        }
         $new->staff_no = $staffno;
-        $new->instituition_code = $data['institute_code'];
         $new->start_date = $data['startdate'];
         $new->current_appointment_date = $data['enddate'];
         $new->qualification = $data['qualification'];
         $new->grade = $data['grade'];
         $new->employment_type = $data['employment_type'];
         $new->staffid = $data['staffid'];
-     
+
         $saved = $new->save();
         if (!$saved) {
             return '1';
@@ -224,7 +245,11 @@ class StaffController extends Controller {
     private function saveUsers($code, $data, $type) {
 
         $new = new Users();
-        $new->instituition_code = $data['institute_code'];
+        if (Session::get('role') == "principal") {
+            $new->instituition_code = Session::get('institute');
+        } else {
+            $new->instituition_code = $data['institute_code'];
+        }
         $new->usercode = $code;
         $new->firstname = $data['firstname'] . ' ' . $data['middlename'] . ' ' . $data['lastname'];
         $new->email = $data['email'];
@@ -392,7 +417,7 @@ class StaffController extends Controller {
         $new->account_number = $data['account_number'];
         $new->branch = $data['branch'];
         $new->tin = $data['tin'];
-         $new->ssniit = $data['snnitno'];
+        $new->ssniit = $data['snnitno'];
         $saved = $new->save();
         if (!$saved) {
             return '1';

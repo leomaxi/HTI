@@ -33,6 +33,7 @@ class LoginController extends Controller {
         } else {
             $email = $users[0]['email'];
             $name = $users[0]['firstname'];
+            $role = $users[0]['role'];
             $first_login = $users[0]['first_login'];
             $usergroup = $users[0]['usergroup'];
             $instuition = $users[0]['instituition_code'];
@@ -44,6 +45,7 @@ class LoginController extends Controller {
             $request->session()->put('first_login', $first_login);
             $request->session()->put('usergroup', $usergroup);
             $request->session()->put('institute', $instuition);
+            $request->session()->put('role', $role);
             $request->session()->put('permissions', $permissions);
             $request->session()->put('id', $id);
             return $users;
@@ -51,7 +53,7 @@ class LoginController extends Controller {
     }
 
     public function getGroupPermissions($id) {
-     $permissions =   PermissionsRoles::where('user_group_id', $id)->pluck('perm_keyword')->toArray();
+        $permissions = PermissionsRoles::where('user_group_id', $id)->pluck('perm_keyword')->toArray();
         return $permissions;
     }
 
@@ -63,7 +65,7 @@ class LoginController extends Controller {
         $password = $data['password'];
         $update = Users::find($id);
         $update->password = md5($password);
-        $update->first_login="NO";
+        $update->first_login = "NO";
         $save = $update->save();
         if (!$save) {
             return '1';

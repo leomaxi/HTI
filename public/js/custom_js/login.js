@@ -153,7 +153,7 @@ $(document).ready(function () {
                                 closeOnConfirm: false
                             }).then(
                                     function () {
-                                window.location = "login";
+                                window.location = "";
                             });
                             
                         }

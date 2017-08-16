@@ -88,15 +88,19 @@
                                         <h2 class="hidden">&nbsp;</h2>
                                         <div class="row">
                                             <div class="col-sm-12 col-md-6 col-lg-6">
+                                                <?php
+                                                if (Session::get('role') != "principal") {
+                                                    ?>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Instituitions *</label>
 
-                                                <div class="form-group">
-                                                    <label class="control-label">Instituitions *</label>
-
-                                                    <select id="instituitions" name="institute_code" class="form-control select2" style="width:100%">
-                                                        <option>Choose</option>
-                                                    </select>
-                                                </div>
-
+                                                        <select id="instituitions" name="institute_code" class="form-control select2" style="width:100%">
+                                                            <option>Choose</option>
+                                                        </select>
+                                                    </div>
+                                                    <?Php
+                                                }
+                                                ?>
 
                                                 <div class="form-group">
                                                     <label class="control-label">First Name *</label>
@@ -505,19 +509,19 @@
                                 </div>
                             </div>
                         </div>
-<!--                        <div class="modal fade" id="loaderModal" data-keyboard="false" data-backdrop="static" role="dialog" >
-                            <div class="modal-dialog" role="document">
-
-
-                                <div  id="loader" style="margin-top:30% ">
-                                    <img src="img/loading.gif">
-
-                                    <span class="loader-text">Filtering Results...</span>
-                                </div>
-
-
-                            </div>
-                        </div>-->
+                        <!--                        <div class="modal fade" id="loaderModal" data-keyboard="false" data-backdrop="static" role="dialog" >
+                                                    <div class="modal-dialog" role="document">
+                        
+                        
+                                                        <div  id="loader" style="margin-top:30% ">
+                                                            <img src="img/loading.gif">
+                        
+                                                            <span class="loader-text">Filtering Results...</span>
+                                                        </div>
+                        
+                        
+                                                    </div>
+                                                </div>-->
                     </div>
                 </div>
             </div>

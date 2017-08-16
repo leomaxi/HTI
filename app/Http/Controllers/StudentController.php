@@ -26,6 +26,10 @@ class StudentController extends Controller {
 
     public function getStudent() {
 
+        if (Session::get('role') == "principal") {
+            $instituition_code = Session::get('institute');
+            return StudentView::where([ ['active', '=', 0], ['instituition_code', '=', $instituition_code]])->get();
+        }
         return StudentView::where('active', 0)
                         ->get();
     }
@@ -55,9 +59,13 @@ class StudentController extends Controller {
         $response = array();
 
         $new = new Student();
-
+        if (Session::get('role') == "principal") {
+            $new->instituition_code = Session::get('institute');
+        } else {
+            $new->instituition_code = $data['institute_code'];
+        }
         $new->code = $this->generateuniqueCode(8);
-        $new->instituition_code = $data['institute_code'];
+
         $new->student_no = '';
         $new->firstname = $data['firstname'];
         $new->middlename = $data['middlename'];
@@ -113,8 +121,12 @@ class StudentController extends Controller {
 
 
         $new = new StudentAcademic();
+        if (Session::get('role') == "principal") {
+            $new->instituition_code = Session::get('institute');
+        } else {
+            $new->instituition_code = $data['institute_code'];
+        }
         $new->student_no = $code;
-        $new->instituition_code = $data['institute_code'];
         $new->last_instituition = $data['last_institution_completed'];
         $new->completion_year = $data['completion_year'];
         $new->examination_type = $data['examination_type'];
@@ -133,8 +145,12 @@ class StudentController extends Controller {
 
 
         $new = new StudentBank();
+        if (Session::get('role') == "principal") {
+            $new->instituition_code = Session::get('institute');
+        } else {
+            $new->instituition_code = $data['institute_code'];
+        }
         $new->student_no = $code;
-        $new->instituition_code = $data['institute_code'];
         $new->bank_name = $data['bank_name'];
         $new->account_name = $data['account_name'];
         $new->account_no = $data['account_number'];
@@ -158,8 +174,12 @@ class StudentController extends Controller {
 
 
         $new = new StudentEnrollment();
+        if (Session::get('role') == "principal") {
+            $new->instituition_code = Session::get('institute');
+        } else {
+            $new->instituition_code = $data['institute_code'];
+        }
         $new->student_no = $code;
-        $new->instituition_code = $data['institute_code'];
         $new->program = $data['program'];
         $new->admission_year = $data['admission_year'];
         $new->professional_body = $data['professional_body'];
@@ -181,7 +201,11 @@ class StudentController extends Controller {
     private function saveUsers($code, $data, $type) {
 
         $new = new Users();
-        $new->instituition_code = $data['institute_code'];
+        if (Session::get('role') == "principal") {
+            $new->instituition_code = Session::get('institute');
+        } else {
+            $new->instituition_code = $data['institute_code'];
+        }
         $new->usercode = $code;
         $new->firstname = $data['firstname'] . ' ' . $data['middlename'] . ' ' . $data['lastname'];
         $new->email = $data['email'];

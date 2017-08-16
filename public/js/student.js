@@ -290,7 +290,7 @@ $('.finish').click(function () {
             console.log('data: ' + formData);
             console.log('send data to server');
 
-             $('#loaderModal').modal('show');
+            $('#loaderModal').modal('show');
 
             $.ajax({
                 url: 'savestudentinfo',
@@ -315,14 +315,17 @@ $('.finish').click(function () {
                             confirmButtonText: "OK",
                             closeOnConfirm: false
                         }).then(
-                        function () {
-                            window.location = "all";
-                        });
+                                function () {
+                                    window.location = "all";
+                                });
 //                   
                     }
                 },
                 error: function (jXHR, textStatus, errorThrown) {
-                    alert(errorThrown);
+                    $("#loaderModal").modal('hide');
+
+                    swal("Error!", "Couldnt save:Contact System Administrator", "error");
+
                 }
             });
 
