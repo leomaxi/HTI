@@ -55,11 +55,13 @@ class InstituitionController extends Controller {
         $update->latitude = $data['latitude'];
         $update->date_of_establishment = $data['date_established'];
 
-//        if (!empty($data['principal'])) {
-//            $update->principal_no = $data['principal'];
-//            $new_usercode = $this->getStaffCode($data['principal'], $data['code']);
-//            $this->updateUser($new_usercode, 'principal');
-//        }
+        if (!empty($data['principal'])) {
+            $update->principal_no = $data['principal'];
+            $new_usercode = $this->getStaffCode($data['principal'], $data['code']);
+            $this->updateUser($new_usercode, 'principal');
+            $old_usercode = $this->getStaffCode($old_principal, $data['code']);
+            $this->updateUser($old_usercode, 'staff');
+        }
 
         $update->last_modifiedby = Session::get('id');
 
