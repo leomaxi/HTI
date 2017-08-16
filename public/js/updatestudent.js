@@ -373,7 +373,7 @@ $('#updateStudentInfo').on('submit', function (e) {
             } else {
                 swal({
                     title: "Success",
-                    text: "Staff Information Updated",
+                    text: "Student Information Updated",
                     type: "success",
                     showCancelButton: false,
                     confirmButtonText: "OK",
