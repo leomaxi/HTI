@@ -18,7 +18,7 @@ function getStaff()
         url: 'getstaff',
         type: "GET",
         success: function (data) {
-
+            console.log(data);
 
             datatable.clear().draw();
             if (data.length == 0) {
@@ -36,7 +36,7 @@ function getStaff()
                     r[++j] = '<td>' + value.gender + '</td>';
                     r[++j] = '<td>' + value.email_address + '</td>';
                     r[++j] = '<td>' + value.contact_no + '</td>';
-                    r[++j] = '<td>' + value.current_appointment_date + '</td>';
+                    r[++j] = '<td>' + value.department_name + '</td>';
                     r[++j] = '<td>' + value.datecreated + '</td>';
                     r[++j] = '<td><button type="button" onclick="editStaff(\'' + value.code + '\')" class="btn btn-outline-info btn-sm  col-sm-6 btn-edit editBtn" ><i class="fa fa-edit""></i><span class="hidden-md hidden-sm hidden-xs"> </span></</button>\n\
                               <button onclick="deleteStaff(\'' + value.id + '\',\'' + name + '\')" class="btn btn-outline-danger btn-sm  col-sm-6  deleteBtn"  type="button"><i class="fa fa-trash-o""></i><span class="hidden-md hidden-sm hidden-xs"> </span></</button></td>';
@@ -59,7 +59,7 @@ function getStaff()
 
 }
 function editStaff(code) {
-    window.location ='details/'+code;
+    window.location = 'details/' + code;
 }
 //deleteStaff
 function deleteStaff(code, title) {
@@ -86,9 +86,9 @@ $('#deleteStaffForm').on('submit', function (e) {
             // $("#loader").hide();
             $('input:submit').attr("disabled", false);
             $('#loaderModal').modal('hide');
-            
-            
-              if (data == 0) {
+
+
+            if (data == 0) {
                 swal("Success!", "Staff Deleted Successfully", "success");
                 getStaff();
             } else {

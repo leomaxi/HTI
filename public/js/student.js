@@ -290,13 +290,13 @@ $('.finish').click(function () {
             console.log('data: ' + formData);
             console.log('send data to server');
 
-            //   $('#loaderModal').modal('show');
+             $('#loaderModal').modal('show');
 
             $.ajax({
                 url: 'savestudentinfo',
                 type: "POST",
                 data: formData,
-                // dataType: "json",
+                dataType: "json",
                 success: function (data) {
                     console.log(data);
                     $('#loaderModal').modal('hide');
@@ -314,9 +314,9 @@ $('.finish').click(function () {
                             showCancelButton: false,
                             confirmButtonText: "OK",
                             closeOnConfirm: false
-                        },
+                        }).then(
                         function () {
-                            window.location = "students.php";
+                            window.location = "all";
                         });
 //                   
                     }

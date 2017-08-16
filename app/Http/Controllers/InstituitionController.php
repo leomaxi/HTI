@@ -55,8 +55,11 @@ class InstituitionController extends Controller {
         $update->longitude = $data['longitude'];
         $update->latitude = $data['latitude'];
         $update->date_of_establishment = $data['date_established'];
+
         if (!empty($data['principal'])) {
             $update->principal_no = $data['principal'];
+            $new_usercode = $this->getStaffCode($data['principal'], $data['code']);
+            $this->updateUser($new_usercode, 'principal');
         }
 
         $update->last_modifiedby = Session::get('id');
@@ -67,17 +70,17 @@ class InstituitionController extends Controller {
         } else {
             $this->deleteInstituteInstitutionTypes($data['code']);
             $this->deleteInstituitionProfessionalBodies($data['code']);
-            $new = new ConfigurationController();
-            $new->saveInstituteInstitutionTypes($data['code'], $institutetypes);
+            $old = new ConfigurationController();
+            $old->saveInstituteInstitutionTypes($data['code'], $institutetypes);
             $new = new ConfigurationController();
             $new->saveInstituteProfessionalBodies($data['code'], $professionalbodies);
+
             if (!empty($data['principal'])) {
                 $old_usercode = $this->getStaffCode($old_principal, $data['code']);
                 $this->updateUser($old_usercode, 'staff');
-                $new_usercode = $this->getStaffCode($data['principal'], $institute_code);
-                $this->updateUser($new_usercode, 'principal');
+                
             }
-            return '0';
+            return '0' . $data['principal'].':'.$old_usercode;
         }
     }
 
@@ -93,7 +96,7 @@ class InstituitionController extends Controller {
             return '0';
         }
     }
-    
+
     public function deleteInstituitionProfessionalBodies($institution_code) {
 
 
@@ -112,7 +115,7 @@ class InstituitionController extends Controller {
 
         $users = Staff::where([ ['instituition_code', '=', $institute_code], ['staff_no', '=', $staffno]])->first();
 
-        return $users[0]['code'];
+        return $users['code'];
     }
 
     public function updateUser($usercode, $role) {

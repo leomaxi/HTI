@@ -52,7 +52,7 @@ class StudentController extends Controller {
 
 
         $data = $request->all();
-        print_r($data);
+        $response = array();
 
         $new = new Student();
 
@@ -66,6 +66,7 @@ class StudentController extends Controller {
         $new->dob = $data['dateofbirth'];
         $new->place_of_birth = $data['placeofbirth'];
         $new->region = $data['region'];
+        $new->district = $data['district'];
         $new->nationality = $data['nationality'];
         $new->address = $data['address'];
         $new->suburb = $data['suburb'];
@@ -86,6 +87,7 @@ class StudentController extends Controller {
         $new->guardian_address = $data['guardian_address'];
         $new->guardian_contact = $data['guardian_contact'];
         $new->guardian_emailaddress = $data['guardian_email'];
+        $new->guardian_postal_address = $data['guardian_postcode'];
         $new->createdby = Session::get('id');
         $saved = $new->save();
 
@@ -102,7 +104,7 @@ class StudentController extends Controller {
 
             $this->saveUsers($code, $data, 'student');
             $response['success'] = '0';
-
+            $response['message'] = 'Student Information Saved Successfully';
             return json_encode($response);
         }
     }
@@ -138,9 +140,8 @@ class StudentController extends Controller {
         $new->account_no = $data['account_number'];
         $new->branch = $data['branch'];
         $new->tin = $data['tin'];
-        $new->bsb = $data['BSB'];
+        $new->ssniit = $data['SNNIT'];
         $new->superannutation_name = $data['superannutation_fund'];
-        $new->start_date = $data['startdate'];
 
 
 
@@ -163,7 +164,8 @@ class StudentController extends Controller {
         $new->admission_year = $data['admission_year'];
         $new->professional_body = $data['professional_body'];
         $new->sitting_year = $data['year_of_seating'];
-        $new->results = $data['results'];
+        $new->index_no = $data['indexno'];
+        $new->certificate_type = $data['certificatype'];
 
 
 
@@ -217,6 +219,9 @@ class StudentController extends Controller {
         if (!empty($data['region'])) {
             $new->region = $data['region'];
         }
+        if (!empty($data['district'])) {
+            $new->district = $data['district'];
+        }
 
         $new->nationality = $data['nationality'];
         $new->address = $data['address'];
@@ -238,6 +243,8 @@ class StudentController extends Controller {
         $new->guardian_address = $data['guardian_address'];
         $new->guardian_contact = $data['guardian_contact'];
         $new->guardian_emailaddress = $data['guardian_email'];
+        $new->guardian_postal_address = $data['guardian_postcode'];
+
         $new->createdby = Session::get('id');
         $saved = $new->save();
 
@@ -298,9 +305,8 @@ class StudentController extends Controller {
         $new->account_no = $data['account_number'];
         $new->branch = $data['branch'];
         $new->tin = $data['tin'];
-        $new->bsb = $data['BSB'];
+        $new->ssniit = $data['SNNIT'];
         $new->superannutation_name = $data['superannutation_fund'];
-        $new->start_date = $data['startdate'];
 
 
 
@@ -327,8 +333,8 @@ class StudentController extends Controller {
         $new->admission_year = $data['admission_year'];
         $new->professional_body = $data['professional_body'];
         $new->sitting_year = $data['year_of_seating'];
-        $new->results = $data['results'];
-
+        $new->index_no = $data['indexno'];
+        $new->certificate_type = $data['certificatype'];
 
 
         $saved = $new->save();

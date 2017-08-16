@@ -95,7 +95,7 @@ $.ajax({
 
             $.each(data, function (i, item) {
 
-                $('#grade').append($('<option>', {
+                $('.grade').append($('<option>', {
                     value: item.code,
                     text: item.name
                 }));
@@ -294,7 +294,7 @@ $.ajax({
                                         closeOnConfirm: false
                                     }).then(
                                     function () {
-                                        window.location = "../configurations/instituitions";
+                                        window.location = "../../configurations/institutions";
                                     });
 
                                 }

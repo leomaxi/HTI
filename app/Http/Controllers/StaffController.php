@@ -163,7 +163,7 @@ class StaffController extends Controller {
         $new->account_number = $data['account_number'];
         $new->branch = $data['branch'];
         $new->tin = $data['tin'];
-        $new->ssniit = $data['SNNIT'];
+        $new->ssniit = $data['snnitno'];
         $saved = $new->save();
         if (!$saved) {
             return '1';

@@ -327,7 +327,7 @@ $('#updateinstitutionForm').on('submit', function (e) {
         data: formData,
         success: function (data) {
             $('input:submit').attr("disabled", false);
-            console.log(data);
+            console.log('server data: '+data);
             $("#loaderModal").modal('hide');
             $('#editModal').modal('hide');
             var successStatus = data.success;

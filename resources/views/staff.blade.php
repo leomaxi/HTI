@@ -50,7 +50,7 @@
                                                     <th>Gender</th>
                                                     <th>Email Address</th>
                                                     <th>Contact No</th>
-                                                    <th>Current Appointment Date</th>
+                                                    <th>Department</th>
                                                     <th>Date Created</th>
                                                     <th>Action</th>
 

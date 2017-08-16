@@ -102,6 +102,50 @@
 
 
 
+function getDistrictsBasedOnRegion(region_code) {
+
+
+    console.log(region_code);
+
+
+    $.ajax({
+        url: '../../configurations/getdistrictsonregioncode/' + region_code,
+        type: "GET",
+        dataType: 'json',
+        success: function (data) {
+            console.log(data);
+            $('#district').select2("destroy");
+            $('#district').empty();
+
+            $('#district').select2();
+            $('#district').append('<option value = ""> Choose... </option>');
+
+
+            $.each(data, function (i, item) {
+
+                $('#district').append($('<option>', {
+                    value: item.district_code,
+                    text: item.district_name
+                }));
+            });
+
+
+        }
+    });
+}
+
+
+
+$("#region").change(function () {
+
+    var region_code = this.value;
+    console.log(region_code);
+
+    getDistrictsBasedOnRegion(region_code);
+});
+
+
+
     $("#studentForm").bootstrapValidator({
         fields: {
 //            firstname: {

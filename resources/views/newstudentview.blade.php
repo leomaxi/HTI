@@ -505,7 +505,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="modal fade" id="loaderModal" data-keyboard="false" data-backdrop="static" role="dialog" >
+<!--                        <div class="modal fade" id="loaderModal" data-keyboard="false" data-backdrop="static" role="dialog" >
                             <div class="modal-dialog" role="document">
 
 
@@ -517,7 +517,7 @@
 
 
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>

@@ -86,14 +86,14 @@
                                         <div class="row">
                                             <div class="col-sm-12 col-md-6 col-lg-6">
                                                 <input  name="institute_code" type="text" hidden  readonly value="{{$instcode}}">
-                                                <input  name="stafftype" type="text" hidden readonly value="staff">
-                                                <div class="form-group">
+                                                <input  name="stafftype" type="text" hidden readonly value="principalinfo">
+<!--                                                <div class="form-group">
                                                     <label class="control-label">Institutions *</label>
 
                                                     <select id="instituitions" name="institute_code" class="form-control select2" style="width:100%">
                                                         <option value="">Choose</option>
                                                     </select>
-                                                </div>
+                                                </div>-->
 
                                                 <div class="form-group">
                                                     <label class="control-label">First Name *</label>

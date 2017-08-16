@@ -25,8 +25,7 @@
     </section>
     <!--section ends-->
     <section class="content">
-        
-        <div class="row">
+       <div class="row">
             <div class="col-lg-12">
                 <form id="updateStudentInfo" method='post'>
                     <input type="hidden" class="form-control form-control-lg input-lg"  name="_token" value="<?php echo csrf_token() ?>" />
@@ -114,6 +113,21 @@
                                             </div>
 
                                             <div class="form-group">
+                                                <label  class=control-label">Marital Status </label>
+
+                                                <select id="marital_status" name="marital_status" class="form-control select2" style="width:100%">
+                                                    <option value="" <?php if ($studentinfo[0]['marital_status'] == "") echo 'selected="selected"'; ?>>Select value...</option>
+
+                                                    <option value="single" <?php if ($studentinfo[0]['marital_status'] == "single") echo 'selected="selected"'; ?>>Single</option>
+                                                    <option value="married" <?php if ($studentinfo[0]['marital_status'] == "married") echo 'selected="selected"'; ?>>Married</option>
+                                                    <option value="divorced" <?php if ($studentinfo[0]['marital_status'] == "divorced") echo 'selected="selected"'; ?>>Divorced</option>
+                                                    <option value="widow" <?php if ($studentinfo[0]['marital_status'] == "widow") echo 'selected="selected"'; ?>>Widow</option>
+                                                    <option value="widower" <?php if ($studentinfo[0]['marital_status'] == "widower") echo 'selected="selected"'; ?>>Widower</option>
+
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
                                                 <label  class="control-label">Date Of BIrth  *</label>
                                                 <div class="input-group">
                                                     <div class="input-group-addon">
@@ -150,6 +164,18 @@
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="form-group">
+                                                <label class="control-label">District Name</label>
+                                                <input readonly  name="district_name" value="{{$studentinfo[0]['district_name']}}" type="text" class="form-control required">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword" class=control-label">District </label>
+
+                                                <select  id="district" name="district" class="form-control select2" style="width:100%">
+                                                    <option value="">Select value...</option>
+
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
                                                 <label  class="control-label">Nationality  *</label>
                                                 <input id="nationality" value="{{$studentinfo[0]['nationality']}}"  name="nationality" type="text" class="form-control required">
                                             </div>   
@@ -159,21 +185,14 @@
                                                 <input id="suburb" value="{{$studentinfo[0]['suburb']}}"  name="suburb" type="text" class="form-control required">
 
                                             </div>
-
                                             <div class="form-group">
-                                                <label  class=control-label">Marital Status </label>
+                                                <label  class=control-label">Res. Address *</label>
 
-                                                <select id="marital_status" name="marital_status" class="form-control select2" style="width:100%">
-                                                    <option value="" <?php if ($studentinfo[0]['marital_status'] == "") echo 'selected="selected"'; ?>>Select value...</option>
-
-                                                    <option value="single" <?php if ($studentinfo[0]['marital_status'] == "single") echo 'selected="selected"'; ?>>Single</option>
-                                                    <option value="married" <?php if ($studentinfo[0]['marital_status'] == "married") echo 'selected="selected"'; ?>>Married</option>
-                                                    <option value="divorced" <?php if ($studentinfo[0]['marital_status'] == "divorced") echo 'selected="selected"'; ?>>Divorced</option>
-                                                    <option value="widow" <?php if ($studentinfo[0]['marital_status'] == "widow") echo 'selected="selected"'; ?>>Widow</option>
-                                                    <option value="widower" <?php if ($studentinfo[0]['marital_status'] == "widower") echo 'selected="selected"'; ?>>Widower</option>
-
-                                                </select>
+                                                <textarea name="address"rows="5" style="width: 100%" >
+                                                    {{$studentinfo[0]['address']}}
+                                                </textarea>
                                             </div>
+
                                             <div class="form-group">
                                                 <label class="control-label">Postal Address *</label>
                                                 <input id="postal_address" value="{{$studentinfo[0]['postcode']}}"  name="postal_address" type="text"
@@ -212,13 +231,7 @@
 
 
 
-                                            <div class="form-group">
-                                                <label  class=control-label">Address *</label>
 
-                                                <textarea name="address"rows="5" style="width: 100%" >
-                                                    {{$studentinfo[0]['address']}}
-                                                </textarea>
-                                            </div>
 
 
                                         </div>
@@ -238,32 +251,33 @@
                                                 <label  class="control-label">Guardian Lastname </label>
                                                 <input  name="guardian_lastname" value="{{$studentinfo[0]['guardian_surname']}}" id="guardian_lastname" type="text" class="form-control ">
                                             </div>
-                                            <div class="form-group">
-                                                <label  class="control-label">Address </label>
-                                                <input  name="guardian_address" id="guardian_address" value="{{$studentinfo[0]['guardian_address']}}" type="text" class="form-control ">
-                                            </div>
+
                                             <div class="form-group">
                                                 <label  class="control-label">Mobile No </label>
                                                 <input  name="guardian_contact" id="guardian_contact" value="{{$studentinfo[0]['guardian_contact']}}" type="text" class="form-control ">
                                             </div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label  class="control-label">Email </label>
                                                 <input  name="guardian_email" id="guardian_email" value="{{$studentinfo[0]['guardian_emailaddress']}}" type="email" class="form-control ">
                                             </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6 col-lg-6">
+<!--                                            <div class="form-group">
+                                                <label  class="control-label">State </label>
+                                                <input  name="guardian_state" id="guardian_state" value="{{$studentinfo[0]['middlename']}}" type="text" class="form-control ">
+                                            </div>-->
                                             <div class="form-group">
                                                 <label  class="control-label">Suburb </label>
                                                 <input  name="guardian_suburb" id="guardian_suburb" value="{{$studentinfo[0]['guardian_suburb']}}" type="text" class="form-control ">
                                             </div>
-                                            <!--                                            <div class="form-group">
-                                                                                            <label  class="control-label">State </label>
-                                                                                            <input  name="guardian_state" id="guardian_state" value="{{$studentinfo[0]['middlename']}}" type="text" class="form-control ">
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label class="control-label">PostCode </label>
-                                                                                            <input  name="guardian_postcode" id="guardian_postcode" value="{{$studentinfo[0]['middlename']}}" type="text" class="form-control ">
-                                                                                        </div>-->
+                                            <div class="form-group">
+                                                <label  class="control-label">Res. Address </label>
+                                                <input  name="guardian_address" id="guardian_address" value="{{$studentinfo[0]['guardian_address']}}" type="text" class="form-control ">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Postal Address </label>
+                                                <input  name="guardian_postcode" id="guardian_postcode" value="{{$studentinfo[0]['guardian_postal_address']}}" type="text" class="form-control ">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -317,14 +331,17 @@
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6">
 
-
+                                            <div class="form-group">
+                                                <label  class="control-label">Certificate Type *</label>
+                                                <input  name="certificatype" value="{{$studentinfo[0]['certificate_type']}}" type="text" class="form-control required">
+                                            </div> 
                                             <div class="form-group">
                                                 <label class="control-label">Year of Seating for Licensetial </label>
                                                 <input value="{{$studentinfo[0]['sitting_year']}}"  name="year_of_seating" id="year_of_seating" type="text" class="form-control ">
                                             </div>
                                             <div class="form-group">
-                                                <label  class="control-label">Results *</label>
-                                                <input value="{{$studentinfo[0]['results']}}"  name="results" id="results" type="text" class="form-control required">
+                                                <label  class="control-label">Index No *</label>
+                                                <input value="{{$studentinfo[0]['results']}}"  name="indexno" id="results" type="text" class="form-control required">
                                             </div>
                                         </div>
                                     </div>
@@ -356,18 +373,7 @@
 
                                                 </select>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="userName" class="control-label">Address </label>
-                                                <textarea rows="5" name="kin_address" id="kin_address" style="width: 100%" ></textarea>
 
-                                            </div>
-                                            <div class="form-group">
-                                                <label  class="control-label">Suburb </label>
-                                                <input value="{{$studentinfo[0]['aggregate']}}"  name="kin_suburb" id="kin_suburb" type="text" class="form-control required">
-                                            </div>
-
-                                        </div>
-                                        <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label  class="control-label">Email Address </label>
                                                 <input  value="{{$studentinfo[0]['kin_email']}}" name="kin_email" id="kin_email" type="email" class="form-control required">
@@ -375,6 +381,21 @@
                                             <div class="form-group">
                                                 <label class="control-label">Contact No </label>
                                                 <input value="{{$studentinfo[0]['kin_contactno']}}" name="kin_contactno" id="kin_contactno" type="text" class="form-control required">
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-sm-12 col-md-6 col-lg-6">
+<!--                                            <div class="form-group">
+                                                <label  class="control-label">Suburb </label>
+                                                <input value="{{$studentinfo[0]['aggregate']}}"  name="kin_suburb" id="kin_suburb" type="text" class="form-control required">
+                                            </div>-->
+                                            <div class="form-group">
+                                                <label for="userName" class="control-label">Res. Address </label>
+                                                <textarea rows="5" name="kin_address" id="kin_address" style="width: 100%" >
+                                                   {{$studentinfo[0]['kin_address']}} 
+                                                </textarea>
+
                                             </div>
                                             <div class="form-group">
                                                 <label  class="control-label">Postal Address </label>
@@ -413,22 +434,14 @@
                                         <div class="col-sm-12 col-md-6 col-lg-6">
 
                                             <div class="form-group">
-                                                <label  class="control-label">BSB*</label>
-                                                <input value="{{$studentinfo[0]['bsb']}}"  name="BSB" id="BSB" type="text" class="form-control required">
+                                                <label  class="control-label">SNNIT*</label>
+                                                <input value="{{$studentinfo[0]['ssniit']}}"  name="SNNIT"  type="text" class="form-control required">
                                             </div>
                                             <div class="form-group">
                                                 <label  class="control-label">Name of Superannutation fund</label>
                                                 <input value="{{$studentinfo[0]['superannutation_name']}}"  name="superannutation_fund" id="superannutation_fund" type="text" class="form-control required">
                                             </div>
-                                            <div class="form-group">
-                                                <label  class="control-label">Start Date  *</label>
-                                                <div class="input-group">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-fw ti-calendar"></i>
-                                                    </div>
-                                                    <input value="{{$studentinfo[0]['bank_start_date']}}" type="text" class="form-control pull-right" name="startdate" data-language='en' id="startdate" />
-                                                </div> 
-                                            </div>
+
 
                                             <div class="form-group">
                                                 <label  class="control-label">Tax Identification Number</label>
