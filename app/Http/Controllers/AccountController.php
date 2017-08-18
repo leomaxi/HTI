@@ -93,7 +93,7 @@ class AccountController extends Controller {
         $new = new UserGroups();
 
         $new->name = $data['name'];
-        $new->createdby = "nana";
+        $new->createdby = Session::get('id');
         $saved = $new->save();
         if (!$saved) {
             return '1';
