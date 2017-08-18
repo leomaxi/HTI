@@ -94,7 +94,7 @@ function getInstitutionStaff(instutioncode) {
         dataType: 'json',
         success: function (data) {
             $('#staff').empty();
-              $('#staff').append('<option value="">Choose..</option>');
+            $('#staff').append('<option value="">Choose..</option>');
             console.log('staff:' + data);
             $.each(data, function (i, item) {
                 var name = item.firstname + ' ' + item.middlename + ' ' + item.surname;
@@ -173,8 +173,22 @@ function getinstitutions()
 
                 var rowNum = 0;
                 $.each(data, function (key, value) {
-                    
-                  var principal_name=  value.firstname+' '+value.middlename+' '+value.surname;
+
+                    if (value.middlename == null) {
+                        value.middlename = '';
+                    }
+                    if (value.firstname == null) {
+                        value.firstname = '';
+                    }
+                    if (value.surname == null) {
+                        value.surname = '';
+                    }
+                    if (value.location == null) {
+                        value.location = '';
+                    }
+
+
+                    var principal_name = value.firstname + ' ' + value.middlename + ' ' + value.surname;
                     var j = -1;
                     var r = new Array();
                     r[++j] = '<td>' + value.code + '</td>';
@@ -215,7 +229,7 @@ function editInstitution(code) {
             $('#code').val(data.code);
             $('#institution_name').val(data.name);
             $('#establishment_date').val(data.date_of_establishment);
-            $('#principal_names').val(data.firstname+' '+data.middlename+' '+data.surname);
+            $('#principal_names').val(data.firstname + ' ' + data.middlename + ' ' + data.surname);
             $('#region').val(data.region).attr("selected", "selected");
             //$('#region').val(data.region).trigger('change');
 
@@ -352,7 +366,7 @@ $('#updateinstitutionForm').on('submit', function (e) {
 
         },
         error: function (jXHR, textStatus, errorThrown) {
-              $("#loaderModal").modal('hide');
+            $("#loaderModal").modal('hide');
             swal("Error!", "Couldnt update:COntact System Administrator", "error");
 
         }

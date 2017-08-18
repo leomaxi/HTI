@@ -14,12 +14,12 @@
             <div class="panel-header">
                 <h2 class="text-center">
 <!--                    <img src="img/pages/clear_black.png" alt="Logo">-->
-                    HTI
+                    MOH
                 </h2>
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-xs-12">
+                    <div class="col-xs-12" id="parent">
                         <form  id="loginForm" method="post" class="login_validator">
                             <input type="hidden" class="form-control form-control-lg input-lg"  name="_token" value="<?php echo csrf_token() ?>" />
 

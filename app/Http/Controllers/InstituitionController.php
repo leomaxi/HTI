@@ -24,12 +24,20 @@ use App\Staff;
 class InstituitionController extends Controller {
 
     public function newinstituitiion() {
+        $id = Session::get('id');
 
+        if (empty($id)) {
+            return redirect('logout');
+        }
         return view('newinstitution');
     }
 
     public function showinstitutions() {
+        $id = Session::get('id');
 
+        if (empty($id)) {
+            return redirect('logout');
+        }
         return view('institutions');
     }
 

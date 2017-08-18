@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
- $.ajax({
+$.ajax({
     url: '../../configurations/getregions',
     type: "GET",
     dataType: 'json',
@@ -23,7 +23,7 @@
 });
 
 
- $.ajax({
+$.ajax({
     url: '../../configurations/getinstitutions',
     type: "GET",
     dataType: 'json',
@@ -40,9 +40,9 @@
 
     }
 });
-   
-   
-   $.ajax({
+
+
+$.ajax({
     url: '../../configurations/getdepartments',
     type: "GET",
     dataType: 'json',
@@ -60,7 +60,7 @@
     }
 });
 
-  $.ajax({
+$.ajax({
     url: '../../configurations/getgradetypes',
     type: "GET",
     dataType: 'json',
@@ -77,28 +77,28 @@
 
     }
 });
-   
 
 
-    $('#dateofbirth').datepicker({
-        dateFormat: 'dd-mm-yyyy'
 
-    });
+$('#dateofbirth').datepicker({
+    dateFormat: 'dd-mm-yyyy'
 
-    $('#appointment_date').datepicker({
-        dateFormat: 'dd-mm-yyyy'
-    });
-    $('#startdate').datepicker({
-        dateFormat: 'dd-mm-yyyy'
-    });
+});
 
-    $('#enddate').datepicker({
-        dateFormat: 'dd-mm-yyyy'
-    });
+$('#appointment_date').datepicker({
+    dateFormat: 'dd-mm-yyyy'
+});
+$('#startdate').datepicker({
+    dateFormat: 'dd-mm-yyyy'
+});
 
-    $(".select2").select2({
-        theme: "bootstrap"
-    });
+$('#enddate').datepicker({
+    dateFormat: 'dd-mm-yyyy'
+});
+
+$(".select2").select2({
+    theme: "bootstrap"
+});
 
 
 
@@ -146,8 +146,8 @@ $("#region").change(function () {
 
 
 
-    $("#studentForm").bootstrapValidator({
-        fields: {
+$("#studentForm").bootstrapValidator({
+    fields: {
 //            firstname: {
 //                validators: {
 //                    notEmpty: {
@@ -221,46 +221,46 @@ $("#region").change(function () {
 //                    }
 //                }
 //            },
-            acceptTerms: {
-                validators: {
-                    notEmpty: {
-                        message: 'The checkbox must be checked'
-                    }
+        acceptTerms: {
+            validators: {
+                notEmpty: {
+                    message: 'The checkbox must be checked'
                 }
             }
         }
-    });
+    }
+});
 
 
 
 
-    $('#acceptTerms').on('ifChanged', function (event) {
-        $('#studentForm').bootstrapValidator('revalidateField', $('#acceptTerms'));
-    });
-    $('#rootwizard').bootstrapWizard({
-        'tabClass': 'nav nav-pills',
-        'onNext': function (tab, navigation, index) {
-            var $validator = $('#studentForm').data('bootstrapValidator').validate();
-            return $validator.isValid();
-        },
-        onTabClick: function (tab, navigation, index) {
-            return false;
-        },
-        onTabShow: function (tab, navigation, index) {
-            var $total = navigation.find('li').length;
-            var $current = index + 1;
-            var $percent = ($current / $total) * 100;
+$('#acceptTerms').on('ifChanged', function (event) {
+    $('#studentForm').bootstrapValidator('revalidateField', $('#acceptTerms'));
+});
+$('#rootwizard').bootstrapWizard({
+    'tabClass': 'nav nav-pills',
+    'onNext': function (tab, navigation, index) {
+        var $validator = $('#studentForm').data('bootstrapValidator').validate();
+        return $validator.isValid();
+    },
+    onTabClick: function (tab, navigation, index) {
+        return false;
+    },
+    onTabShow: function (tab, navigation, index) {
+        var $total = navigation.find('li').length;
+        var $current = index + 1;
+        var $percent = ($current / $total) * 100;
 
-            // If it's the last tab then hide the last button and show the finish instead
-            var root_wizard = $('#rootwizard');
-            if ($current >= $total) {
-                root_wizard.find('.pager .next').hide();
-                root_wizard.find('.pager .finish').show();
-                root_wizard.find('.pager .finish').removeClass('disabled');
-            } else {
-                root_wizard.find('.pager .next').show();
-                root_wizard.find('.pager .finish').hide();
-            }
+        // If it's the last tab then hide the last button and show the finish instead
+        var root_wizard = $('#rootwizard');
+        if ($current >= $total) {
+            root_wizard.find('.pager .next').hide();
+            root_wizard.find('.pager .finish').show();
+            root_wizard.find('.pager .finish').removeClass('disabled');
+        } else {
+            root_wizard.find('.pager .next').show();
+            root_wizard.find('.pager .finish').hide();
+        }
 //            root_wizard.find('.finish').click(function () {
 //                var $validator = $('#studentForm').data('bootstrapValidator').validate();
 //                return $validator.isValid();
@@ -269,67 +269,67 @@ $("#region").change(function () {
 
 
 
-        }
+    }
 
 
-    });
+});
 
-    $('.finish').click(function () {
+$('.finish').click(function () {
 
-        var $validator = $('#studentForm').data('bootstrapValidator').validate();
-        if ($validator.isValid()) {
+    var $validator = $('#studentForm').data('bootstrapValidator').validate();
+    if ($validator.isValid()) {
 
-            swal({
-                title: "Confirm",
-                text: "Are you sure you want to submit student information?",
-                type: "info",
-                showCancelButton: true,
-                closeOnConfirm: false,
-                showLoaderOnConfirm: true
-            }).then(function () {
-                var formData = $("#studentForm").serialize();
+        swal({
+            title: "Confirm",
+            text: "Are you sure you want to submit student information?",
+            type: "info",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true
+        }).then(function () {
+            var formData = $("#studentForm").serialize();
 
-                console.log('data: ' + formData);
-                console.log('send data to server');
+            console.log('data: ' + formData);
+            console.log('send data to server');
 
-             //   $('#loaderModal').modal('show');
+            //   $('#loaderModal').modal('show');
 
-                $.ajax({
-                    url: 'savestudentinfo',
-                    type: "POST",
-                    data: formData,
-                    // dataType: "json",
-                    success: function (data) {
-                        console.log(data);
-                        $('#loaderModal').modal('hide');
+            $.ajax({
+                url: 'savestudentinfo',
+                type: "POST",
+                data: formData,
+                // dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    $('#loaderModal').modal('hide');
 
-                        if (data.success == 0) {
-                            swal("Error", data.message, "danger");
+                    if (data.success == 0) {
+                        swal("Error", data.message, "danger");
 
 
-                        } else {
-                            console.log('here');
-                            swal({
-                                title: "Success",
-                                text: "Student Information Saved Successfully",
-                                type: "success",
-                                showCancelButton: false,
-                                confirmButtonText: "OK",
-                                closeOnConfirm: false
-                            },
-                            function () {
-                                window.location = "students.php";
-                            });
+                    } else {
+                        console.log('here');
+                        swal({
+                            title: "Success",
+                            text: "Student Information Saved Successfully",
+                            type: "success",
+                            showCancelButton: false,
+                            confirmButtonText: "OK",
+                            closeOnConfirm: false
+                        },
+                        function () {
+                            window.location = "students.php";
+                        });
 //                   
-                        }
-                    },
-                    error: function (jXHR, textStatus, errorThrown) {
-                        alert(errorThrown);
                     }
-                });
-
-
+                },
+                error: function (jXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
             });
+
+
+        });
 
 
 
@@ -338,13 +338,13 @@ $("#region").change(function () {
 //                    $('#myModal').modal('show');
 //                   
 //                    root_wizard.find("a[href='#tab1']").tab('show');
-        }
+    }
 
-    });
+});
 
-    $('#myModal').on('hide.bs.modal', function (e) {
-        location.reload();
-    });
+$('#myModal').on('hide.bs.modal', function (e) {
+    location.reload();
+});
 
 
 
@@ -386,7 +386,9 @@ $('#updateStudentInfo').on('submit', function (e) {
 
         },
         error: function (jXHR, textStatus, errorThrown) {
-            //   swal("Error!", "Couldnt save:Instituition code already exist", "error");
+            $("#loaderModal").modal('hide');
+
+            swal("Error!", "Contact System Administrator", "error");
             console.log(textStatus);
         }
     });

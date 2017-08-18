@@ -26,46 +26,76 @@ use App\ProfessionalBodies;
 use App\InstituitionProfessionalBodies;
 use GuzzleHttp;
 use Illuminate\Database\Eloquent;
+use Illuminate\Support\Facades\Session;
 
 class ConfigurationController extends Controller {
 
     public function newdistrict() {
 
-        // echo 'goood';
+        $id = Session::get('id');
+
+        if (empty($id)) {
+            return redirect('logout');
+        }
         return view('newdistrict');
     }
 
     public function showdistricts() {
 
-        // echo 'goood';
+        $id = Session::get('id');
+
+        if (empty($id)) {
+            return redirect('logout');
+        }
         return view('districts');
     }
 
     public function showdepartments() {
 
-        // echo 'goood';
+        $id = Session::get('id');
+
+        if (empty($id)) {
+            return redirect('logout');
+        }
         return view('department');
     }
 
     public function showGradeTypes() {
 
-        // echo 'goood';
+        $id = Session::get('id');
+
+        if (empty($id)) {
+            return redirect('logout');
+        }
         return view('gradetypes');
     }
 
     public function showRegionDistricts() {
 
-        // echo 'goood';
+        $id = Session::get('id');
+
+        if (empty($id)) {
+            return redirect('logout');
+        }
         return view('regiondistricts');
     }
 
     public function showInstitutionTypes() {
 
-        // echo 'goood';
+        $id = Session::get('id');
+
+        if (empty($id)) {
+            return redirect('logout');
+        }
         return view('institutiontypes');
     }
 
     public function showProfessionalbodies() {
+        $id = Session::get('id');
+
+        if (empty($id)) {
+            return redirect('logout');
+        }
         return view('professionalbodies');
     }
 

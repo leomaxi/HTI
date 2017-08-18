@@ -95,7 +95,7 @@
                                                         <label class="control-label">Instituitions *</label>
 
                                                         <select id="instituitions" name="institute_code" class="form-control select2" style="width:100%">
-                                                            <option>Choose</option>
+                                                            <option value="">Choose</option>
                                                         </select>
                                                     </div>
                                                     <?Php
@@ -339,7 +339,11 @@
 
                                                 <div class="form-group">
                                                     <label class="control-label">Program of Study *</label>
-                                                    <input  name="program" id="program" type="text" class="form-control required">
+
+                                                    <select id="program" name="program" class="form-control select2" style="width:100%">
+                                                        <option value="">Select value...</option>
+
+                                                    </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label  class="control-label">Year of Admission *</label>

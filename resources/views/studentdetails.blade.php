@@ -14,18 +14,19 @@
         <ol class="breadcrumb">
             <li>
                 <a href="index.html">
-                    <i class="fa fa-fw ti-home"></i> Staff
+                    <i class="fa fa-fw ti-home"></i> Students
                 </a>
             </li>
 
             <li>
-                Staff Information
+                Student Information
             </li>
         </ol>
     </section>
     <!--section ends-->
+
     <section class="content">
-       <div class="row">
+        <div class="row">
             <div class="col-lg-12">
                 <form id="updateStudentInfo" method='post'>
                     <input type="hidden" class="form-control form-control-lg input-lg"  name="_token" value="<?php echo csrf_token() ?>" />
@@ -72,7 +73,7 @@
                                 <div id="tab1" class="tab-pane fade active in">
                                     <div class="row">
                                         <div class="col-sm-12 col-md-6 col-lg-6">
-
+                                            <input type="hidden" value="{{$studentinfo[0]['student_no']}}" name="studentno"/>
                                             <div class="form-group">
                                                 <label class="control-label">Institution Name</label>
                                                 <input readonly  name="institution_name" value="{{$studentinfo[0]['institution_name']}}" type="text" class="form-control required">
@@ -262,10 +263,10 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6">
-<!--                                            <div class="form-group">
-                                                <label  class="control-label">State </label>
-                                                <input  name="guardian_state" id="guardian_state" value="{{$studentinfo[0]['middlename']}}" type="text" class="form-control ">
-                                            </div>-->
+                                            <!--                                            <div class="form-group">
+                                                                                            <label  class="control-label">State </label>
+                                                                                            <input  name="guardian_state" id="guardian_state" value="{{$studentinfo[0]['middlename']}}" type="text" class="form-control ">
+                                                                                        </div>-->
                                             <div class="form-group">
                                                 <label  class="control-label">Suburb </label>
                                                 <input  name="guardian_suburb" id="guardian_suburb" value="{{$studentinfo[0]['guardian_suburb']}}" type="text" class="form-control ">
@@ -290,7 +291,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label  class="control-label">Program Of Study </label>
-                                                <input  value="{{$studentinfo[0]['program']}}" name="programofstudy" id="programofstudy" type="text" class="form-control ">
+                                                <input  value="{{$studentinfo[0]['program']}}" name="program" id="programofstudy" type="text" class="form-control ">
                                             </div>
                                             <div class="form-group">
                                                 <label  class="control-label">Year  of Completion </label>
@@ -318,7 +319,7 @@
 
                                             <div class="form-group">
                                                 <label class="control-label">Program of Study *</label>
-                                                <input value="{{$studentinfo[0]['program']}}"  name="program" id="program" type="text" class="form-control required">
+                                                <input value="{{$studentinfo[0]['enrollment_program_name']}}" readonly  name="enrollment_program"  type="text" class="form-control required">
                                             </div>
                                             <div class="form-group">
                                                 <label  class="control-label">Year of Admission *</label>
@@ -386,10 +387,10 @@
 
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6">
-<!--                                            <div class="form-group">
-                                                <label  class="control-label">Suburb </label>
-                                                <input value="{{$studentinfo[0]['aggregate']}}"  name="kin_suburb" id="kin_suburb" type="text" class="form-control required">
-                                            </div>-->
+                                            <!--                                            <div class="form-group">
+                                                                                            <label  class="control-label">Suburb </label>
+                                                                                            <input value="{{$studentinfo[0]['aggregate']}}"  name="kin_suburb" id="kin_suburb" type="text" class="form-control required">
+                                                                                        </div>-->
                                             <div class="form-group">
                                                 <label for="userName" class="control-label">Res. Address </label>
                                                 <textarea rows="5" name="kin_address" id="kin_address" style="width: 100%" >

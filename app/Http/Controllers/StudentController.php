@@ -16,11 +16,16 @@ use App\StudentEnrollment;
 use App\Users;
 use App\StudentView;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\StaffController;
 
 class StudentController extends Controller {
 
     public function showstudent() {
+        $id = Session::get('id');
 
+        if (empty($id)) {
+            return redirect('logout');
+        }
         return view('newstudentview');
     }
 
@@ -48,7 +53,11 @@ class StudentController extends Controller {
 
     public function showallstudents() {
 
+        $id = Session::get('id');
 
+        if (empty($id)) {
+            return redirect('logout');
+        }
         return view('allstudents');
     }
 
@@ -60,60 +69,87 @@ class StudentController extends Controller {
 
         $new = new Student();
         if (Session::get('role') == "principal") {
-            $new->instituition_code = Session::get('institute');
+            $new->instituition_code = Session::get('instseitute');
         } else {
             $new->instituition_code = $data['institute_code'];
         }
-        $new->code = $this->generateuniqueCode(8);
 
-        $new->student_no = '';
-        $new->firstname = $data['firstname'];
-        $new->middlename = $data['middlename'];
-        $new->surname = $data['lastname'];
-        $new->gender = $data['gender'];
-        $new->dob = $data['dateofbirth'];
-        $new->place_of_birth = $data['placeofbirth'];
-        $new->region = $data['region'];
-        $new->district = $data['district'];
-        $new->nationality = $data['nationality'];
-        $new->address = $data['address'];
-        $new->suburb = $data['suburb'];
-        $new->postcode = $data['postal_address'];
-        $new->contact_no = $data['contactno'];
-        $new->email_address = $data['email'];
-        $new->marital_status = $data['marital_status'];
-        $new->identification_number = $data['identification_number'];
-        $new->identification_type = $data['identification_type'];
-        $new->next_of_kin = $data['nextofkin'];
-        $new->relationship = $data['kin_relationship'];
-        $new->kin_address = $data['kin_address'];
-        $new->kin_email = $data['kin_email'];
-        $new->kin_contactno = $data['kin_contactno'];
-        $new->kin_postcode = $data['kin_postal'];
-        $new->guardian_firstname = $data['guardian_firstname'];
-        $new->guardian_surname = $data['guardian_lastname'];
-        $new->guardian_address = $data['guardian_address'];
-        $new->guardian_contact = $data['guardian_contact'];
-        $new->guardian_emailaddress = $data['guardian_email'];
-        $new->guardian_postal_address = $data['guardian_postcode'];
-        $new->createdby = Session::get('id');
-        $saved = $new->save();
+        $exist = new StaffController();
+        $email_existence = $exist->checkEmailExistence($data['email']);
+        if ($email_existence == '0') {
+            $student_initials = $data['firstname'][0] . $data['middlename'][0] . $data['lastname'][0];
 
-        $code = $new->code;
-        if (!$saved) {
+            $new->code = $this->generateuniqueCode(8);
+            $new->student_no = '';
+            $new->firstname = $data['firstname'];
+            $new->middlename = $data['middlename'];
+            $new->surname = $data['lastname'];
+            $new->gender = $data['gender'];
+            $new->dob = $data['dateofbirth'];
+            $new->place_of_birth = $data['placeofbirth'];
+            $new->region = $data['region'];
+            $new->district = $data['district'];
+            $new->nationality = $data['nationality'];
+            $new->address = $data['address'];
+            $new->suburb = $data['suburb'];
+            $new->postcode = $data['postal_address'];
+            $new->contact_no = $data['contactno'];
+            $new->email_address = $data['email'];
+            $new->marital_status = $data['marital_status'];
+            $new->identification_number = $data['identification_number'];
+            $new->identification_type = $data['identification_type'];
+            $new->next_of_kin = $data['nextofkin'];
+            $new->relationship = $data['kin_relationship'];
+            $new->kin_address = $data['kin_address'];
+            $new->kin_email = $data['kin_email'];
+            $new->kin_contactno = $data['kin_contactno'];
+            $new->kin_postcode = $data['kin_postal'];
+            $new->guardian_firstname = $data['guardian_firstname'];
+            $new->guardian_surname = $data['guardian_lastname'];
+            $new->guardian_address = $data['guardian_address'];
+            $new->guardian_contact = $data['guardian_contact'];
+            $new->guardian_emailaddress = $data['guardian_email'];
+            $new->guardian_postal_address = $data['guardian_postcode'];
+            $new->createdby = Session::get('id');
+            $saved = $new->save();
+            $inserted_id = $new->id;
+
+            $student_no = 'STU'. str_pad("$inserted_id", 5, '0', STR_PAD_LEFT).$student_initials;
+            $this->updateStudentNo($student_no, $inserted_id);
+            if (!$saved) {
+                $response['success'] = '1';
+                $response['message'] = 'Couldnt save';
+                return json_encode($response);
+            } else {
+                $this->saveStudentAcademicDetails($student_no, $data);
+                $this->saveStudentEnrollmentDetails($student_no, $data);
+                $this->saveStudentBankDetails($student_no, $data);
+
+
+                $this->saveUsers($new->code, $data, 'student');
+                $response['success'] = '0';
+                $response['message'] = 'Student Information Saved Successfully';
+                return json_encode($response);
+            }
+        }
+
+        if ($email_existence == "1") {
             $response['success'] = '1';
-            $response['message'] = 'Couldnt save';
+            $response['message'] = 'Email already exists';
             return json_encode($response);
+        }
+    }
+
+    private function updateStudentNo($studentno, $id) {
+
+
+        $update = Student::find($id);
+        $update->student_no = $studentno;
+        $saved = $update->save();
+        if (!$saved) {
+            return '1';
         } else {
-            $this->saveStudentAcademicDetails($code, $data);
-            $this->saveStudentEnrollmentDetails($code, $data);
-            $this->saveStudentBankDetails($code, $data);
-
-
-            $this->saveUsers($code, $data, 'student');
-            $response['success'] = '0';
-            $response['message'] = 'Student Information Saved Successfully';
-            return json_encode($response);
+            return '0';
         }
     }
 
@@ -293,14 +329,13 @@ class StudentController extends Controller {
     private function updateStudentAcademicDetails($data) {
 
 
-        $new = StudentAcademic::where('student_no', $data['code'])
+        $new = StudentAcademic::where('student_no', $data['studentno'])
                 ->first();
         // $new->student_no = $code;
         if (!empty($data['institute_code'])) {
             $new->instituition_code = $data['institute_code'];
         }
-
-
+        
         $new->last_instituition = $data['last_institution_completed'];
         $new->completion_year = $data['completion_year'];
         $new->examination_type = $data['examination_type'];
@@ -318,7 +353,7 @@ class StudentController extends Controller {
     private function updateStudentBankDetails($data) {
 
 
-        $new = StudentBank::where('student_no', $data['code'])
+        $new = StudentBank::where('student_no', $data['studentno'])
                 ->first();
         if (!empty($data['institute_code'])) {
             $new->instituition_code = $data['institute_code'];
@@ -347,13 +382,13 @@ class StudentController extends Controller {
 
 
         // $new = new StudentEnrollment();
-        $new = StudentEnrollment::where('student_no', $data['code'])
+        $new = StudentEnrollment::where('student_no', $data['studentno'])
                 ->first();
         if (!empty($data['institute_code'])) {
             $new->instituition_code = $data['institute_code'];
         }
 
-        $new->program = $data['program'];
+       // $new->program = $data['enrollment_program'];
         $new->admission_year = $data['admission_year'];
         $new->professional_body = $data['professional_body'];
         $new->sitting_year = $data['year_of_seating'];

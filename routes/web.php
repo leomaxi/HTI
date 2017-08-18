@@ -87,6 +87,7 @@ Route::post('account/assigngrouproles', 'AccountController@assignGroupRoles');
 Route::get('account/getusers', 'AccountController@getUsers');
 Route::get('account/user/{id}', 'AccountController@getUserInfo');
 Route::put('account/userinfo', 'AccountController@updateUserInfo');
+Route::post('account/saveuser', 'AccountController@saveUserInfo');
 Route::post('login/authenticateuser', 'LoginController@authenticateUser');
 Route::post('login/updatepassword', 'LoginController@updatePassword');
 Route::get('configurations/getinstitutioninstitutetypes/{id}', 'ConfigurationController@getInstituitionInstituteTypes');

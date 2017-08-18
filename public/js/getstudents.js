@@ -30,6 +30,15 @@ function getStudents()
 
                 var rowNum = 0;
                 $.each(data, function (key, value) {
+                    
+                      if(value.middlename==null){
+                        value.middlename='';
+                    }
+                     if(value.contact_no==null){
+                        value.contact_no='';
+                    }
+                    
+                     
                     var name = value.firstname + ' ' + value.middlename + ' ' + value.surname;
 
                     var j = -1;

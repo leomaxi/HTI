@@ -314,30 +314,12 @@ $(document).ready(function () {
                 // dismiss can be 'cancel', 'overlay', 'esc' or 'timer'
             }
             );
-//            swal({
-//                title: "Confirm",
-//                text: "Are you sure you want to submit staff information?",
-//                type: "info",
-//                showCancelButton: true,
-//                showLoaderOnConfirm: true
-//            }.then(function () {
-//                var formData = $("#staffForm").serialize();
-//
-//                console.log('data: ' + formData);
-//                console.log('send data to server');
-//
-//
-//            }));
+
 
         }
     });
 
 
-
-//                    $('#myModal').modal('show');
-//                   
-//                    root_wizard.find("a[href='#tab1']").tab('show');
-    // }
 
 
 

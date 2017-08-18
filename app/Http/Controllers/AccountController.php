@@ -14,24 +14,44 @@ use App\Users;
 use App\PermissionsRoles;
 use App\Permissions;
 use App\UsersView;
+use Illuminate\Support\Facades\Session;
 
 class AccountController extends Controller {
 
     public function showUserGroups() {
+        $id = Session::get('id');
 
+        if (empty($id)) {
+            return redirect('logout');
+        }
         return view('usergroups');
     }
 
     public function showrolesandpermissions() {
+        $id = Session::get('id');
 
+        if (empty($id)) {
+            return redirect('logout');
+        }
         return view('rolesandpermissions');
     }
 
     public function showusers() {
+        $id = Session::get('id');
+
+        if (empty($id)) {
+            return redirect('logout');
+        }
         return view('users');
     }
 
     public function getUserGroups() {
+        $id = Session::get('id');
+
+        if (empty($id)) {
+            return redirect('logout');
+        }
+
         return UserGroups::where('active', 0)
                         ->get();
     }
@@ -88,6 +108,8 @@ class AccountController extends Controller {
         $id = $data['userid'];
         $update = Users::find($id);
         $update->usergroup = $data['userGroup'];
+        $update->firstname = $data['name'];
+        $update->email = $data['email'];
         $saved = $update->save();
         if (!$saved) {
             return '1';
@@ -132,6 +154,46 @@ class AccountController extends Controller {
     public function getUserInfo($id) {
         return Users::where('id', $id)
                         ->get();
+    }
+
+    public function saveUserInfo(Request $request) {
+        $data = $request->all();
+        $response = array();
+        $new = new Users();
+        $existence = $this->checkEmailExistence($data['email']);
+        if ($existence == 0) {
+            $new->firstname = $data['name'];
+            $new->email = $data['email'];
+            $new->createdby = Session::get('id');
+            $new->role = 'system generated';
+            $saved = $new->save();
+            if (!$saved) {
+                $response['success'] = 1;
+                $response['message'] = 'Could not save';
+                return $response;
+            } else {
+                $response['success'] = 0;
+                $response['message'] = 'User Information Saved Successfully';
+                return $response;
+            }
+        }
+        if ($existence == 1) {
+            $response['success'] = 1;
+            $response['message'] = 'Email already exist';
+            return $response;
+        }
+    }
+
+    public function checkEmailExistence($email) {
+
+        $check = Users::where('email', '=', $email)->count();
+        if ($check == 0) {
+            //it doesnt exist 
+            return '0';
+        } else {
+            //its exists
+            return '1';
+        }
     }
 
 }

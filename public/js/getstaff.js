@@ -27,6 +27,16 @@ function getStaff()
 
                 var rowNum = 0;
                 $.each(data, function (key, value) {
+                    if(value.middlename==null){
+                        value.middlename='';
+                    }
+                     if(value.contact_no==null){
+                        value.contact_no='';
+                    }
+                    
+                     if(value.department_name==null){
+                        value.department_name='';
+                    }
                     var name = value.firstname + ' ' + value.middlename + ' ' + value.surname;
                     var j = -1;
                     var r = new Array();

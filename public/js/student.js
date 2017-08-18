@@ -4,6 +4,24 @@
  * and open the template in the editor.
  */
 
+   console.log('proram data:' );
+$.ajax({
+    url: '../configurations/getinstituitionstypes',
+    type: "GET",
+    dataType: 'json',
+    success: function (data) {
+
+        console.log('proram data:' + data);
+        $.each(data, function (i, item) {
+
+            $('#program').append($('<option>', {
+                value: item.code,
+                text: item.name
+            }));
+        });
+
+    }
+});
 $.ajax({
     url: '../configurations/getregions',
     type: "GET",
@@ -77,7 +95,7 @@ $.ajax({
 
     }
 });
-
+ 
 //district
 function getDistrictsBasedOnRegion(region_code) {
 
@@ -146,86 +164,92 @@ $(".select2").select2({
 
 $("#studentForm").bootstrapValidator({
     fields: {
-//            firstname: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'firstname is required'
-//                    }
+//        firstname: {
+//            validators: {
+//                notEmpty: {
+//                    message: 'firstname is required'
+//                }
+//            },
+//            required: true,
+//            minlength: 3
+//        },
+//        email: {
+//            validators: {
+//                notEmpty: {
+//                    message: 'The email address is required'
 //                },
-//                required: true,
-//                minlength: 3
-//            },
-//            email: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'The email address is required'
-//                    },
-//                    regexp: {
-//                        regexp: /^\S+@\S{1,}\.\S{1,}$/,
-//                        message: 'Please enter valid email format'
-//                    }
+//                regexp: {
+//                    regexp: /^\S+@\S{1,}\.\S{1,}$/,
+//                    message: 'Please enter valid email format'
 //                }
-//            },
-//            lastname: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'lastname is required '
-//                    }
+//            }
+//        },
+//        lastname: {
+//            validators: {
+//                notEmpty: {
+//                    message: 'lastname is required '
 //                }
-//            },
-//            nationality: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'nationality is required '
-//                    }
+//            }
+//        },
+//        nationality: {
+//            validators: {
+//                notEmpty: {
+//                    message: 'nationality is required '
 //                }
-//            }, staffno: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'staffno is required '
-//                    }
+//            }
+//        }, institute_code: {
+//            validators: {
+//                notEmpty: {
+//                    message: 'Please select your institution.'
 //                }
-//            }, highest_qualification: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'highest_qualification is required '
-//                    }
+//            }
+//        }, staffno: {
+//            validators: {
+//                notEmpty: {
+//                    message: 'staffno is required '
 //                }
-//            }, qualification: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'qualification is required '
-//                    }
-//               }
-//            },
-//            department: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'Please select your department.'
-//                    }
+//            }
+//        }, highest_qualification: {
+//            validators: {
+//                notEmpty: {
+//                    message: 'highest_qualification is required '
 //                }
-//            },
-//            gender: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'Please select your gender.'
-//                    }
+//            }
+//        }, qualification: {
+//            validators: {
+//                notEmpty: {
+//                    message: 'qualification is required '
 //                }
-//            },
-//            grade: {
-//                validators: {
-//                    notEmpty: {
-//                        message: 'Please select your grade.'
-//                    }
+//            }
+//        },
+//        department: {
+//            validators: {
+//                notEmpty: {
+//                    message: 'Please select your department.'
 //                }
-//            },
-        acceptTerms: {
-            validators: {
-                notEmpty: {
-                    message: 'The checkbox must be checked'
-                }
-            }
-        }
+//            }
+//        },
+//        gender: {
+//            validators: {
+//                notEmpty: {
+//                    message: 'Please select your gender.'
+//                }
+//            }
+//        },
+//        grade: {
+//            validators: {
+//                notEmpty: {
+//                    message: 'Please select your grade.'
+//                }
+//            }
+//        },
+//        acceptTerms: {
+//            validators: {
+//                notEmpty: {
+//                    message: 'The checkbox must be checked'
+//                }
+//            }
+//        }
     }
 });
 
@@ -281,64 +305,54 @@ $('.finish').click(function () {
             title: "Confirm",
             text: "Are you sure you want to submit student information?",
             type: "info",
-            showCancelButton: true,
-            closeOnConfirm: false,
-            showLoaderOnConfirm: true
-        }).then(function () {
-            var formData = $("#studentForm").serialize();
-
-            console.log('data: ' + formData);
-            console.log('send data to server');
-
-            $('#loaderModal').modal('show');
-
-            $.ajax({
-                url: 'savestudentinfo',
-                type: "POST",
-                data: formData,
-                dataType: "json",
-                success: function (data) {
-                    console.log(data);
-                    $('#loaderModal').modal('hide');
-
-                    if (data.success == 0) {
-                        swal("Error", data.message, "danger");
+            showCancelButton: true
+        }).then(
+                function (result) {
+                    console.log('send');
+                    var formData = $("#studentForm").serialize();
+                    $("#loaderModal").modal('show');
+                    console.log('data: ' + formData);
+                    console.log('send data to server');
+                    $.ajax({
+                        url: 'savestudentinfo',
+                        type: "POST",
+                        data: formData,
+                        dataType: "json",
+                        success: function (data) {
+                            $("#loaderModal").modal('hide');
+                            console.log(data);
+                            if (data.success == 1) {
+                                swal("Error", data.message, "danger");
 
 
-                    } else {
-                        console.log('here');
-                        swal({
-                            title: "Success",
-                            text: "Student Information Saved Successfully",
-                            type: "success",
-                            showCancelButton: false,
-                            confirmButtonText: "OK",
-                            closeOnConfirm: false
-                        }).then(
-                                function () {
-                                    window.location = "all";
-                                });
-//                   
-                    }
-                },
-                error: function (jXHR, textStatus, errorThrown) {
-                    $("#loaderModal").modal('hide');
+                            } else if (data.success == 0) {
+                                swal({
+                                    title: "Success",
+                                    text: "Student Information Saved Successfully",
+                                    type: "success",
+                                    showCancelButton: false,
+                                    confirmButtonText: "OK",
+                                    closeOnConfirm: false
+                                }).then(
+                                        function () {
+                                            window.location = "all";
+                                        });
 
-                    swal("Error!", "Couldnt save:Contact System Administrator", "error");
+                            }
+                        },
+                        error: function (jXHR, textStatus, errorThrown) {
+                            $("#loaderModal").modal('hide');
 
-                }
-            });
+                            swal("Error!", "Couldnt save:Contact System Administrator", "error");
 
+                        }
+                    });
 
-        });
-
-
-
-
-
-//                    $('#myModal').modal('show');
-//                   
-//                    root_wizard.find("a[href='#tab1']").tab('show');
+                }, function (dismiss) {
+            console.log('cancel');
+            // dismiss can be 'cancel', 'overlay', 'esc' or 'timer'
+        }
+        );
     }
 
 });

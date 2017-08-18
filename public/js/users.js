@@ -8,94 +8,29 @@ $('#saveUserForm').on('submit', function (e) {
     console.log(formData);
     $('input:submit').attr("disabled", true);
 
+    $("#loaderModal").modal('show');
     $.ajax({
-        url: '../controllers/AccountController.php?_=' + new Date().getTime(),
+        url: 'saveuser',
         type: "POST",
         data: formData,
         dataType: "json",
         success: function (data) {
+            $("#loaderModal").modal('hide');
+            $("#userModal").modal('hide');
             $('input:submit').attr("disabled", false);
             console.log('server details:' + data);
-            $('.userdetails').html(data.userdetails);
-            // $("#loader").hide();
-
-            var successStatus = data.success;
-
-            if (successStatus == 1) {
-                $('#userModal').modal('hide');
-                document.getElementById("saveUserForm").reset();
-
-                $('input:submit').attr("disabled", false);
-                Command: toastr["success"](data.message, "Success");
-
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
+            // $('.userdetails').html(data.userdetails);
+            if (data.success == 0) {
+                swal("Success!", "User Information Saved Successfully", "success");
                 getUsers();
-
-            } else if (successStatus == 2) {
-
-                Command: toastr["error"](data.message, "Error");
-
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
             } else {
-                $('#userModal').modal('hide');
-                document.getElementById("saveUserForm").reset();
-                Command: toastr["warning"](data.message, "Warning");
-
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
-                getUsers();
+                swal("Error!", data.message, "error");
             }
 
         },
         error: function (jXHR, textStatus, errorThrown) {
-            console.log(errorThrown);
+            $("#loaderModal").modal('hide')
+            swal("Error!", "Contact Systen Administrator", "error");
         }
     });
 
@@ -112,7 +47,10 @@ var datatable = $('#usersTbl').DataTable({
                 {previous: "&laquo;", next: "&raquo;"},
         search: "_INPUT_",
         searchPlaceholder: "Search…"
-    }
+    },
+     "order": [[5, "desc"]]
+
+    
 });
 
 
@@ -140,7 +78,19 @@ function getUsers()
             } else {
                 $.each(data, function (key, value) {
 
+                    if (value.firstname == null) {
+                        value.firstname = '';
+                    }
+                    if (value.institution_name == null) {
+                        value.institution_name = '';
+                    }
 
+                    if (value.usergroup_name == null) {
+                        value.usergroup_name = '';
+                    }
+                    if (value.role == null) {
+                        value.role = '';
+                    }
                     var j = -1;
                     var r = new Array();
                     // represent columns as array
@@ -160,7 +110,7 @@ function getUsers()
 
         },
         error: function (jXHR, textStatus, errorThrown) {
-            alert(errorThrown + " " + textStatus + " New Error: " + jXHR);
+            swal("Error!", "Contact Systen Administrator", "error");
         }
     });
 
@@ -177,7 +127,13 @@ function editUser(id) {
         success: function (data) {
             $("#usergroups  option[value='']").prop("selected", true);
 
-            console.log(data[0].firstname);
+            console.log(data[0].instituition_code);
+            if(data[0].instituition_code==null){
+                $("input").prop("readonly", false); 
+            }
+              if(data[0].instituition_code!=null){
+                $("input").prop("readonly", true); 
+            }
             var name = data[0].firstname;
             var email = data[0].email;
             var usergroup = data[0].usergroup;
@@ -223,7 +179,7 @@ $('#updateUserForm').on('submit', function (e) {
             }
         },
         error: function (jXHR, textStatus, errorThrown) {
-            alert(errorThrown);
+            swal("Error!", "Contact Systen Administrator", "error");
         }
     });
 
@@ -288,7 +244,7 @@ $('#deleteUserForm').on('submit', function (e) {
             }
         },
         error: function (jXHR, textStatus, errorThrown) {
-            alert(errorThrown);
+            swal("Error!", "Contact Systen Administrator", "error");
         }
     });
 
@@ -304,7 +260,7 @@ $.ajax({
 
         $.each(data, function (i, item) {
 
-            $('#usergroups').append($('<option>', {
+            $('.usergroups').append($('<option>', {
                 value: item.id,
                 text: item.name
             }));

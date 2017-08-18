@@ -23,18 +23,30 @@ use App\StaffAcademicView;
 class StaffController extends Controller {
 
     public function showstaff() {
+        $id = Session::get('id');
 
+        if (empty($id)) {
+            return redirect('logout');
+        }
         return view('newstaffview');
     }
 
     public function showallstaff() {
+        $id = Session::get('id');
 
+        if (empty($id)) {
+            return redirect('logout');
+        }
         return view('staff');
     }
 
     public function showprincipal($code) {
 
-        //echo $code;
+        $id = Session::get('id');
+
+        if (empty($id)) {
+            return redirect('logout');
+        }
         return view('newstaff')->with('instcode', $code);
     }
 
@@ -70,6 +82,9 @@ class StaffController extends Controller {
         $new = new Staff();
         $email_existence = $this->checkEmailExistence($data['email']);
         if ($email_existence == '0') {
+
+            $staff_initials = $data['firstname'][0] . $data['middlename'][0] . $data['lastname'][0];
+
             $new->code = $this->generateuniqueCode(8);
             if (Session::get('role') == "principal") {
                 $new->instituition_code = Session::get('institute');
@@ -77,8 +92,7 @@ class StaffController extends Controller {
                 $new->instituition_code = $data['institute_code'];
             }
 
-            $new->staff_no = 'STF' . $this->generateuniqueCode(8);
-
+            $new->staff_no = '';
             $new->firstname = $data['firstname'];
             $new->middlename = $data['middlename'];
             $new->surname = $data['lastname'];
@@ -109,7 +123,10 @@ class StaffController extends Controller {
 
             $saved = $new->save();
             $code = $new->code;
-            $staffno = $new->staff_no;
+            $inserted_id = $new->id;
+
+            $staffno = 'STF' . str_pad("$inserted_id", 5, '0', STR_PAD_LEFT) . $staff_initials;
+            $this->updateStaffNo($staffno, $inserted_id);
             if (!$saved) {
                 $response['success'] = '1';
                 $response['message'] = 'Couldnt save';
@@ -138,6 +155,19 @@ class StaffController extends Controller {
             $response['success'] = '1';
             $response['message'] = 'Email already exists';
             return json_encode($response);
+        }
+    }
+
+    private function updateStaffNo($staffno, $id) {
+
+
+        $update = Staff::find($id);
+        $update->staff_no = $staffno;
+        $saved = $update->save();
+        if (!$saved) {
+            return '1';
+        } else {
+            return '0';
         }
     }
 
