@@ -48,9 +48,9 @@ var datatable = $('#usersTbl').DataTable({
         search: "_INPUT_",
         searchPlaceholder: "Search…"
     },
-     "order": [[5, "desc"]]
+    "order": [[5, "desc"]]
 
-    
+
 });
 
 
@@ -100,7 +100,10 @@ function getUsers()
                     r[++j] = '<td>' + value.role + '</td>';
                     r[++j] = '<td>' + value.usergroup_name + '</td>';
                     r[++j] = '<td>' + value.datecreated + '</td>';
-                    r[++j] = '<td><button onclick="editUser(\'' + value.id + '\')" class="btn btn-outline-info btn-sm editBtn"  type="button">Edit</button></td>';
+                    r[++j] = '<td>\n\
+<button onclick="editUser(\'' + value.id + '\')" class="btn btn-outline-info btn-sm editBtn"  type="button">Edit</button>\n\
+\n\<button onclick="deleteUser(\'' + value.id + '\',\'' + value.institution_name + '\',\'' + value.firstname + '\')" class="btn btn-outline-danger btn-sm editBtn"  type="button">Delete</button>\n\
+</td>';
 
                     rowNode = datatable.row.add(r);
                 });
@@ -128,11 +131,11 @@ function editUser(id) {
             $("#usergroups  option[value='']").prop("selected", true);
 
             console.log(data[0].instituition_code);
-            if(data[0].instituition_code==null){
-                $("input").prop("readonly", false); 
+            if (data[0].instituition_code == null) {
+                $("input").prop("readonly", false);
             }
-              if(data[0].instituition_code!=null){
-                $("input").prop("readonly", true); 
+            if (data[0].instituition_code != null) {
+                $("input").prop("readonly", true);
             }
             var name = data[0].firstname;
             var email = data[0].email;
@@ -190,11 +193,28 @@ $('#updateUserForm').on('submit', function (e) {
 
 
 
-function deleteUser(code, title) {
-    console.log(code + title);
-    $('#userid').val(code);
-    $('#user_name').val(title);
+function deleteUser(code, institution, title) {
+    console.log(code + 'inst:' + institution);
 
+
+    if (!institution.trim()) {
+
+        //delete user
+        $('#userdeleteenabled').show();
+        $('#userdeletedisabled').hide();
+        $('#deleteuser').removeAttr('disabled');
+    }
+
+    if (institution.trim()) {
+
+        console.log('not null');
+
+        $('#userdeleteenabled').hide();
+        $('#userdeletedisabled').show();
+        $('#deleteuser').attr('disabled', 'disabled');
+
+    }
+    $('#code').val(code);
     $('#userholder').html(title);
     $('#confirmModal').modal('show');
 }
@@ -203,44 +223,24 @@ function deleteUser(code, title) {
 $('#deleteUserForm').on('submit', function (e) {
     e.preventDefault();
     $('input:submit').attr("disabled", true);
-    var formData = $(this).serialize();
-    console.log(formData);
+    var code = $('#code').val();
+    var token = $('#token').val();
     $('#confirmModal').modal('hide');
     $('#loaderModal').modal('show');
 
     $.ajax({
-        url: '../controllers/deleteController.php?_=' + new Date().getTime(),
-        type: "POST",
-        data: formData,
-        dataType: "json",
+        url: 'deleteuser/' + code,
+        type: "DELETE",
+        data: {_token: token},
         success: function (data) {
             // $("#loader").hide();
             $('input:submit').attr("disabled", false);
             $('#loaderModal').modal('hide');
-            var successStatus = data.success;
-            document.getElementById("deleteUserForm").reset();
-
-            if (successStatus == 1) {
-                Command: toastr["success"](data.message, "Success");
-
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
+            if (data == 0) {
+                swal("Success!", "User Deleted Successfully", "success");
                 getUsers();
+            } else {
+                swal("Error!", "Couldnt Delete", "error");
             }
         },
         error: function (jXHR, textStatus, errorThrown) {

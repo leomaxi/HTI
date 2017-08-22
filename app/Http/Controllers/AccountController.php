@@ -19,18 +19,32 @@ use Illuminate\Support\Facades\Session;
 class AccountController extends Controller {
 
     public function showUserGroups() {
+        $permissions = Session::get('permissions');
         $id = Session::get('id');
+
 
         if (empty($id)) {
             return redirect('logout');
         }
+
+        if (!in_array("VIEW_USER_GROUPS", $permissions)) {
+            return redirect('logout');
+        }
+
         return view('usergroups');
     }
 
     public function showrolesandpermissions() {
+
+        $permissions = Session::get('permissions');
         $id = Session::get('id');
 
+
         if (empty($id)) {
+            return redirect('logout');
+        }
+
+        if (!in_array("ASSIGN_ROLES", $permissions)) {
             return redirect('logout');
         }
         return view('rolesandpermissions');
@@ -38,10 +52,18 @@ class AccountController extends Controller {
 
     public function showusers() {
         $id = Session::get('id');
+        $permissions = Session::get('permissions');
 
         if (empty($id)) {
             return redirect('logout');
         }
+
+
+        if (!in_array("VIEW_USERS", $permissions)) {
+            return redirect('logout');
+        }
+
+
         return view('users');
     }
 
@@ -57,7 +79,8 @@ class AccountController extends Controller {
     }
 
     public function getUsers() {
-        return UsersView::all();
+        return UsersView::where('active', 0)
+                        ->get();
     }
 
     public function deleteUserGroup($id) {
@@ -193,6 +216,19 @@ class AccountController extends Controller {
         } else {
             //its exists
             return '1';
+        }
+    }
+
+    public function deleteUser($id) {
+
+
+        $update = Users::find($id);
+        $update->active = '1';
+        $saved = $update->save();
+        if (!$saved) {
+            return '1';
+        } else {
+            return '0';
         }
     }
 

@@ -24,7 +24,11 @@ class StaffController extends Controller {
 
     public function showstaff() {
         $id = Session::get('id');
+        $permissions = Session::get('permissions');
 
+        if (!in_array("CREATE_STAFF", $permissions)) {
+            return redirect('logout');
+        }
         if (empty($id)) {
             return redirect('logout');
         }
@@ -33,7 +37,11 @@ class StaffController extends Controller {
 
     public function showallstaff() {
         $id = Session::get('id');
+        $permissions = Session::get('permissions');
 
+        if (!in_array("VIEW_STAFF", $permissions)) {
+            return redirect('logout');
+        }
         if (empty($id)) {
             return redirect('logout');
         }
@@ -43,7 +51,7 @@ class StaffController extends Controller {
     public function showprincipal($code) {
 
         $id = Session::get('id');
-
+       
         if (empty($id)) {
             return redirect('logout');
         }
@@ -66,6 +74,12 @@ class StaffController extends Controller {
     }
 
     public function getStaff() {
+        
+         $permissions = Session::get('permissions');
+
+        if (!in_array("VIEW_STAFF", $permissions)) {
+            return redirect('logout');
+        }
 
         if (Session::get('role') == "principal") {
             $instituition_code = Session::get('institute');

@@ -187,23 +187,29 @@
         <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <form method="post" id="deleteDistrictForm">
+                    <form method="post" id="deleteUserForm">
                         <div class="modal-body">
-                            <div>
+                            
+                            <div id="userdeleteenabled" style="display: none">
                                 <p>
-                                    Are you sure you want to delete this district?.<span class="holder" id="districtholder"></span> 
+                                    Are you sure you want to delete this user?.<span class="holder" id="userholder"></span> 
                                 </p>
+                            </div>
+                            <div id="userdeletedisabled" style="display: none">
+                                <div class="alert alert-warning" aria-role="alert">
+                                    This user cat be deleted.<br>
+                                    Reason: User belongs to institution.
+                                </div>
                             </div>
                             <input type="hidden" class="form-control form-control-lg input-lg" id="token" name="_token" value="<?php echo csrf_token() ?>" />
 
-                            <input type="hidden" id="districtcode" name="districtcode"/>
-                            <input type="hidden"  name="type" value="deleteDistrict"/>
-
+                            <input type="hidden" id="code" name="code"/>
+                    
 
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                            <button type="submit"  class="btn btn-primary">YES</button>
+                            <button type="submit" id="deleteuser" class="btn btn-primary">YES</button>
                         </div>
                     </form>
                 </div>

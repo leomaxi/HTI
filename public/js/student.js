@@ -164,92 +164,92 @@ $(".select2").select2({
 
 $("#studentForm").bootstrapValidator({
     fields: {
-//        firstname: {
-//            validators: {
-//                notEmpty: {
-//                    message: 'firstname is required'
-//                }
-//            },
-//            required: true,
-//            minlength: 3
-//        },
-//        email: {
-//            validators: {
-//                notEmpty: {
-//                    message: 'The email address is required'
-//                },
-//                regexp: {
-//                    regexp: /^\S+@\S{1,}\.\S{1,}$/,
-//                    message: 'Please enter valid email format'
-//                }
-//            }
-//        },
-//        lastname: {
-//            validators: {
-//                notEmpty: {
-//                    message: 'lastname is required '
-//                }
-//            }
-//        },
-//        nationality: {
-//            validators: {
-//                notEmpty: {
-//                    message: 'nationality is required '
-//                }
-//            }
-//        }, institute_code: {
-//            validators: {
-//                notEmpty: {
-//                    message: 'Please select your institution.'
-//                }
-//            }
-//        }, staffno: {
-//            validators: {
-//                notEmpty: {
-//                    message: 'staffno is required '
-//                }
-//            }
-//        }, highest_qualification: {
-//            validators: {
-//                notEmpty: {
-//                    message: 'highest_qualification is required '
-//                }
-//            }
-//        }, qualification: {
-//            validators: {
-//                notEmpty: {
-//                    message: 'qualification is required '
-//                }
-//            }
-//        },
-//        department: {
-//            validators: {
-//                notEmpty: {
-//                    message: 'Please select your department.'
-//                }
-//            }
-//        },
-//        gender: {
-//            validators: {
-//                notEmpty: {
-//                    message: 'Please select your gender.'
-//                }
-//            }
-//        },
-//        grade: {
-//            validators: {
-//                notEmpty: {
-//                    message: 'Please select your grade.'
-//                }
-//            }
-//        },
-//        acceptTerms: {
-//            validators: {
-//                notEmpty: {
-//                    message: 'The checkbox must be checked'
-//                }
-//            }
-//        }
+        firstname: {
+            validators: {
+                notEmpty: {
+                    message: 'firstname is required'
+                }
+            },
+            required: true,
+            minlength: 3
+        },
+        email: {
+            validators: {
+                notEmpty: {
+                    message: 'The email address is required'
+                },
+                regexp: {
+                    regexp: /^\S+@\S{1,}\.\S{1,}$/,
+                    message: 'Please enter valid email format'
+                }
+            }
+        },
+        lastname: {
+            validators: {
+                notEmpty: {
+                    message: 'lastname is required '
+                }
+            }
+        },
+        nationality: {
+            validators: {
+                notEmpty: {
+                    message: 'nationality is required '
+                }
+            }
+        }, institute_code: {
+            validators: {
+                notEmpty: {
+                    message: 'Please select your institution.'
+                }
+            }
+        }, staffno: {
+            validators: {
+                notEmpty: {
+                    message: 'staffno is required '
+                }
+            }
+        }, highest_qualification: {
+            validators: {
+                notEmpty: {
+                    message: 'highest_qualification is required '
+                }
+            }
+        }, qualification: {
+            validators: {
+                notEmpty: {
+                    message: 'qualification is required '
+                }
+            }
+        },
+        department: {
+            validators: {
+                notEmpty: {
+                    message: 'Please select your department.'
+                }
+            }
+        },
+        gender: {
+            validators: {
+                notEmpty: {
+                    message: 'Please select your gender.'
+                }
+            }
+        },
+        grade: {
+            validators: {
+                notEmpty: {
+                    message: 'Please select your grade.'
+                }
+            }
+        },
+        acceptTerms: {
+            validators: {
+                notEmpty: {
+                    message: 'The checkbox must be checked'
+                }
+            }
+        }
     }
 });
 

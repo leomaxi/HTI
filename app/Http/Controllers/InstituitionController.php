@@ -29,12 +29,23 @@ class InstituitionController extends Controller {
         if (empty($id)) {
             return redirect('logout');
         }
+        
+        $permissions = Session::get('permissions');
+
+        if (!in_array("CREATE_INSTITUTITION", $permissions)) {
+            return redirect('logout');
+        }
         return view('newinstitution');
     }
 
     public function showinstitutions() {
         $id = Session::get('id');
 
+        $permissions = Session::get('permissions');
+
+        if (!in_array("VIEW_INSTITUITIONS", $permissions)) {
+            return redirect('logout');
+        }
         if (empty($id)) {
             return redirect('logout');
         }

@@ -27,12 +27,15 @@ use App\InstituitionProfessionalBodies;
 use GuzzleHttp;
 use Illuminate\Database\Eloquent;
 use Illuminate\Support\Facades\Session;
+use App\InstittutionsPrograms;
 
 class ConfigurationController extends Controller {
 
-    public function newdistrict() {
+  
 
+    public function newdistrict() {
         $id = Session::get('id');
+
 
         if (empty($id)) {
             return redirect('logout');
@@ -42,9 +45,14 @@ class ConfigurationController extends Controller {
 
     public function showdistricts() {
 
+        $permissions = Session::get('permissions');
         $id = Session::get('id');
 
+
         if (empty($id)) {
+            return redirect('logout');
+        }
+        if (!in_array("VIEW_DISTRICTS", $permissions)) {
             return redirect('logout');
         }
         return view('districts');
@@ -52,19 +60,30 @@ class ConfigurationController extends Controller {
 
     public function showdepartments() {
 
+        $permissions = Session::get('permissions');
         $id = Session::get('id');
+
 
         if (empty($id)) {
             return redirect('logout');
         }
+        if (!in_array("VIEW_DEPARTMENTS", $permissions)) {
+            return redirect('logout');
+        }
+
         return view('department');
     }
 
     public function showGradeTypes() {
 
+        $permissions = Session::get('permissions');
         $id = Session::get('id');
 
+
         if (empty($id)) {
+            return redirect('logout');
+        }
+        if (!in_array("VIEW_GRADE_TYPES", $permissions)) {
             return redirect('logout');
         }
         return view('gradetypes');
@@ -72,9 +91,14 @@ class ConfigurationController extends Controller {
 
     public function showRegionDistricts() {
 
+        $permissions = Session::get('permissions');
         $id = Session::get('id');
 
+
         if (empty($id)) {
+            return redirect('logout');
+        }
+        if (!in_array("VIEW_REGION_DISTRICT", $permissions)) {
             return redirect('logout');
         }
         return view('regiondistricts');
@@ -82,18 +106,28 @@ class ConfigurationController extends Controller {
 
     public function showInstitutionTypes() {
 
+        $permissions = Session::get('permissions');
         $id = Session::get('id');
 
+
         if (empty($id)) {
+            return redirect('logout');
+        }
+        if (!in_array("VIEW_INSTITUTION_TYPES", $permissions)) {
             return redirect('logout');
         }
         return view('institutiontypes');
     }
 
     public function showProfessionalbodies() {
+        $permissions = Session::get('permissions');
         $id = Session::get('id');
 
+
         if (empty($id)) {
+            return redirect('logout');
+        }
+        if (!in_array("VIEW_PROFESSIONAL_BODIES", $permissions)) {
             return redirect('logout');
         }
         return view('professionalbodies');
@@ -251,6 +285,13 @@ class ConfigurationController extends Controller {
     }
 
     public function getInstituitionsTypes() {
+
+        if (Session::get('role') == "principal") {
+            $instituition_code = Session::get('institute');
+
+            return InstittutionsPrograms::where('insitution_code', $instituition_code)
+                            ->get();
+        }
 
         return InstitutionTypes::where('active', 0)
                         ->get();

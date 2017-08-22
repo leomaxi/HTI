@@ -23,6 +23,13 @@ class StudentController extends Controller {
     public function showstudent() {
         $id = Session::get('id');
 
+        $permissions = Session::get('permissions');
+
+        if (!in_array("CREATE_STUDENT	", $permissions)) {
+            return redirect('logout');
+        }
+
+
         if (empty($id)) {
             return redirect('logout');
         }
@@ -30,6 +37,13 @@ class StudentController extends Controller {
     }
 
     public function getStudent() {
+
+        $permissions = Session::get('permissions');
+
+        if (!in_array("VIEW_STUDENTS	", $permissions)) {
+            return redirect('logout');
+        }
+
 
         if (Session::get('role') == "principal") {
             $instituition_code = Session::get('institute');
@@ -69,7 +83,7 @@ class StudentController extends Controller {
 
         $new = new Student();
         if (Session::get('role') == "principal") {
-            $new->instituition_code = Session::get('instseitute');
+            $new->instituition_code = Session::get('institute');
         } else {
             $new->instituition_code = $data['institute_code'];
         }
@@ -114,7 +128,7 @@ class StudentController extends Controller {
             $saved = $new->save();
             $inserted_id = $new->id;
 
-            $student_no = 'STU'. str_pad("$inserted_id", 5, '0', STR_PAD_LEFT).$student_initials;
+            $student_no = 'STU' . str_pad("$inserted_id", 5, '0', STR_PAD_LEFT) . $student_initials;
             $this->updateStudentNo($student_no, $inserted_id);
             if (!$saved) {
                 $response['success'] = '1';
@@ -335,7 +349,7 @@ class StudentController extends Controller {
         if (!empty($data['institute_code'])) {
             $new->instituition_code = $data['institute_code'];
         }
-        
+
         $new->last_instituition = $data['last_institution_completed'];
         $new->completion_year = $data['completion_year'];
         $new->examination_type = $data['examination_type'];
@@ -388,7 +402,7 @@ class StudentController extends Controller {
             $new->instituition_code = $data['institute_code'];
         }
 
-       // $new->program = $data['enrollment_program'];
+        // $new->program = $data['enrollment_program'];
         $new->admission_year = $data['admission_year'];
         $new->professional_body = $data['professional_body'];
         $new->sitting_year = $data['year_of_seating'];

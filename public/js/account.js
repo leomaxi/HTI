@@ -47,7 +47,6 @@ function getPermissions()
                     var r = new Array();
                     // represent columns as array
                     trHTML += '<tr><td>' + value.id + '</td>' +
-                            '<td>' + value.perm_keyword + '</td>' +
                             '<td>' + value.description + '</td>' +
                             '<td><input type="checkbox" name="permissions[]" value="' + value.perm_keyword + '"/></td></tr>';
 

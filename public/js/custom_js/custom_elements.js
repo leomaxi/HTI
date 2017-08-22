@@ -52,9 +52,11 @@ $(document).ready(function() {
     });
 
 
-    $('#select-gear').selectize({
-        sortField: 'text'
-    });
+//    $('#select-gear').selectize({
+//        sortField: 'text'
+//    });
+    
+    
     $("#selectize3").selectize({
         maxItems: 3
     });

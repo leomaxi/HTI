@@ -27,6 +27,8 @@ class LoginController extends Controller {
 
 
         $users = Users::where([ ['email', '=', $email], ['password', '=', $password]])->get();
+        $request->session()->regenerate();
+
 
         if (!$users) {
             return '1';

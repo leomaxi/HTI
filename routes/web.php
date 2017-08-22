@@ -86,6 +86,7 @@ Route::get('account/retreivepermissions/{id}', 'AccountController@getGroupPermis
 Route::post('account/assigngrouproles', 'AccountController@assignGroupRoles');
 Route::get('account/getusers', 'AccountController@getUsers');
 Route::get('account/user/{id}', 'AccountController@getUserInfo');
+Route::delete('account/deleteuser/{id}', 'AccountController@deleteUser');
 Route::put('account/userinfo', 'AccountController@updateUserInfo');
 Route::post('account/saveuser', 'AccountController@saveUserInfo');
 Route::post('login/authenticateuser', 'LoginController@authenticateUser');
