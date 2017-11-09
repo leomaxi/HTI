@@ -30,6 +30,7 @@ $permissions = Session::get('permissions');
                             if (in_array("VIEW_INSTITUITIONS", $permissions)) {
                                 ?> 
                                 <li class="{{ Request::is('configurations/newinstitution') ? 'active' : '' }}">
+                                   
                                     <a href="javascript:void(0)">
                                         <i class="fa fa-fw ti-receipt"></i> Institutions
                                         <span class="fa arrow"></span>
