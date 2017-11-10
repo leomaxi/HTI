@@ -30,7 +30,7 @@ $permissions = Session::get('permissions');
                             if (in_array("VIEW_INSTITUITIONS", $permissions)) {
                                 ?> 
                                 <li class="{{ Request::is('configurations/newinstitution') ? 'active' : '' }}">
-                                   
+
                                     <a href="javascript:void(0)">
                                         <i class="fa fa-fw ti-receipt"></i> Institutions
                                         <span class="fa arrow"></span>
@@ -104,7 +104,7 @@ $permissions = Session::get('permissions');
                                 </li>
                                 <?php
                             }
-                               if (in_array("VIEW_PROFESSIONAL_BODIES", $permissions)) {
+                            if (in_array("VIEW_PROFESSIONAL_BODIES", $permissions)) {
                                 ?>
                                 <li class="{{ Request::is('configurations/professionalbodies') ? 'active' : '' }}">
                                     <a href="{{ url('configurations/professionalbodies') }}">
@@ -235,6 +235,34 @@ $permissions = Session::get('permissions');
                     <?php
                 }
                 ?>
+
+                <li class="menu-dropdown {{ Request::is('emails*') ? 'active' : '' }}" >
+
+                    <a href="javascript:void(0)">
+                        <i class="menu-icon ti-check-box"></i>
+                        <span>Emails</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+
+
+                        <li class="{{ Request::is('emails/groups') ? 'active' : '' }}">
+
+                            <a href="{{ url('emails/groups') }}">
+                                <i class="fa fa-fw ti-alert"></i> Email Groups
+                            </a>
+                        </li> 
+
+                        <li class="{{ Request::is('emails/messages') ? 'active' : '' }}">
+
+                            <a href="{{ url('emails/messages') }}">
+                                <i class="fa fa-fw ti-alert"></i> Messages
+                            </a>
+                        </li> 
+
+                    </ul>
+
+                </li>
             </ul>
             <!-- / .navigation --> </div>
         <!-- menu --> </section>

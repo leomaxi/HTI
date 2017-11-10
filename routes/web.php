@@ -33,6 +33,10 @@ Route::get('account/assignroles', 'AccountController@showrolesandpermissions');
 Route::get('account/users', 'AccountController@showusers');
 Route::get('students/new', 'StudentController@showstudent');
 Route::get('students/all', 'StudentController@showallstudents');
+Route::get('emails/groups', 'EmailController@showemailgroups');
+Route::get('emails/messages', 'EmailController@showemailmessages');
+
+
 Route::get('/logout', function() {
         //Uncomment to see the logs record
         //\Log::info("Session before: ".print_r($request->session()->all(), true));
@@ -104,6 +108,7 @@ Route::post('configurations/saveprofessionalbody', 'ConfigurationController@save
 Route::put('configurations/professionalbody', 'ConfigurationController@updateProfessionalBody');
 Route::delete('configurations/deleteprofessionalbody/{id}', 'ConfigurationController@deleteProfessionalBody');
 Route::get('configurations/getinstitutionprofessionalbodies/{id}', 'ConfigurationController@getInstituitionProfessionalBodies');
+Route::post('emails/saveemailgroup', 'EmailController@createEmailGroups');
 
 
 //professionalbody

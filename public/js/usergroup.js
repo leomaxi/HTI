@@ -1,6 +1,7 @@
 
 
 //save regio
+$('.select2').select2();
 
 
 //retreive regions
