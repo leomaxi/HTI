@@ -110,6 +110,11 @@ Route::delete('configurations/deleteprofessionalbody/{id}', 'ConfigurationContro
 Route::get('configurations/getinstitutionprofessionalbodies/{id}', 'ConfigurationController@getInstituitionProfessionalBodies');
 Route::post('emails/saveemailgroup', 'EmailController@createEmailGroups');
 
+Route::get('emails/getemailgroups', 'EmailController@getEmailGroups');
+Route::put('emails/emailgroup', 'EmailController@updateEmailGroups');
+Route::delete('emails/deleteemailgroup/{id}', 'EmailController@deleteEmailGroups');
+Route::get('emails/getemailmembers/{id}', 'EmailController@getEmailGroupMembers');
+Route::delete('emails/deleteemailgroupmember/{id}', 'EmailController@deleteEmailGroupMember');
 
 //professionalbody
 //Route::post('staff/updatestaffinformation',function () {

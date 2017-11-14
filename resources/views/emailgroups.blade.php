@@ -25,9 +25,6 @@
     <!-- Main content -->
     <section class="content">
 
-        <?php
-        $groupsArr = json_decode($groups, true);
-        ?>
         <div class="">
             <div class="right_aligned" style="margin-bottom: 15px;">
                 <button type="button" class="btn btn-info " data-toggle="modal" data-target="#userModal">
@@ -51,23 +48,12 @@
                                     <tr>
 
                                         <th>Name</th>
-                                        <th>View</th>
-                                        <th>Edit</th>
-                                        <th>Delete</th>
+                                        <th>Action</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php
-                                    foreach ($groupsArr as $value) {
-                                        echo '<tr>'
-                                        . '<td>' . $value['name'] . '</td>'
-                                                 . '<td><button onclick=""  class="btn btn-outline-success btn-sm editBtn" type="button">View</button></td>'
-                                       
-                                        . '<td><button onclick=""  class="btn btn-outline-info btn-sm editBtn" type="button">Edit</button></td>'
-                                        . '<td><button onclick="" class="btn btn-outline-danger btn-sm editBtn" type="button">Delete</button></td>'
-                                        . '</tr>';
-                                    }
-                                    ?>
+
                                 </tbody>
                             </table>
                         </div>
@@ -123,20 +109,51 @@
             </div>
         </div>
 
-        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div id="viewModal" class="modal fade animated" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"><span id="memberName"></span> Members</h4>
+                    </div>
+                    <div class="modal-body">
+                         <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" id="emailgroupmemberTbl">
+                                <thead>
+                                    <tr>
+
+                                        <th>Name</th>
+                                        <th>Action</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+                 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <form method="post" id="deleteUserGroupForm">
+                    <form method="post" id="deleteMemberForm">
                         <div class="modal-body">
                             <div>
                                 <p>
-                                    Are you sure you want to delete.?<span class="holder" id="nameholder"></span>
-
+                                    Are you sure you want to delete this member ?.<span class="holder" id="holdername"></span> 
                                 </p>
+                               
                             </div>
-                            <input type="hidden" id="code" name="code"/>
                             <input type="hidden" class="form-control form-control-lg input-lg" id="token" name="_token" value="<?php echo csrf_token() ?>" />
 
+                            <input type="hidden" id="deletedid" name="id"/>
+                            
 
                         </div>
                         <div class="modal-footer">
@@ -148,34 +165,6 @@
             </div>
         </div>
 
-        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="exampleModalLabel">Update </h4>
-                    </div>
-                    <form id="updateUserGroupForm" >
-                        <div class="modal-body">
-                            <input type="hidden" class="form-control form-control-lg input-lg"  name="_token" value="<?php echo csrf_token() ?>" />
-
-                            <div class="form-group">
-                                <label for="region" class="control-label">Name:</label>
-                                <input type="text" class="form-control" name="name" id="name" required>
-                            </div>
-
-                            <input type="hidden" class="form-control" name="code" id="usergroupid">
-
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Update</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
 
 
         <div class="background-overlay"></div>
