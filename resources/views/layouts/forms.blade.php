@@ -23,6 +23,7 @@
         <link href="{{ asset('vendors/airdatepicker/css/datepicker.min.css')}}" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/datepicker.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('vendors/sweetalert2/css/sweetalert2.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/complex_forms.css')}}">
 
     </head>
     <body class="skin-default">

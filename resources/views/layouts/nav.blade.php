@@ -252,11 +252,21 @@ $permissions = Session::get('permissions');
                                 <i class="fa fa-fw ti-alert"></i> Email Groups
                             </a>
                         </li> 
+                        <li class="{{ Request::is('emails/composemessages') ? 'active' : '' }}">
 
-                        <li class="{{ Request::is('emails/messages') ? 'active' : '' }}">
+                            <a href="{{ url('emails/composemessages') }}">
+                                <i class="fa fa-fw ti-alert"></i> Compose Message
+                            </a>
+                        </li>  <li class="{{ Request::is('emails/receivedmessages') ? 'active' : '' }}">
 
-                            <a href="{{ url('emails/messages') }}">
-                                <i class="fa fa-fw ti-alert"></i> Messages
+                            <a href="{{ url('emails/receivedmessages') }}">
+                                <i class="fa fa-fw ti-alert"></i> Received Messages
+                            </a>
+                        </li> 
+                        <li class="{{ Request::is('emails/sentmessages') ? 'active' : '' }}">
+
+                            <a href="{{ url('emails/sentmessages') }}">
+                                <i class="fa fa-fw ti-alert"></i> Send Messages
                             </a>
                         </li> 
 

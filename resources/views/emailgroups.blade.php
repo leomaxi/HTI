@@ -88,7 +88,55 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="first-name">Members</label>
-                                        <select name="members[]" id="members"  class="form-control multselect select2" multiple style="width: 100%" required>
+                                        <select name="members[]" id="members"  class="members form-control multselect select2" multiple style="width: 100%" required>
+                                            <option value="">Select value...</option>
+
+
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger">Submit</button>
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="newGroupMembers" class="modal fade animated" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">New Members</h4>
+                    </div>
+                    <form role="form" id="saveNewEmailGroupMembersForm">
+                        <input type="hidden" class="form-control form-control-lg input-lg"  name="_token" value="<?php echo csrf_token() ?>" />
+
+
+                        <div class="modal-body">
+                            <div class="row ">
+
+
+
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+
+                                        <input type="hidden" id="membergroupid" name="groupid"
+                                               required class="form-control ">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="first-name">Members</label>
+                                        <select name="members[]"   class="members form-control multselect select2" multiple style="width: 100%" required>
                                             <option value="">Select value...</option>
 
 
@@ -116,30 +164,41 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title"><span id="memberName"></span> Members</h4>
                     </div>
+
                     <div class="modal-body">
-                         <div class="panel-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover" id="emailgroupmemberTbl">
-                                <thead>
-                                    <tr>
 
-                                        <th>Name</th>
-                                        <th>Action</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                </tbody>
-                            </table>
+                        <div class="right_aligned" style="margin-bottom: 15px;">
+                            <button type="button" class="btn btn-info " data-toggle="modal" data-target="#newGroupMembers">
+                                New Members
+                            </button>
                         </div>
-                    </div>
+
+
+
+                        <div class="panel-body">
+
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="emailgroupmemberTbl">
+                                    <thead>
+                                        <tr>
+
+                                            <th>Name</th>
+                                            <th>Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-                 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <form method="post" id="deleteMemberForm">
@@ -148,12 +207,12 @@
                                 <p>
                                     Are you sure you want to delete this member ?.<span class="holder" id="holdername"></span> 
                                 </p>
-                               
+
                             </div>
                             <input type="hidden" class="form-control form-control-lg input-lg" id="token" name="_token" value="<?php echo csrf_token() ?>" />
 
                             <input type="hidden" id="deletedid" name="id"/>
-                            
+
 
                         </div>
                         <div class="modal-footer">

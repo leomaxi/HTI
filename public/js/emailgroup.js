@@ -39,7 +39,7 @@ function getUsers()
                     if (item.firstname == null) {
                         item.firstname = '';
                     }
-                    $('#members').append($('<option>', {
+                    $('.members').append($('<option>', {
                         value: item.id,
                         text: item.firstname
                     }));
@@ -200,6 +200,7 @@ var emaildatatable = $('#emailgroupmemberTbl').DataTable({
 function getEmailGroupMembers(id)
 {
 
+$('#membergroupid').val(id);
     $.ajax({
         url: 'getemailmembers/' + id,
         type: "GET",
@@ -326,7 +327,7 @@ $('#deleteMemberForm').on('submit', function (e) {
             document.getElementById("deleteMemberForm").reset();
             if (data == 0) {
                 swal("Success!", "Deleted Successfully", "success");
-               $('#viewModal').hide();
+            //   $('#viewModal').hide();
             } else {
                 swal("Error!", "Couldnt Update", "error");
             }
@@ -338,3 +339,36 @@ $('#deleteMemberForm').on('submit', function (e) {
 
 });
 
+//saveNewEmailGroupMembersForm
+$('#saveNewEmailGroupMembersForm').on('submit', function (e) {
+    e.preventDefault();
+    $('input:submit').attr("disabled", true);
+    var formData = $(this).serialize();
+    console.log(formData);
+    $('#editModal').modal('hide');
+    $('#loaderModal').modal('show');
+
+    $.ajax({
+        url: 'newgroupmembers',
+        type: "POST",
+        data: formData,
+        success: function (data) {
+            console.log(data);
+            // $("#loader").hide();
+            $('input:submit').attr("disabled", false);
+            $('#loaderModal').modal('hide');
+
+
+            if (data == 0) {
+                swal("Success!", "Information Updated Successfully", "success");
+                getEmailGroups();
+            } else {
+                swal("Error!", "Couldnt Update", "error");
+            }
+        },
+        error: function (jXHR, textStatus, errorThrown) {
+            console.log(errorThrown);
+        }
+    });
+
+});

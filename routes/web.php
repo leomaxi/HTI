@@ -34,7 +34,11 @@ Route::get('account/users', 'AccountController@showusers');
 Route::get('students/new', 'StudentController@showstudent');
 Route::get('students/all', 'StudentController@showallstudents');
 Route::get('emails/groups', 'EmailController@showemailgroups');
-Route::get('emails/messages', 'EmailController@showemailmessages');
+Route::get('emails/composemessages', 'EmailController@showcomposemessage');
+Route::get('emails/receivedmessages', 'EmailController@showreceivedmesages');
+Route::get('emails/sentmessages', 'EmailController@showsentmessages');
+Route::get('emails/message/{messageid}', 'EmailController@getMessageDetail');
+Route::get('emails/download/{path}', 'EmailController@download');
 
 
 Route::get('/logout', function() {
@@ -108,14 +112,18 @@ Route::post('configurations/saveprofessionalbody', 'ConfigurationController@save
 Route::put('configurations/professionalbody', 'ConfigurationController@updateProfessionalBody');
 Route::delete('configurations/deleteprofessionalbody/{id}', 'ConfigurationController@deleteProfessionalBody');
 Route::get('configurations/getinstitutionprofessionalbodies/{id}', 'ConfigurationController@getInstituitionProfessionalBodies');
-Route::post('emails/saveemailgroup', 'EmailController@createEmailGroups');
 
+Route::post('emails/saveemailgroup', 'EmailController@createEmailGroups');
 Route::get('emails/getemailgroups', 'EmailController@getEmailGroups');
 Route::put('emails/emailgroup', 'EmailController@updateEmailGroups');
 Route::delete('emails/deleteemailgroup/{id}', 'EmailController@deleteEmailGroups');
 Route::get('emails/getemailmembers/{id}', 'EmailController@getEmailGroupMembers');
 Route::delete('emails/deleteemailgroupmember/{id}', 'EmailController@deleteEmailGroupMember');
+Route::post('emails/newgroupmembers', 'EmailController@createNewGroupMembers');
+Route::post('emails/sendmessage', 'EmailController@sendMessage');
 
+//
+//newgroupmembers
 //professionalbody
 //Route::post('staff/updatestaffinformation',function () {
 //

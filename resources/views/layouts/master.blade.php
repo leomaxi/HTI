@@ -40,6 +40,25 @@
         <!--        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css')}}">-->
 
         <link rel="stylesheet" type="text/css" href="{{asset('css/form_layouts.css')}}">
+        <link rel="stylesheet" href="{{asset('vendors/blueimp-gallery-with-desc/css/blueimp-gallery.min.css')}}"/>
+        <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+        <link rel="stylesheet" href="{{asset('vendors/blueimp-file-upload/css/jquery.fileupload.css')}}"/>
+        <link rel="stylesheet" href="{{asset('vendors/blueimp-file-upload/css/jquery.fileupload-ui.css')}}"/>
+        <link rel="stylesheet" href="{{asset('vendors/dropify/css/dropify.css')}}">
+        <!-- CSS adjustments for browsers with JavaScript disabled -->
+        <noscript>
+        <link rel="stylesheet" href="{{asset('vendors/blueimp-file-upload/css/jquery.fileupload-noscript.css')}}"/>
+        <link rel="stylesheet" href="{{asset('vendors/blueimp-file-upload/css/jquery.fileupload-ui-noscript.css')}}"/>
+        </noscript>
+        <link rel="stylesheet" type="text/css" href="{{asset('css/custom_css/multiplefile_upload.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/custom_css/widgets.css')}}">
+
+        <link rel="stylesheet" type="text/css" href="{{asset('vendors/gridforms/css/gridforms.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/complex_forms.css')}}">
+        <link rel="stylesheet" href="{{asset('vendors/laddabootstrap/css/ladda-themeless.min.css')}}">
+        <link href="{{asset('css/buttons_sass.css')}}" rel="stylesheet">
+        <link href="{{asset('css/advbuttons.css')}}" rel="stylesheet">
+
         <!-- END Custom CSS-->
     </head>
     <body class="skin-default">
@@ -69,8 +88,8 @@
 
             </div>
         </div>
-        
-         <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -98,8 +117,8 @@
                 </div>
             </div>
         </div>
-        
-         <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <form method="post" id="deleteForm">
@@ -108,12 +127,12 @@
                                 <p>
                                     Are you sure you want to delete this email group ?.<span class="holder" id="holdername"></span> 
                                 </p>
-                               
+
                             </div>
                             <input type="hidden" class="form-control form-control-lg input-lg" id="token" name="_token" value="<?php echo csrf_token() ?>" />
 
                             <input type="hidden" id="deletedid" name="id"/>
-                            
+
 
                         </div>
                         <div class="modal-footer">
@@ -123,6 +142,90 @@
                     </form>
                 </div>
             </div>
+        </div>
+
+
+        <div class="modal fade" id="messageDetail" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <!--5th tab bank application starting-->
+                            <div class="col-lg-12">
+                                <form class="grid-form">
+                                    <div class="text-center">
+<!--                                        <img src="img/pages/complexform1.png" alt="bank name" width="200">-->
+                                        <h3>Message Detail</h3>
+                                    </div>
+                                    <fieldset>
+                                        <legend>Details</legend>
+                                        <div data-row-span="1">
+                                            <div data-field-span="1" class="" style="height: auto;">
+                                                <label>Sender Name</label>
+                                                  <label id="sender"> </label>
+<!--                                                <input type="text" readonly id="sender">-->
+                                            </div>
+                                        </div>
+                                        <div data-row-span="1">
+                                            <div data-field-span="1" class="" style="height: auto;">
+                                                <label>Recipients </label>
+                                                <label id="receipients"> </label>
+<!--                                                <input type="text" readonly id="receipients">-->
+                                            </div>
+                                        </div>
+
+                                        <div data-row-span="1">
+                                            <div data-field-span="1" class="" style="height: auto;">
+                                                <label>Subject </label>
+                                                  <label id="subject"> </label>
+<!--                                                <input type="text" readonly id="subject">-->
+                                            </div>
+                                        </div>
+                                        <div data-row-span="1">
+                                            <div data-field-span="1" class="" style="height: auto;">
+                                                <label>Date Sent: </label>
+                                                 <label id="date_sent"></label>
+<!--                                                <input type="text" readonly id="date_sent">-->
+                                            </div>
+                                        </div>
+
+                                        <div data-row-span="1">
+                                            <div data-field-span="1" style="height: auto;">
+                                                <label>Message</label>
+                                                <label id="messageContent">
+                                                    I/We confirm having read and understood the account
+                                                    rules of The Banking Corporation Limited ('the Bank'), and hereby agree to be
+                                                    bound by the terms and conditions and amendments governing the account(s) issued
+                                                    by the Bank from time-to-time.</label>
+                                            </div>
+                                        </div>
+
+                                        <div data-row-span="1">
+                                            <div data-field-span="1" class="" style="height: auto;">
+                                                <label>Attachments: </label>
+                                                <div id="fileattacments">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
         </div>
 
         @include('layouts.footer')
