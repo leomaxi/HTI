@@ -110,8 +110,9 @@
         </div>
 
 
-        <div id="newGroupMembers" class="modal fade animated" role="dialog">
-            <div class="modal-dialog">
+        <div id="newGroupMembers" class="modal fade animated modal-stack " data-modal-index="1" role="dialog">
+            
+            <div class="modal-dialog ">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>

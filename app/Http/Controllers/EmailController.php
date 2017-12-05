@@ -13,7 +13,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\EmailGroups;
 
-
 class EmailController extends Controller {
 
     public function showemailgroups() {
@@ -191,6 +190,7 @@ class EmailController extends Controller {
 
     public function saveMessageAttachments($messageid, $filename, $path) {
 
+        $path = str_replace("emailfiles/", "", $path);
         DB::table('emails_attachments')->insert(
                 ['message_id' => $messageid, 'filename' => $filename, 'path' => $path]
         );
@@ -292,10 +292,10 @@ class EmailController extends Controller {
     }
 
     public function download($filename) {
-        
-        $path = storage_path('app/emailfiles/'.$filename);
 
-      //  $headers = array('Content-Type' => File::mimeType($path));
+        $path = storage_path('app/emailfiles/' . $filename);
+
+        //  $headers = array('Content-Type' => File::mimeType($path));
 
         return response()->download($path, $filename);
     }

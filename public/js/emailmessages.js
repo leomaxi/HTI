@@ -82,11 +82,11 @@ function getEmailGroups()
 
 $('#sendMessageForm').on('submit', function (e) {
     e.preventDefault();
-    // $('input:submit').attr("disabled", true);
+    $('input:submit').attr("disabled", true);
     //alert('ddd');
     var formData = new FormData($(this)[0]);
     console.log(formData);
-    //  $('#loaderModal').modal('show');
+    $('#loaderModal').modal('show');
 
     $.ajax({
         url: "sendmessage",
@@ -99,6 +99,7 @@ $('#sendMessageForm').on('submit', function (e) {
         success: function (data) {
             $('.loader').removeClass('be-loading-active');
             console.log('server data :' + data);
+            $('#loaderModal').modal('hide');
 
             $('#newMessageModal').modal('hide');
 
