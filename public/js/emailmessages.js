@@ -124,7 +124,7 @@ function getMessageDetail(id) {
         type: "GET",
         dataType: 'json',
         success: function (data) {
-
+            $("#fileattacments").html("");
             console.log('server data :' + data);
             var sender = data.details[0].sender_name;
             var subject = data.details[0].subject;
